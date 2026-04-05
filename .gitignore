@@ -1,0 +1,22 @@
+# Environment
+.env
+
+# Rust
+backend/target/
+backend/Cargo.lock
+
+# Node
+frontend/node_modules/
+frontend/dist/
+
+# Uploads (runtime data)
+uploads/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp

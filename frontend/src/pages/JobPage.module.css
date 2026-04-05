@@ -1,0 +1,57 @@
+.page { max-width: 860px; margin: 0 auto; padding: 32px 20px; }
+
+.topBar { display: flex; align-items: center; gap: 16px; margin-bottom: 20px; font-size: 14px; }
+.tableLabel { font-size: 18px; font-weight: 700; color: #90cdf4; }
+
+.statusRow { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
+.errorMsg { color: #fc8181; font-size: 13px; }
+
+.progressCard {}
+.cardTitle { font-size: 16px; font-weight: 600; color: #bee3f8; margin-bottom: 18px; }
+
+.progressSection { margin-bottom: 20px; }
+.progressLabel {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+.progressTrack {
+  height: 10px;
+  background: #2d3748;
+  border-radius: 5px;
+  overflow: hidden;
+}
+.progressFill {
+  height: 100%;
+  background: linear-gradient(90deg, #3182ce, #63b3ed);
+  border-radius: 5px;
+  transition: width 0.3s ease;
+}
+.progressSub { font-size: 12px; color: #718096; margin-top: 5px; }
+
+.eventLog {
+  margin-top: 16px;
+  max-height: 340px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding-right: 4px;
+}
+.emptyLog { color: #4a5568; font-size: 13px; }
+
+.eventRow {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-size: 12px;
+  padding: 5px 8px;
+  border-left: 3px solid #2d3748;
+  background: #12161f;
+  border-radius: 0 4px 4px 0;
+}
+.eventIcon { flex-shrink: 0; }
+
+.loading { color: #718096; }

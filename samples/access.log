@@ -1,0 +1,10 @@
+{"time":"2024-11-01T08:00:10Z","remote_addr":"192.168.1.10","method":"GET","path":"/","status":200,"bytes":1024,"duration_ms":5,"ua":"Mozilla/5.0"}
+{"time":"2024-11-01T08:00:12Z","remote_addr":"192.168.1.11","method":"GET","path":"/assets/main.js","status":200,"bytes":98304,"duration_ms":22,"ua":"Mozilla/5.0"}
+{"time":"2024-11-01T08:00:15Z","remote_addr":"10.0.0.5","method":"POST","path":"/api/login","status":200,"bytes":256,"duration_ms":140,"ua":"curl/7.88.1","user_id":1}
+{"time":"2024-11-01T08:00:20Z","remote_addr":"10.0.0.5","method":"GET","path":"/api/users","status":401,"bytes":64,"duration_ms":3,"ua":"curl/7.88.1"}
+{"time":"2024-11-01T08:01:00Z","remote_addr":"172.16.0.2","method":"POST","path":"/api/upload","status":413,"bytes":128,"duration_ms":2,"ua":"python-requests/2.31","error":"payload too large"}
+{"time":"2024-11-01T08:01:30Z","remote_addr":"192.168.1.10","method":"GET","path":"/dashboard","status":200,"bytes":4096,"duration_ms":18,"ua":"Mozilla/5.0","user_id":42}
+{"time":"2024-11-01T08:02:00Z","remote_addr":"192.168.1.10","method":"GET","path":"/api/jobs","status":200,"bytes":2048,"duration_ms":35,"ua":"Mozilla/5.0","user_id":42}
+{"time":"2024-11-01T08:02:45Z","remote_addr":"10.0.0.99","method":"GET","path":"/","status":200,"bytes":1024,"duration_ms":6,"ua":"Googlebot/2.1","bot":true}
+{"time":"2024-11-01T08:03:10Z","remote_addr":"192.168.1.12","method":"PUT","path":"/api/users/5","status":200,"bytes":512,"duration_ms":55,"ua":"axios/1.6.0","user_id":5}
+{"time":"2024-11-01T08:03:50Z","remote_addr":"10.0.0.5","method":"DELETE","path":"/api/sessions/abc","status":204,"bytes":0,"duration_ms":9,"ua":"curl/7.88.1","user_id":1}

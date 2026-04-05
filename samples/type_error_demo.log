@@ -1,0 +1,6 @@
+{"ts":"2024-11-01T09:00:00Z","level":"INFO","message":"Normal timestamp line","score":9.5,"active":true}
+{"ts":"2024-11-01T09:00:01Z","level":"INFO","message":"Another normal line","score":7.2,"active":false}
+{"ts":"INVALID_TIMESTAMP","level":"WARN","message":"This line has a bad timestamp - triggers _te_ts column","score":3.1,"active":true}
+{"ts":"2024-11-01T09:00:03Z","level":"INFO","message":"Back to normal timestamp","score":8.8,"active":true}
+{"ts":"not-a-date-at-all","level":"ERROR","message":"Another bad timestamp line","score":null,"active":false}
+{"ts":"2024-11-01T09:00:05Z","level":"DEBUG","message":"Normal again","score":6.0,"active":true}
