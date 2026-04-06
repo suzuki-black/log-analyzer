@@ -1,0 +1,600 @@
+{"ts": "2024-11-01T00:01:37Z", "job_type": "csv_import", "status": "completed", "job_id": "job-766608", "worker_id": "worker-6", "attempt": 1, "duration_ms": 47350, "items_processed": 31447}
+{"ts": "2024-11-01T00:02:37Z", "job_type": "notification_push", "status": "completed", "job_id": "job-998887", "worker_id": "worker-5", "attempt": 2, "duration_ms": 50780, "items_processed": 95437}
+{"ts": "2024-11-01T00:03:58Z", "job_type": "cleanup", "status": "retrying", "job_id": "job-166670", "worker_id": "worker-7", "attempt": 1, "error": "payload too large", "next_retry_at": "2024-11-01T00:08:58Z"}
+{"ts": "2024-11-01T00:04:13Z", "job_type": "data_export", "status": "completed", "job_id": "job-487909", "worker_id": "worker-1", "attempt": 3, "duration_ms": 91554, "items_processed": 1038, "file_size_bytes": 9609109}
+{"ts": "2024-11-01T00:05:00Z", "job_type": "csv_import", "status": "completed", "job_id": "job-954344", "worker_id": "worker-6", "attempt": 1, "duration_ms": 99769, "items_processed": 52310}
+{"ts": "2024-11-01T00:06:21Z", "job_type": "data_export", "status": "completed", "job_id": "job-489247", "worker_id": "worker-7", "attempt": 2, "duration_ms": 39695, "items_processed": 58547, "file_size_bytes": 3049844}
+{"ts": "2024-11-01T00:06:40Z", "job_type": "image_resize", "status": "started", "job_id": "job-389599", "worker_id": "worker-3", "attempt": 1}
+{"ts": "2024-11-01T00:07:32Z", "job_type": "report_generate", "status": "started", "job_id": "job-503498", "worker_id": "worker-2", "attempt": 2, "file_size_bytes": 884162}
+{"ts": "2024-11-01T00:09:02Z", "job_type": "csv_import", "status": "completed", "job_id": "job-711866", "worker_id": "worker-4", "attempt": 1, "duration_ms": 103992, "items_processed": 20632}
+{"ts": "2024-11-01T00:10:00Z", "job_type": "report_generate", "status": "completed", "job_id": "job-432120", "worker_id": "worker-5", "attempt": 1, "duration_ms": 94261, "items_processed": 7318, "file_size_bytes": 7597834}
+{"ts": "2024-11-01T00:11:17Z", "job_type": "cleanup", "status": "started", "job_id": "job-907738", "worker_id": "worker-8", "attempt": 1}
+{"ts": "2024-11-01T00:11:35Z", "job_type": "email_send", "status": "started", "job_id": "job-776978", "worker_id": "worker-2", "attempt": 2}
+{"ts": "2024-11-01T00:12:47Z", "job_type": "notification_push", "status": "retrying", "job_id": "job-248990", "worker_id": "worker-2", "attempt": 1, "error": "payload too large", "next_retry_at": "2024-11-01T00:36:47Z"}
+{"ts": "2024-11-01T00:14:02Z", "job_type": "index_rebuild", "status": "started", "job_id": "job-684037", "worker_id": "worker-5", "attempt": 2}
+{"ts": "2024-11-01T00:14:27Z", "job_type": "image_resize", "status": "completed", "job_id": "job-789901", "worker_id": "worker-5", "attempt": 3, "duration_ms": 117574, "items_processed": 23097}
+{"ts": "2024-11-01T00:15:27Z", "job_type": "index_rebuild", "status": "started", "job_id": "job-985146", "worker_id": "worker-8", "attempt": 1}
+{"ts": "2024-11-01T00:15:46Z", "job_type": "index_rebuild", "status": "started", "job_id": "job-271547", "worker_id": "worker-1", "attempt": 3}
+{"ts": "2024-11-01T00:16:58Z", "job_type": "cleanup", "status": "completed", "job_id": "job-878013", "worker_id": "worker-3", "attempt": 1, "duration_ms": 118711, "items_processed": 58288}
+{"ts": "2024-11-01T00:18:02Z", "job_type": "index_rebuild", "status": "started", "job_id": "job-550861", "worker_id": "worker-7", "attempt": 3}
+{"ts": "2024-11-01T00:18:48Z", "job_type": "cleanup", "status": "started", "job_id": "job-590765", "worker_id": "worker-1", "attempt": 1}
+{"ts": "2024-11-01T00:19:28Z", "job_type": "email_send", "status": "completed", "job_id": "job-148906", "worker_id": "worker-6", "attempt": 1, "duration_ms": 106749, "items_processed": 57583}
+{"ts": "2024-11-01T00:20:41Z", "job_type": "report_generate", "status": "started", "job_id": "job-485338", "worker_id": "worker-6", "attempt": 3, "file_size_bytes": 8710814}
+{"ts": "2024-11-01T00:22:10Z", "job_type": "email_send", "status": "started", "job_id": "job-259365", "worker_id": "worker-8", "attempt": 3}
+{"ts": "2024-11-01T00:22:37Z", "job_type": "data_export", "status": "started", "job_id": "job-295358", "worker_id": "worker-6", "attempt": 2, "file_size_bytes": 3270359}
+{"ts": "2024-11-01T00:22:57Z", "job_type": "cleanup", "status": "started", "job_id": "job-415751", "worker_id": "worker-4", "attempt": 3}
+{"ts": "2024-11-01T00:24:30Z", "job_type": "report_generate", "status": "completed", "job_id": "job-328187", "worker_id": "worker-7", "attempt": 3, "duration_ms": 105760, "items_processed": 82253, "file_size_bytes": 1458034}
+{"ts": "2024-11-01T00:25:38Z", "job_type": "data_export", "status": "retrying", "job_id": "job-308099", "worker_id": "worker-2", "attempt": 1, "error": "rate limit exceeded", "next_retry_at": "2024-11-01T00:45:38Z", "file_size_bytes": 5803645}
+{"ts": "2024-11-01T00:26:27Z", "job_type": "data_export", "status": "completed", "job_id": "job-509747", "worker_id": "worker-3", "attempt": 3, "duration_ms": 3611, "items_processed": 78765, "file_size_bytes": 3129757}
+{"ts": "2024-11-01T00:27:45Z", "job_type": "index_rebuild", "status": "completed", "job_id": "job-460678", "worker_id": "worker-3", "attempt": 3, "duration_ms": 49059, "items_processed": 80657}
+{"ts": "2024-11-01T00:28:35Z", "job_type": "image_resize", "status": "retrying", "job_id": "job-255565", "worker_id": "worker-3", "attempt": 1, "error": "disk full", "next_retry_at": "2024-11-01T00:51:35Z"}
+{"ts": "2024-11-01T00:30:18Z", "job_type": "index_rebuild", "status": "started", "job_id": "job-745868", "worker_id": "worker-4", "attempt": 3}
+{"ts": "2024-11-01T00:31:40Z", "job_type": "data_export", "status": "started", "job_id": "job-481252", "worker_id": "worker-8", "attempt": 3, "file_size_bytes": 3726564}
+{"ts": "2024-11-01T00:33:25Z", "job_type": "notification_push", "status": "started", "job_id": "job-337646", "worker_id": "worker-7", "attempt": 2}
+{"ts": "2024-11-01T00:33:41Z", "job_type": "notification_push", "status": "retrying", "job_id": "job-592350", "worker_id": "worker-7", "attempt": 1, "error": "timeout", "next_retry_at": "2024-11-01T00:51:41Z"}
+{"ts": "2024-11-01T00:34:44Z", "job_type": "email_send", "status": "completed", "job_id": "job-507990", "worker_id": "worker-8", "attempt": 1, "duration_ms": 100303, "items_processed": 66278}
+{"ts": "2024-11-01T00:36:32Z", "job_type": "data_export", "status": "failed", "job_id": "job-309613", "worker_id": "worker-7", "attempt": 1, "error": "timeout", "next_retry_at": "2024-11-01T00:37:32Z", "file_size_bytes": 8245217}
+{"ts": "2024-11-01T00:36:52Z", "job_type": "data_export", "status": "completed", "job_id": "job-471427", "worker_id": "worker-4", "attempt": 3, "duration_ms": 88936, "items_processed": 73429, "file_size_bytes": 3069325}
+{"ts": "2024-11-01T00:38:27Z", "job_type": "report_generate", "status": "retrying", "job_id": "job-616942", "worker_id": "worker-7", "attempt": 3, "error": "payload too large", "next_retry_at": "2024-11-01T00:56:27Z", "file_size_bytes": 4334086}
+{"ts": "2024-11-01T00:40:11Z", "job_type": "cleanup", "status": "completed", "job_id": "job-440065", "worker_id": "worker-8", "attempt": 2, "duration_ms": 17273, "items_processed": 19024}
+{"ts": "2024-11-01T00:40:42Z", "job_type": "image_resize", "status": "retrying", "job_id": "job-260187", "worker_id": "worker-3", "attempt": 1, "error": "disk full", "next_retry_at": "2024-11-01T00:57:42Z"}
+{"ts": "2024-11-01T00:40:49Z", "job_type": "report_generate", "status": "completed", "job_id": "job-406222", "worker_id": "worker-5", "attempt": 1, "duration_ms": 45464, "items_processed": 73428, "file_size_bytes": 9498161}
+{"ts": "2024-11-01T00:41:13Z", "job_type": "data_export", "status": "started", "job_id": "job-470922", "worker_id": "worker-7", "attempt": 1, "file_size_bytes": 6326486}
+{"ts": "2024-11-01T00:41:41Z", "job_type": "notification_push", "status": "started", "job_id": "job-787959", "worker_id": "worker-1", "attempt": 2}
+{"ts": "2024-11-01T00:42:17Z", "job_type": "index_rebuild", "status": "failed", "job_id": "job-356525", "worker_id": "worker-2", "attempt": 3, "error": "timeout", "next_retry_at": "2024-11-01T01:00:17Z"}
+{"ts": "2024-11-01T00:42:29Z", "job_type": "csv_import", "status": "completed", "job_id": "job-931502", "worker_id": "worker-8", "attempt": 2, "duration_ms": 13802, "items_processed": 30974}
+{"ts": "2024-11-01T00:42:34Z", "job_type": "index_rebuild", "status": "completed", "job_id": "job-340244", "worker_id": "worker-5", "attempt": 1, "duration_ms": 85716, "items_processed": 73621}
+{"ts": "2024-11-01T00:43:20Z", "job_type": "data_export", "status": "started", "job_id": "job-792051", "worker_id": "worker-2", "attempt": 1, "file_size_bytes": 6466405}
+{"ts": "2024-11-01T00:43:47Z", "job_type": "cleanup", "status": "completed", "job_id": "job-633429", "worker_id": "worker-5", "attempt": 3, "duration_ms": 52436, "items_processed": 30046}
+{"ts": "2024-11-01T00:45:05Z", "job_type": "index_rebuild", "status": "completed", "job_id": "job-504872", "worker_id": "worker-2", "attempt": 2, "duration_ms": 95847, "items_processed": 36287}
+{"ts": "2024-11-01T00:46:51Z", "job_type": "index_rebuild", "status": "started", "job_id": "job-433888", "worker_id": "worker-5", "attempt": 3}
+{"ts": "2024-11-01T00:47:05Z", "job_type": "data_export", "status": "retrying", "job_id": "job-791733", "worker_id": "worker-2", "attempt": 2, "error": "timeout", "next_retry_at": "2024-11-01T01:01:05Z", "file_size_bytes": 4491750}
+{"ts": "2024-11-01T00:47:19Z", "job_type": "report_generate", "status": "completed", "job_id": "job-805933", "worker_id": "worker-6", "attempt": 2, "duration_ms": 56233, "items_processed": 35601, "file_size_bytes": 284676}
+{"ts": "2024-11-01T00:48:36Z", "job_type": "report_generate", "status": "completed", "job_id": "job-494238", "worker_id": "worker-4", "attempt": 3, "duration_ms": 42179, "items_processed": 59095, "file_size_bytes": 9180203}
+{"ts": "2024-11-01T00:49:44Z", "job_type": "notification_push", "status": "failed", "job_id": "job-163122", "worker_id": "worker-8", "attempt": 1, "error": "connection refused", "next_retry_at": "2024-11-01T00:50:44Z"}
+{"ts": "2024-11-01T00:50:21Z", "job_type": "data_export", "status": "completed", "job_id": "job-265985", "worker_id": "worker-1", "attempt": 1, "duration_ms": 81725, "items_processed": 85462, "file_size_bytes": 8324711}
+{"ts": "2024-11-01T00:50:38Z", "job_type": "data_export", "status": "completed", "job_id": "job-194167", "worker_id": "worker-3", "attempt": 2, "duration_ms": 9706, "items_processed": 26448, "file_size_bytes": 9590438}
+{"ts": "2024-11-01T00:51:14Z", "job_type": "cleanup", "status": "retrying", "job_id": "job-750436", "worker_id": "worker-7", "attempt": 2, "error": "invalid token", "next_retry_at": "2024-11-01T01:10:14Z"}
+{"ts": "2024-11-01T00:52:41Z", "job_type": "index_rebuild", "status": "completed", "job_id": "job-693907", "worker_id": "worker-8", "attempt": 1, "duration_ms": 9824, "items_processed": 21623}
+{"ts": "2024-11-01T00:53:40Z", "job_type": "index_rebuild", "status": "failed", "job_id": "job-342561", "worker_id": "worker-2", "attempt": 3, "error": "connection refused", "next_retry_at": "2024-11-01T00:58:40Z"}
+{"ts": "2024-11-01T00:54:41Z", "job_type": "cleanup", "status": "completed", "job_id": "job-129693", "worker_id": "worker-8", "attempt": 2, "duration_ms": 91254, "items_processed": 75599}
+{"ts": "2024-11-01T00:55:53Z", "job_type": "index_rebuild", "status": "completed", "job_id": "job-540775", "worker_id": "worker-6", "attempt": 1, "duration_ms": 110286, "items_processed": 83545}
+{"ts": "2024-11-01T00:56:24Z", "job_type": "csv_import", "status": "started", "job_id": "job-731890", "worker_id": "worker-2", "attempt": 3}
+{"ts": "2024-11-01T00:58:07Z", "job_type": "cleanup", "status": "completed", "job_id": "job-297526", "worker_id": "worker-1", "attempt": 3, "duration_ms": 88195, "items_processed": 95037}
+{"ts": "2024-11-01T00:59:52Z", "job_type": "notification_push", "status": "started", "job_id": "job-230746", "worker_id": "worker-3", "attempt": 1}
+{"ts": "2024-11-01T01:00:17Z", "job_type": "report_generate", "status": "completed", "job_id": "job-469070", "worker_id": "worker-1", "attempt": 2, "duration_ms": 63838, "items_processed": 49563, "file_size_bytes": 4569249}
+{"ts": "2024-11-01T01:00:58Z", "job_type": "index_rebuild", "status": "completed", "job_id": "job-397892", "worker_id": "worker-8", "attempt": 1, "duration_ms": 93287, "items_processed": 6545}
+{"ts": "2024-11-01T01:01:03Z", "job_type": "data_export", "status": "completed", "job_id": "job-688526", "worker_id": "worker-8", "attempt": 2, "duration_ms": 40230, "items_processed": 40525, "file_size_bytes": 9140505}
+{"ts": "2024-11-01T01:02:33Z", "job_type": "cleanup", "status": "completed", "job_id": "job-412207", "worker_id": "worker-8", "attempt": 3, "duration_ms": 59100, "items_processed": 40568}
+{"ts": "2024-11-01T01:04:31Z", "job_type": "report_generate", "status": "completed", "job_id": "job-311084", "worker_id": "worker-7", "attempt": 2, "duration_ms": 56019, "items_processed": 90521, "file_size_bytes": 567669}
+{"ts": "2024-11-01T01:05:08Z", "job_type": "notification_push", "status": "started", "job_id": "job-526462", "worker_id": "worker-4", "attempt": 2}
+{"ts": "2024-11-01T01:05:53Z", "job_type": "image_resize", "status": "completed", "job_id": "job-139463", "worker_id": "worker-7", "attempt": 2, "duration_ms": 74161, "items_processed": 55918}
+{"ts": "2024-11-01T01:07:16Z", "job_type": "data_export", "status": "retrying", "job_id": "job-562819", "worker_id": "worker-2", "attempt": 1, "error": "disk full", "next_retry_at": "2024-11-01T01:26:16Z", "file_size_bytes": 6008834}
+{"ts": "2024-11-01T01:07:38Z", "job_type": "cleanup", "status": "started", "job_id": "job-315889", "worker_id": "worker-1", "attempt": 3}
+{"ts": "2024-11-01T01:08:30Z", "job_type": "index_rebuild", "status": "completed", "job_id": "job-287953", "worker_id": "worker-6", "attempt": 2, "duration_ms": 14533, "items_processed": 21169}
+{"ts": "2024-11-01T01:09:42Z", "job_type": "data_export", "status": "completed", "job_id": "job-807181", "worker_id": "worker-4", "attempt": 2, "duration_ms": 39383, "items_processed": 30771, "file_size_bytes": 1315739}
+{"ts": "2024-11-01T01:11:36Z", "job_type": "notification_push", "status": "completed", "job_id": "job-649999", "worker_id": "worker-6", "attempt": 3, "duration_ms": 51673, "items_processed": 45702}
+{"ts": "2024-11-01T01:12:17Z", "job_type": "cleanup", "status": "completed", "job_id": "job-360061", "worker_id": "worker-5", "attempt": 2, "duration_ms": 98891, "items_processed": 34304}
+{"ts": "2024-11-01T01:14:13Z", "job_type": "csv_import", "status": "completed", "job_id": "job-422323", "worker_id": "worker-5", "attempt": 1, "duration_ms": 103870, "items_processed": 40023}
+{"ts": "2024-11-01T01:15:36Z", "job_type": "report_generate", "status": "completed", "job_id": "job-732795", "worker_id": "worker-4", "attempt": 3, "duration_ms": 31879, "items_processed": 92495, "file_size_bytes": 4337576}
+{"ts": "2024-11-01T01:16:16Z", "job_type": "index_rebuild", "status": "started", "job_id": "job-702847", "worker_id": "worker-5", "attempt": 2}
+{"ts": "2024-11-01T01:16:54Z", "job_type": "email_send", "status": "completed", "job_id": "job-808860", "worker_id": "worker-3", "attempt": 1, "duration_ms": 29529, "items_processed": 6257}
+{"ts": "2024-11-01T01:18:14Z", "job_type": "notification_push", "status": "completed", "job_id": "job-234536", "worker_id": "worker-8", "attempt": 3, "duration_ms": 28742, "items_processed": 75447}
+{"ts": "2024-11-01T01:19:44Z", "job_type": "csv_import", "status": "started", "job_id": "job-265353", "worker_id": "worker-2", "attempt": 1}
+{"ts": "2024-11-01T01:21:43Z", "job_type": "index_rebuild", "status": "started", "job_id": "job-824851", "worker_id": "worker-3", "attempt": 1}
+{"ts": "2024-11-01T01:23:38Z", "job_type": "index_rebuild", "status": "completed", "job_id": "job-602194", "worker_id": "worker-6", "attempt": 2, "duration_ms": 117964, "items_processed": 67970}
+{"ts": "2024-11-01T01:24:27Z", "job_type": "image_resize", "status": "started", "job_id": "job-844232", "worker_id": "worker-7", "attempt": 2}
+{"ts": "2024-11-01T01:25:15Z", "job_type": "index_rebuild", "status": "failed", "job_id": "job-238319", "worker_id": "worker-3", "attempt": 1, "error": "connection refused", "next_retry_at": "2024-11-01T01:26:15Z"}
+{"ts": "2024-11-01T01:25:25Z", "job_type": "csv_import", "status": "started", "job_id": "job-553862", "worker_id": "worker-5", "attempt": 2}
+{"ts": "2024-11-01T01:25:38Z", "job_type": "data_export", "status": "completed", "job_id": "job-334300", "worker_id": "worker-1", "attempt": 1, "duration_ms": 18638, "items_processed": 96638, "file_size_bytes": 5969879}
+{"ts": "2024-11-01T01:25:56Z", "job_type": "data_export", "status": "completed", "job_id": "job-313951", "worker_id": "worker-8", "attempt": 2, "duration_ms": 112621, "items_processed": 51574, "file_size_bytes": 5977723}
+{"ts": "2024-11-01T01:27:08Z", "job_type": "cleanup", "status": "started", "job_id": "job-710638", "worker_id": "worker-6", "attempt": 3}
+{"ts": "2024-11-01T01:28:39Z", "job_type": "index_rebuild", "status": "retrying", "job_id": "job-682355", "worker_id": "worker-7", "attempt": 1, "error": "invalid token", "next_retry_at": "2024-11-01T01:48:39Z"}
+{"ts": "2024-11-01T01:29:11Z", "job_type": "report_generate", "status": "started", "job_id": "job-478007", "worker_id": "worker-5", "attempt": 1, "file_size_bytes": 4352612}
+{"ts": "2024-11-01T01:30:45Z", "job_type": "notification_push", "status": "completed", "job_id": "job-332036", "worker_id": "worker-2", "attempt": 1, "duration_ms": 29305, "items_processed": 71046}
+{"ts": "2024-11-01T01:32:00Z", "job_type": "notification_push", "status": "started", "job_id": "job-314647", "worker_id": "worker-5", "attempt": 1}
+{"ts": "2024-11-01T01:32:29Z", "job_type": "cleanup", "status": "started", "job_id": "job-803330", "worker_id": "worker-3", "attempt": 1}
+{"ts": "2024-11-01T01:34:23Z", "job_type": "image_resize", "status": "started", "job_id": "job-579743", "worker_id": "worker-5", "attempt": 1}
+{"ts": "2024-11-01T01:35:01Z", "job_type": "cleanup", "status": "started", "job_id": "job-213017", "worker_id": "worker-1", "attempt": 2}
+{"ts": "2024-11-01T01:35:35Z", "job_type": "index_rebuild", "status": "completed", "job_id": "job-535877", "worker_id": "worker-7", "attempt": 3, "duration_ms": 109046, "items_processed": 3672}
+{"ts": "2024-11-01T01:35:44Z", "job_type": "notification_push", "status": "completed", "job_id": "job-247711", "worker_id": "worker-5", "attempt": 2, "duration_ms": 98831, "items_processed": 76358}
+{"ts": "2024-11-01T01:35:55Z", "job_type": "data_export", "status": "failed", "job_id": "job-785578", "worker_id": "worker-2", "attempt": 3, "error": "disk full", "next_retry_at": "2024-11-01T01:51:55Z", "file_size_bytes": 7352031}
+{"ts": "2024-11-01T01:37:53Z", "job_type": "csv_import", "status": "started", "job_id": "job-376295", "worker_id": "worker-4", "attempt": 1}
+{"ts": "2024-11-01T01:38:36Z", "job_type": "image_resize", "status": "failed", "job_id": "job-161284", "worker_id": "worker-3", "attempt": 1, "error": "invalid token", "next_retry_at": "2024-11-01T02:04:36Z"}
+{"ts": "2024-11-01T01:40:22Z", "job_type": "notification_push", "status": "retrying", "job_id": "job-271305", "worker_id": "worker-3", "attempt": 3, "error": "invalid token", "next_retry_at": "2024-11-01T01:49:22Z"}
+{"ts": "2024-11-01T01:41:21Z", "job_type": "cleanup", "status": "completed", "job_id": "job-570239", "worker_id": "worker-6", "attempt": 3, "duration_ms": 114413, "items_processed": 98814}
+{"ts": "2024-11-01T01:43:03Z", "job_type": "data_export", "status": "started", "job_id": "job-239960", "worker_id": "worker-3", "attempt": 3, "file_size_bytes": 3923086}
+{"ts": "2024-11-01T01:43:09Z", "job_type": "data_export", "status": "started", "job_id": "job-446228", "worker_id": "worker-7", "attempt": 3, "file_size_bytes": 1809727}
+{"ts": "2024-11-01T01:43:41Z", "job_type": "image_resize", "status": "failed", "job_id": "job-340880", "worker_id": "worker-1", "attempt": 1, "error": "connection refused", "next_retry_at": "2024-11-01T01:52:41Z"}
+{"ts": "2024-11-01T01:44:38Z", "job_type": "index_rebuild", "status": "completed", "job_id": "job-869721", "worker_id": "worker-2", "attempt": 3, "duration_ms": 118183, "items_processed": 56069}
+{"ts": "2024-11-01T01:46:23Z", "job_type": "index_rebuild", "status": "completed", "job_id": "job-955412", "worker_id": "worker-1", "attempt": 2, "duration_ms": 112284, "items_processed": 55950}
+{"ts": "2024-11-01T01:46:46Z", "job_type": "index_rebuild", "status": "completed", "job_id": "job-464247", "worker_id": "worker-6", "attempt": 1, "duration_ms": 117887, "items_processed": 98093}
+{"ts": "2024-11-01T01:46:58Z", "job_type": "data_export", "status": "started", "job_id": "job-488177", "worker_id": "worker-4", "attempt": 1, "file_size_bytes": 1313705}
+{"ts": "2024-11-01T01:48:58Z", "job_type": "data_export", "status": "retrying", "job_id": "job-870405", "worker_id": "worker-5", "attempt": 2, "error": "connection refused", "next_retry_at": "2024-11-01T01:56:58Z", "file_size_bytes": 488291}
+{"ts": "2024-11-01T01:49:30Z", "job_type": "csv_import", "status": "completed", "job_id": "job-930895", "worker_id": "worker-3", "attempt": 1, "duration_ms": 16753, "items_processed": 70802}
+{"ts": "2024-11-01T01:50:12Z", "job_type": "index_rebuild", "status": "started", "job_id": "job-938394", "worker_id": "worker-1", "attempt": 1}
+{"ts": "2024-11-01T01:51:15Z", "job_type": "data_export", "status": "retrying", "job_id": "job-794070", "worker_id": "worker-3", "attempt": 2, "error": "timeout", "next_retry_at": "2024-11-01T02:20:15Z", "file_size_bytes": 6263956}
+{"ts": "2024-11-01T01:51:27Z", "job_type": "index_rebuild", "status": "failed", "job_id": "job-857294", "worker_id": "worker-7", "attempt": 2, "error": "disk full", "next_retry_at": "2024-11-01T02:20:27Z"}
+{"ts": "2024-11-01T01:52:41Z", "job_type": "index_rebuild", "status": "completed", "job_id": "job-206525", "worker_id": "worker-8", "attempt": 3, "duration_ms": 83469, "items_processed": 90568}
+{"ts": "2024-11-01T01:53:49Z", "job_type": "notification_push", "status": "failed", "job_id": "job-534026", "worker_id": "worker-2", "attempt": 3, "error": "invalid token", "next_retry_at": "2024-11-01T02:23:49Z"}
+{"ts": "2024-11-01T01:55:44Z", "job_type": "data_export", "status": "retrying", "job_id": "job-152477", "worker_id": "worker-7", "attempt": 2, "error": "disk full", "next_retry_at": "2024-11-01T02:13:44Z", "file_size_bytes": 3815995}
+{"ts": "2024-11-01T01:56:57Z", "job_type": "index_rebuild", "status": "started", "job_id": "job-810555", "worker_id": "worker-8", "attempt": 3}
+{"ts": "2024-11-01T01:57:20Z", "job_type": "notification_push", "status": "completed", "job_id": "job-167202", "worker_id": "worker-3", "attempt": 1, "duration_ms": 41604, "items_processed": 78485}
+{"ts": "2024-11-01T01:57:30Z", "job_type": "notification_push", "status": "completed", "job_id": "job-895082", "worker_id": "worker-5", "attempt": 3, "duration_ms": 33486, "items_processed": 66470}
+{"ts": "2024-11-01T01:59:07Z", "job_type": "data_export", "status": "retrying", "job_id": "job-609049", "worker_id": "worker-4", "attempt": 3, "error": "connection refused", "next_retry_at": "2024-11-01T02:14:07Z", "file_size_bytes": 9621137}
+{"ts": "2024-11-01T02:00:50Z", "job_type": "report_generate", "status": "completed", "job_id": "job-204574", "worker_id": "worker-3", "attempt": 1, "duration_ms": 11365, "items_processed": 6179, "file_size_bytes": 2001301}
+{"ts": "2024-11-01T02:02:02Z", "job_type": "index_rebuild", "status": "retrying", "job_id": "job-144002", "worker_id": "worker-4", "attempt": 3, "error": "payload too large", "next_retry_at": "2024-11-01T02:25:02Z"}
+{"ts": "2024-11-01T02:03:17Z", "job_type": "cleanup", "status": "failed", "job_id": "job-878826", "worker_id": "worker-1", "attempt": 3, "error": "timeout", "next_retry_at": "2024-11-01T02:18:17Z"}
+{"ts": "2024-11-01T02:05:11Z", "job_type": "email_send", "status": "failed", "job_id": "job-608277", "worker_id": "worker-5", "attempt": 3, "error": "timeout", "next_retry_at": "2024-11-01T02:31:11Z"}
+{"ts": "2024-11-01T02:06:36Z", "job_type": "image_resize", "status": "completed", "job_id": "job-469645", "worker_id": "worker-2", "attempt": 3, "duration_ms": 81289, "items_processed": 80904}
+{"ts": "2024-11-01T02:07:13Z", "job_type": "notification_push", "status": "started", "job_id": "job-433803", "worker_id": "worker-2", "attempt": 2}
+{"ts": "2024-11-01T02:07:31Z", "job_type": "data_export", "status": "started", "job_id": "job-616140", "worker_id": "worker-7", "attempt": 3, "file_size_bytes": 4271281}
+{"ts": "2024-11-01T02:08:07Z", "job_type": "image_resize", "status": "completed", "job_id": "job-290618", "worker_id": "worker-3", "attempt": 1, "duration_ms": 47379, "items_processed": 37914}
+{"ts": "2024-11-01T02:08:31Z", "job_type": "data_export", "status": "started", "job_id": "job-284704", "worker_id": "worker-7", "attempt": 3, "file_size_bytes": 5378167}
+{"ts": "2024-11-01T02:10:03Z", "job_type": "csv_import", "status": "completed", "job_id": "job-777431", "worker_id": "worker-7", "attempt": 1, "duration_ms": 119214, "items_processed": 25598}
+{"ts": "2024-11-01T02:11:42Z", "job_type": "email_send", "status": "completed", "job_id": "job-956114", "worker_id": "worker-4", "attempt": 1, "duration_ms": 38097, "items_processed": 38591}
+{"ts": "2024-11-01T02:12:25Z", "job_type": "index_rebuild", "status": "failed", "job_id": "job-974002", "worker_id": "worker-1", "attempt": 2, "error": "invalid token", "next_retry_at": "2024-11-01T02:39:25Z"}
+{"ts": "2024-11-01T02:13:36Z", "job_type": "index_rebuild", "status": "completed", "job_id": "job-708290", "worker_id": "worker-6", "attempt": 1, "duration_ms": 35615, "items_processed": 60899}
+{"ts": "2024-11-01T02:13:43Z", "job_type": "data_export", "status": "started", "job_id": "job-492367", "worker_id": "worker-7", "attempt": 3, "file_size_bytes": 5862326}
+{"ts": "2024-11-01T02:13:57Z", "job_type": "notification_push", "status": "started", "job_id": "job-814993", "worker_id": "worker-8", "attempt": 2}
+{"ts": "2024-11-01T02:14:34Z", "job_type": "data_export", "status": "completed", "job_id": "job-765490", "worker_id": "worker-4", "attempt": 1, "duration_ms": 115135, "items_processed": 78346, "file_size_bytes": 5311556}
+{"ts": "2024-11-01T02:15:32Z", "job_type": "image_resize", "status": "started", "job_id": "job-574323", "worker_id": "worker-8", "attempt": 2}
+{"ts": "2024-11-01T02:16:17Z", "job_type": "data_export", "status": "started", "job_id": "job-476116", "worker_id": "worker-3", "attempt": 1, "file_size_bytes": 7019954}
+{"ts": "2024-11-01T02:16:32Z", "job_type": "cleanup", "status": "completed", "job_id": "job-187781", "worker_id": "worker-3", "attempt": 3, "duration_ms": 17640, "items_processed": 3640}
+{"ts": "2024-11-01T02:18:00Z", "job_type": "notification_push", "status": "completed", "job_id": "job-265326", "worker_id": "worker-3", "attempt": 3, "duration_ms": 37565, "items_processed": 15338}
+{"ts": "2024-11-01T02:18:14Z", "job_type": "notification_push", "status": "retrying", "job_id": "job-905940", "worker_id": "worker-7", "attempt": 1, "error": "timeout", "next_retry_at": "2024-11-01T02:23:14Z"}
+{"ts": "2024-11-01T02:19:34Z", "job_type": "notification_push", "status": "completed", "job_id": "job-797135", "worker_id": "worker-7", "attempt": 1, "duration_ms": 57233, "items_processed": 32029}
+{"ts": "2024-11-01T02:20:38Z", "job_type": "data_export", "status": "completed", "job_id": "job-280733", "worker_id": "worker-5", "attempt": 3, "duration_ms": 100231, "items_processed": 23577, "file_size_bytes": 718172}
+{"ts": "2024-11-01T02:21:38Z", "job_type": "cleanup", "status": "started", "job_id": "job-795463", "worker_id": "worker-5", "attempt": 3}
+{"ts": "2024-11-01T02:22:48Z", "job_type": "email_send", "status": "completed", "job_id": "job-678001", "worker_id": "worker-6", "attempt": 1, "duration_ms": 25597, "items_processed": 26838}
+{"ts": "2024-11-01T02:24:25Z", "job_type": "report_generate", "status": "started", "job_id": "job-664458", "worker_id": "worker-1", "attempt": 1, "file_size_bytes": 4574683}
+{"ts": "2024-11-01T02:25:43Z", "job_type": "image_resize", "status": "completed", "job_id": "job-264662", "worker_id": "worker-2", "attempt": 3, "duration_ms": 11071, "items_processed": 23170}
+{"ts": "2024-11-01T02:27:36Z", "job_type": "data_export", "status": "started", "job_id": "job-969097", "worker_id": "worker-3", "attempt": 1, "file_size_bytes": 6244047}
+{"ts": "2024-11-01T02:29:16Z", "job_type": "csv_import", "status": "completed", "job_id": "job-218124", "worker_id": "worker-6", "attempt": 3, "duration_ms": 20239, "items_processed": 57074}
+{"ts": "2024-11-01T02:30:30Z", "job_type": "cleanup", "status": "completed", "job_id": "job-520964", "worker_id": "worker-5", "attempt": 1, "duration_ms": 13729, "items_processed": 76395}
+{"ts": "2024-11-01T02:30:49Z", "job_type": "notification_push", "status": "started", "job_id": "job-663330", "worker_id": "worker-1", "attempt": 2}
+{"ts": "2024-11-01T02:31:33Z", "job_type": "csv_import", "status": "completed", "job_id": "job-977838", "worker_id": "worker-1", "attempt": 1, "duration_ms": 104251, "items_processed": 50890}
+{"ts": "2024-11-01T02:32:00Z", "job_type": "index_rebuild", "status": "completed", "job_id": "job-649891", "worker_id": "worker-8", "attempt": 1, "duration_ms": 109139, "items_processed": 41114}
+{"ts": "2024-11-01T02:33:11Z", "job_type": "notification_push", "status": "completed", "job_id": "job-506550", "worker_id": "worker-7", "attempt": 2, "duration_ms": 114160, "items_processed": 52336}
+{"ts": "2024-11-01T02:34:51Z", "job_type": "csv_import", "status": "completed", "job_id": "job-224520", "worker_id": "worker-7", "attempt": 3, "duration_ms": 17047, "items_processed": 28535}
+{"ts": "2024-11-01T02:35:33Z", "job_type": "data_export", "status": "started", "job_id": "job-247754", "worker_id": "worker-7", "attempt": 1, "file_size_bytes": 3004912}
+{"ts": "2024-11-01T02:35:47Z", "job_type": "image_resize", "status": "started", "job_id": "job-420484", "worker_id": "worker-2", "attempt": 1}
+{"ts": "2024-11-01T02:36:28Z", "job_type": "data_export", "status": "completed", "job_id": "job-657734", "worker_id": "worker-4", "attempt": 1, "duration_ms": 36984, "items_processed": 96041, "file_size_bytes": 8147998}
+{"ts": "2024-11-01T02:37:38Z", "job_type": "report_generate", "status": "started", "job_id": "job-744871", "worker_id": "worker-8", "attempt": 1, "file_size_bytes": 6816789}
+{"ts": "2024-11-01T02:38:58Z", "job_type": "csv_import", "status": "completed", "job_id": "job-652438", "worker_id": "worker-2", "attempt": 3, "duration_ms": 21187, "items_processed": 67330}
+{"ts": "2024-11-01T02:40:32Z", "job_type": "image_resize", "status": "started", "job_id": "job-676247", "worker_id": "worker-1", "attempt": 1}
+{"ts": "2024-11-01T02:41:05Z", "job_type": "cleanup", "status": "completed", "job_id": "job-121953", "worker_id": "worker-3", "attempt": 3, "duration_ms": 379, "items_processed": 8177}
+{"ts": "2024-11-01T02:41:10Z", "job_type": "notification_push", "status": "retrying", "job_id": "job-884330", "worker_id": "worker-3", "attempt": 3, "error": "payload too large", "next_retry_at": "2024-11-01T02:48:10Z"}
+{"ts": "2024-11-01T02:42:24Z", "job_type": "cleanup", "status": "started", "job_id": "job-201042", "worker_id": "worker-1", "attempt": 2}
+{"ts": "2024-11-01T02:43:49Z", "job_type": "email_send", "status": "completed", "job_id": "job-288177", "worker_id": "worker-5", "attempt": 1, "duration_ms": 116268, "items_processed": 69397}
+{"ts": "2024-11-01T02:45:49Z", "job_type": "image_resize", "status": "completed", "job_id": "job-102003", "worker_id": "worker-6", "attempt": 3, "duration_ms": 90423, "items_processed": 21212}
+{"ts": "2024-11-01T02:46:47Z", "job_type": "data_export", "status": "completed", "job_id": "job-691979", "worker_id": "worker-1", "attempt": 1, "duration_ms": 59226, "items_processed": 52180, "file_size_bytes": 8959753}
+{"ts": "2024-11-01T02:48:21Z", "job_type": "cleanup", "status": "started", "job_id": "job-579606", "worker_id": "worker-7", "attempt": 1}
+{"ts": "2024-11-01T02:50:15Z", "job_type": "image_resize", "status": "started", "job_id": "job-682809", "worker_id": "worker-4", "attempt": 3}
+{"ts": "2024-11-01T02:51:38Z", "job_type": "cleanup", "status": "completed", "job_id": "job-313748", "worker_id": "worker-4", "attempt": 2, "duration_ms": 53513, "items_processed": 97908}
+{"ts": "2024-11-01T02:51:53Z", "job_type": "notification_push", "status": "completed", "job_id": "job-761762", "worker_id": "worker-7", "attempt": 1, "duration_ms": 52220, "items_processed": 59621}
+{"ts": "2024-11-01T02:52:11Z", "job_type": "image_resize", "status": "completed", "job_id": "job-419504", "worker_id": "worker-2", "attempt": 1, "duration_ms": 9849, "items_processed": 24886}
+{"ts": "2024-11-01T02:52:35Z", "job_type": "data_export", "status": "started", "job_id": "job-336568", "worker_id": "worker-3", "attempt": 1, "file_size_bytes": 9070187}
+{"ts": "2024-11-01T02:54:28Z", "job_type": "image_resize", "status": "completed", "job_id": "job-295910", "worker_id": "worker-8", "attempt": 3, "duration_ms": 78754, "items_processed": 95462}
+{"ts": "2024-11-01T02:56:22Z", "job_type": "report_generate", "status": "completed", "job_id": "job-441171", "worker_id": "worker-1", "attempt": 2, "duration_ms": 117495, "items_processed": 63213, "file_size_bytes": 8272331}
+{"ts": "2024-11-01T02:57:16Z", "job_type": "report_generate", "status": "completed", "job_id": "job-543014", "worker_id": "worker-6", "attempt": 3, "duration_ms": 21995, "items_processed": 822, "file_size_bytes": 9030962}
+{"ts": "2024-11-01T02:58:27Z", "job_type": "report_generate", "status": "failed", "job_id": "job-952721", "worker_id": "worker-5", "attempt": 1, "error": "timeout", "next_retry_at": "2024-11-01T03:18:27Z", "file_size_bytes": 2139039}
+{"ts": "2024-11-01T02:59:31Z", "job_type": "index_rebuild", "status": "retrying", "job_id": "job-222451", "worker_id": "worker-8", "attempt": 3, "error": "disk full", "next_retry_at": "2024-11-01T03:03:31Z"}
+{"ts": "2024-11-01T03:00:21Z", "job_type": "cleanup", "status": "completed", "job_id": "job-659143", "worker_id": "worker-4", "attempt": 3, "duration_ms": 90903, "items_processed": 39178}
+{"ts": "2024-11-01T03:01:10Z", "job_type": "index_rebuild", "status": "started", "job_id": "job-808372", "worker_id": "worker-1", "attempt": 3}
+{"ts": "2024-11-01T03:03:00Z", "job_type": "data_export", "status": "completed", "job_id": "job-495177", "worker_id": "worker-6", "attempt": 3, "duration_ms": 107837, "items_processed": 52330, "file_size_bytes": 8957818}
+{"ts": "2024-11-01T03:03:54Z", "job_type": "data_export", "status": "completed", "job_id": "job-471093", "worker_id": "worker-2", "attempt": 1, "duration_ms": 42524, "items_processed": 58748, "file_size_bytes": 3425925}
+{"ts": "2024-11-01T03:04:38Z", "job_type": "data_export", "status": "completed", "job_id": "job-334373", "worker_id": "worker-5", "attempt": 3, "duration_ms": 57136, "items_processed": 82349, "file_size_bytes": 152563}
+{"ts": "2024-11-01T03:06:20Z", "job_type": "index_rebuild", "status": "completed", "job_id": "job-243134", "worker_id": "worker-1", "attempt": 2, "duration_ms": 35242, "items_processed": 82234}
+{"ts": "2024-11-01T03:07:25Z", "job_type": "data_export", "status": "completed", "job_id": "job-532019", "worker_id": "worker-7", "attempt": 3, "duration_ms": 40013, "items_processed": 8248, "file_size_bytes": 7347309}
+{"ts": "2024-11-01T03:08:43Z", "job_type": "cleanup", "status": "completed", "job_id": "job-689756", "worker_id": "worker-1", "attempt": 3, "duration_ms": 102578, "items_processed": 78025}
+{"ts": "2024-11-01T03:09:46Z", "job_type": "csv_import", "status": "completed", "job_id": "job-622222", "worker_id": "worker-5", "attempt": 3, "duration_ms": 46229, "items_processed": 89860}
+{"ts": "2024-11-01T03:11:10Z", "job_type": "csv_import", "status": "completed", "job_id": "job-178924", "worker_id": "worker-4", "attempt": 3, "duration_ms": 105217, "items_processed": 66069}
+{"ts": "2024-11-01T03:13:03Z", "job_type": "csv_import", "status": "started", "job_id": "job-584487", "worker_id": "worker-4", "attempt": 2}
+{"ts": "2024-11-01T03:14:55Z", "job_type": "index_rebuild", "status": "completed", "job_id": "job-760512", "worker_id": "worker-6", "attempt": 1, "duration_ms": 52354, "items_processed": 96085}
+{"ts": "2024-11-01T03:16:14Z", "job_type": "report_generate", "status": "retrying", "job_id": "job-407198", "worker_id": "worker-1", "attempt": 2, "error": "payload too large", "next_retry_at": "2024-11-01T03:27:14Z", "file_size_bytes": 166721}
+{"ts": "2024-11-01T03:18:00Z", "job_type": "data_export", "status": "completed", "job_id": "job-639775", "worker_id": "worker-7", "attempt": 1, "duration_ms": 42916, "items_processed": 22400, "file_size_bytes": 1985224}
+{"ts": "2024-11-01T03:19:51Z", "job_type": "email_send", "status": "started", "job_id": "job-246319", "worker_id": "worker-8", "attempt": 1}
+{"ts": "2024-11-01T03:20:46Z", "job_type": "cleanup", "status": "started", "job_id": "job-731063", "worker_id": "worker-1", "attempt": 1}
+{"ts": "2024-11-01T03:22:38Z", "job_type": "data_export", "status": "started", "job_id": "job-974055", "worker_id": "worker-5", "attempt": 2, "file_size_bytes": 8726576}
+{"ts": "2024-11-01T03:22:56Z", "job_type": "image_resize", "status": "started", "job_id": "job-665836", "worker_id": "worker-4", "attempt": 3}
+{"ts": "2024-11-01T03:24:43Z", "job_type": "email_send", "status": "completed", "job_id": "job-419942", "worker_id": "worker-4", "attempt": 3, "duration_ms": 78088, "items_processed": 96586}
+{"ts": "2024-11-01T03:25:48Z", "job_type": "csv_import", "status": "failed", "job_id": "job-879629", "worker_id": "worker-2", "attempt": 3, "error": "payload too large", "next_retry_at": "2024-11-01T03:39:48Z"}
+{"ts": "2024-11-01T03:27:43Z", "job_type": "image_resize", "status": "started", "job_id": "job-568795", "worker_id": "worker-6", "attempt": 1}
+{"ts": "2024-11-01T03:27:54Z", "job_type": "email_send", "status": "started", "job_id": "job-812672", "worker_id": "worker-6", "attempt": 3}
+{"ts": "2024-11-01T03:28:48Z", "job_type": "cleanup", "status": "started", "job_id": "job-916373", "worker_id": "worker-6", "attempt": 3}
+{"ts": "2024-11-01T03:29:19Z", "job_type": "email_send", "status": "retrying", "job_id": "job-474799", "worker_id": "worker-7", "attempt": 2, "error": "timeout", "next_retry_at": "2024-11-01T03:47:19Z"}
+{"ts": "2024-11-01T03:29:57Z", "job_type": "image_resize", "status": "failed", "job_id": "job-667659", "worker_id": "worker-5", "attempt": 2, "error": "rate limit exceeded", "next_retry_at": "2024-11-01T03:48:57Z"}
+{"ts": "2024-11-01T03:30:08Z", "job_type": "index_rebuild", "status": "retrying", "job_id": "job-120453", "worker_id": "worker-2", "attempt": 3, "error": "rate limit exceeded", "next_retry_at": "2024-11-01T03:36:08Z"}
+{"ts": "2024-11-01T03:31:06Z", "job_type": "email_send", "status": "started", "job_id": "job-761675", "worker_id": "worker-4", "attempt": 2}
+{"ts": "2024-11-01T03:31:58Z", "job_type": "report_generate", "status": "started", "job_id": "job-384566", "worker_id": "worker-5", "attempt": 2, "file_size_bytes": 4229973}
+{"ts": "2024-11-01T03:32:19Z", "job_type": "email_send", "status": "completed", "job_id": "job-387581", "worker_id": "worker-6", "attempt": 2, "duration_ms": 73320, "items_processed": 52542}
+{"ts": "2024-11-01T03:34:08Z", "job_type": "notification_push", "status": "started", "job_id": "job-140495", "worker_id": "worker-7", "attempt": 1}
+{"ts": "2024-11-01T03:35:53Z", "job_type": "data_export", "status": "started", "job_id": "job-460912", "worker_id": "worker-7", "attempt": 2, "file_size_bytes": 2298278}
+{"ts": "2024-11-01T03:36:38Z", "job_type": "cleanup", "status": "completed", "job_id": "job-293186", "worker_id": "worker-3", "attempt": 1, "duration_ms": 79921, "items_processed": 1037}
+{"ts": "2024-11-01T03:37:25Z", "job_type": "image_resize", "status": "started", "job_id": "job-766057", "worker_id": "worker-5", "attempt": 2}
+{"ts": "2024-11-01T03:39:11Z", "job_type": "email_send", "status": "started", "job_id": "job-422230", "worker_id": "worker-8", "attempt": 2}
+{"ts": "2024-11-01T03:39:54Z", "job_type": "csv_import", "status": "completed", "job_id": "job-441500", "worker_id": "worker-6", "attempt": 3, "duration_ms": 29307, "items_processed": 78745}
+{"ts": "2024-11-01T03:40:54Z", "job_type": "notification_push", "status": "started", "job_id": "job-989300", "worker_id": "worker-4", "attempt": 3}
+{"ts": "2024-11-01T03:41:27Z", "job_type": "notification_push", "status": "started", "job_id": "job-970775", "worker_id": "worker-2", "attempt": 1}
+{"ts": "2024-11-01T03:42:08Z", "job_type": "notification_push", "status": "completed", "job_id": "job-328758", "worker_id": "worker-2", "attempt": 1, "duration_ms": 92049, "items_processed": 78110}
+{"ts": "2024-11-01T03:42:20Z", "job_type": "email_send", "status": "completed", "job_id": "job-513544", "worker_id": "worker-3", "attempt": 3, "duration_ms": 24326, "items_processed": 11980}
+{"ts": "2024-11-01T03:44:16Z", "job_type": "report_generate", "status": "retrying", "job_id": "job-916979", "worker_id": "worker-8", "attempt": 1, "error": "disk full", "next_retry_at": "2024-11-01T03:49:16Z", "file_size_bytes": 7774150}
+{"ts": "2024-11-01T03:45:24Z", "job_type": "data_export", "status": "completed", "job_id": "job-383849", "worker_id": "worker-4", "attempt": 3, "duration_ms": 45517, "items_processed": 72834, "file_size_bytes": 5386258}
+{"ts": "2024-11-01T03:47:00Z", "job_type": "notification_push", "status": "completed", "job_id": "job-279274", "worker_id": "worker-3", "attempt": 3, "duration_ms": 87733, "items_processed": 40012}
+{"ts": "2024-11-01T03:47:26Z", "job_type": "notification_push", "status": "started", "job_id": "job-427814", "worker_id": "worker-2", "attempt": 2}
+{"ts": "2024-11-01T03:47:45Z", "job_type": "notification_push", "status": "completed", "job_id": "job-744819", "worker_id": "worker-2", "attempt": 2, "duration_ms": 8824, "items_processed": 7174}
+{"ts": "2024-11-01T03:48:33Z", "job_type": "email_send", "status": "completed", "job_id": "job-767661", "worker_id": "worker-1", "attempt": 2, "duration_ms": 40537, "items_processed": 78549}
+{"ts": "2024-11-01T03:48:49Z", "job_type": "csv_import", "status": "completed", "job_id": "job-422181", "worker_id": "worker-5", "attempt": 2, "duration_ms": 30288, "items_processed": 47988}
+{"ts": "2024-11-01T03:50:15Z", "job_type": "image_resize", "status": "completed", "job_id": "job-248002", "worker_id": "worker-5", "attempt": 2, "duration_ms": 114636, "items_processed": 69327}
+{"ts": "2024-11-01T03:51:53Z", "job_type": "csv_import", "status": "started", "job_id": "job-927820", "worker_id": "worker-8", "attempt": 1}
+{"ts": "2024-11-01T03:52:43Z", "job_type": "csv_import", "status": "completed", "job_id": "job-698816", "worker_id": "worker-8", "attempt": 1, "duration_ms": 34173, "items_processed": 37930}
+{"ts": "2024-11-01T03:54:36Z", "job_type": "image_resize", "status": "started", "job_id": "job-342606", "worker_id": "worker-8", "attempt": 3}
+{"ts": "2024-11-01T03:55:49Z", "job_type": "email_send", "status": "started", "job_id": "job-230874", "worker_id": "worker-4", "attempt": 2}
+{"ts": "2024-11-01T03:56:04Z", "job_type": "report_generate", "status": "completed", "job_id": "job-351286", "worker_id": "worker-3", "attempt": 2, "duration_ms": 5006, "items_processed": 67237, "file_size_bytes": 7960710}
+{"ts": "2024-11-01T03:57:13Z", "job_type": "data_export", "status": "failed", "job_id": "job-683864", "worker_id": "worker-2", "attempt": 2, "error": "connection refused", "next_retry_at": "2024-11-01T04:13:13Z", "file_size_bytes": 9116170}
+{"ts": "2024-11-01T03:58:18Z", "job_type": "image_resize", "status": "started", "job_id": "job-967392", "worker_id": "worker-7", "attempt": 1}
+{"ts": "2024-11-01T03:59:03Z", "job_type": "report_generate", "status": "completed", "job_id": "job-228164", "worker_id": "worker-8", "attempt": 3, "duration_ms": 40172, "items_processed": 53555, "file_size_bytes": 5482387}
+{"ts": "2024-11-01T04:00:54Z", "job_type": "image_resize", "status": "retrying", "job_id": "job-864347", "worker_id": "worker-4", "attempt": 2, "error": "invalid token", "next_retry_at": "2024-11-01T04:02:54Z"}
+{"ts": "2024-11-01T04:01:11Z", "job_type": "report_generate", "status": "completed", "job_id": "job-818860", "worker_id": "worker-8", "attempt": 1, "duration_ms": 38443, "items_processed": 36597, "file_size_bytes": 6401799}
+{"ts": "2024-11-01T04:02:19Z", "job_type": "report_generate", "status": "completed", "job_id": "job-564197", "worker_id": "worker-7", "attempt": 1, "duration_ms": 77758, "items_processed": 52099, "file_size_bytes": 9880293}
+{"ts": "2024-11-01T04:02:32Z", "job_type": "csv_import", "status": "started", "job_id": "job-953155", "worker_id": "worker-7", "attempt": 1}
+{"ts": "2024-11-01T04:03:52Z", "job_type": "csv_import", "status": "failed", "job_id": "job-759664", "worker_id": "worker-7", "attempt": 2, "error": "payload too large", "next_retry_at": "2024-11-01T04:05:52Z"}
+{"ts": "2024-11-01T04:05:15Z", "job_type": "email_send", "status": "completed", "job_id": "job-217614", "worker_id": "worker-1", "attempt": 3, "duration_ms": 78163, "items_processed": 72627}
+{"ts": "2024-11-01T04:06:03Z", "job_type": "index_rebuild", "status": "started", "job_id": "job-117785", "worker_id": "worker-4", "attempt": 3}
+{"ts": "2024-11-01T04:07:38Z", "job_type": "notification_push", "status": "started", "job_id": "job-838482", "worker_id": "worker-2", "attempt": 3}
+{"ts": "2024-11-01T04:08:59Z", "job_type": "cleanup", "status": "completed", "job_id": "job-404621", "worker_id": "worker-5", "attempt": 1, "duration_ms": 85369, "items_processed": 38641}
+{"ts": "2024-11-01T04:09:53Z", "job_type": "csv_import", "status": "completed", "job_id": "job-639596", "worker_id": "worker-5", "attempt": 3, "duration_ms": 98545, "items_processed": 87817}
+{"ts": "2024-11-01T04:11:16Z", "job_type": "index_rebuild", "status": "completed", "job_id": "job-559318", "worker_id": "worker-3", "attempt": 3, "duration_ms": 119485, "items_processed": 48619}
+{"ts": "2024-11-01T04:13:06Z", "job_type": "index_rebuild", "status": "completed", "job_id": "job-844466", "worker_id": "worker-6", "attempt": 3, "duration_ms": 16669, "items_processed": 67936}
+{"ts": "2024-11-01T04:14:45Z", "job_type": "report_generate", "status": "failed", "job_id": "job-153836", "worker_id": "worker-3", "attempt": 1, "error": "timeout", "next_retry_at": "2024-11-01T04:29:45Z", "file_size_bytes": 9795679}
+{"ts": "2024-11-01T04:15:49Z", "job_type": "report_generate", "status": "failed", "job_id": "job-413775", "worker_id": "worker-4", "attempt": 3, "error": "invalid token", "next_retry_at": "2024-11-01T04:45:49Z", "file_size_bytes": 7581862}
+{"ts": "2024-11-01T04:17:49Z", "job_type": "report_generate", "status": "completed", "job_id": "job-444107", "worker_id": "worker-5", "attempt": 2, "duration_ms": 43187, "items_processed": 12960, "file_size_bytes": 4461681}
+{"ts": "2024-11-01T04:19:35Z", "job_type": "image_resize", "status": "completed", "job_id": "job-897493", "worker_id": "worker-3", "attempt": 3, "duration_ms": 51377, "items_processed": 68599}
+{"ts": "2024-11-01T04:19:53Z", "job_type": "report_generate", "status": "started", "job_id": "job-328209", "worker_id": "worker-1", "attempt": 1, "file_size_bytes": 8862130}
+{"ts": "2024-11-01T04:21:02Z", "job_type": "notification_push", "status": "completed", "job_id": "job-990158", "worker_id": "worker-2", "attempt": 1, "duration_ms": 75875, "items_processed": 32212}
+{"ts": "2024-11-01T04:22:25Z", "job_type": "index_rebuild", "status": "failed", "job_id": "job-183662", "worker_id": "worker-5", "attempt": 2, "error": "invalid token", "next_retry_at": "2024-11-01T04:23:25Z"}
+{"ts": "2024-11-01T04:24:23Z", "job_type": "email_send", "status": "completed", "job_id": "job-747176", "worker_id": "worker-3", "attempt": 1, "duration_ms": 58465, "items_processed": 61343}
+{"ts": "2024-11-01T04:25:41Z", "job_type": "email_send", "status": "completed", "job_id": "job-254986", "worker_id": "worker-7", "attempt": 2, "duration_ms": 76803, "items_processed": 27227}
+{"ts": "2024-11-01T04:26:14Z", "job_type": "notification_push", "status": "started", "job_id": "job-969331", "worker_id": "worker-6", "attempt": 3}
+{"ts": "2024-11-01T04:27:23Z", "job_type": "email_send", "status": "completed", "job_id": "job-587251", "worker_id": "worker-1", "attempt": 3, "duration_ms": 41835, "items_processed": 25579}
+{"ts": "2024-11-01T04:27:44Z", "job_type": "cleanup", "status": "started", "job_id": "job-880573", "worker_id": "worker-2", "attempt": 1}
+{"ts": "2024-11-01T04:29:02Z", "job_type": "image_resize", "status": "completed", "job_id": "job-183697", "worker_id": "worker-1", "attempt": 1, "duration_ms": 112513, "items_processed": 69813}
+{"ts": "2024-11-01T04:29:23Z", "job_type": "index_rebuild", "status": "completed", "job_id": "job-777713", "worker_id": "worker-6", "attempt": 2, "duration_ms": 15994, "items_processed": 31896}
+{"ts": "2024-11-01T04:31:00Z", "job_type": "cleanup", "status": "started", "job_id": "job-161940", "worker_id": "worker-6", "attempt": 3}
+{"ts": "2024-11-01T04:32:47Z", "job_type": "report_generate", "status": "failed", "job_id": "job-852016", "worker_id": "worker-2", "attempt": 1, "error": "payload too large", "next_retry_at": "2024-11-01T04:43:47Z", "file_size_bytes": 1024376}
+{"ts": "2024-11-01T04:34:44Z", "job_type": "data_export", "status": "started", "job_id": "job-849347", "worker_id": "worker-8", "attempt": 1, "file_size_bytes": 6719643}
+{"ts": "2024-11-01T04:34:57Z", "job_type": "notification_push", "status": "retrying", "job_id": "job-933696", "worker_id": "worker-8", "attempt": 1, "error": "rate limit exceeded", "next_retry_at": "2024-11-01T04:59:57Z"}
+{"ts": "2024-11-01T04:35:53Z", "job_type": "data_export", "status": "retrying", "job_id": "job-182696", "worker_id": "worker-4", "attempt": 3, "error": "payload too large", "next_retry_at": "2024-11-01T04:52:53Z", "file_size_bytes": 10060371}
+{"ts": "2024-11-01T04:36:49Z", "job_type": "image_resize", "status": "started", "job_id": "job-353749", "worker_id": "worker-1", "attempt": 3}
+{"ts": "2024-11-01T04:36:54Z", "job_type": "notification_push", "status": "completed", "job_id": "job-887769", "worker_id": "worker-7", "attempt": 1, "duration_ms": 48166, "items_processed": 82951}
+{"ts": "2024-11-01T04:37:36Z", "job_type": "index_rebuild", "status": "completed", "job_id": "job-190123", "worker_id": "worker-6", "attempt": 2, "duration_ms": 107632, "items_processed": 49227}
+{"ts": "2024-11-01T04:38:11Z", "job_type": "index_rebuild", "status": "completed", "job_id": "job-474413", "worker_id": "worker-6", "attempt": 1, "duration_ms": 13372, "items_processed": 49785}
+{"ts": "2024-11-01T04:38:53Z", "job_type": "image_resize", "status": "completed", "job_id": "job-811818", "worker_id": "worker-1", "attempt": 3, "duration_ms": 17666, "items_processed": 66592}
+{"ts": "2024-11-01T04:39:28Z", "job_type": "index_rebuild", "status": "completed", "job_id": "job-579131", "worker_id": "worker-1", "attempt": 1, "duration_ms": 71495, "items_processed": 77922}
+{"ts": "2024-11-01T04:40:26Z", "job_type": "cleanup", "status": "completed", "job_id": "job-459782", "worker_id": "worker-4", "attempt": 2, "duration_ms": 23311, "items_processed": 68319}
+{"ts": "2024-11-01T04:40:41Z", "job_type": "cleanup", "status": "failed", "job_id": "job-368880", "worker_id": "worker-2", "attempt": 3, "error": "disk full", "next_retry_at": "2024-11-01T04:54:41Z"}
+{"ts": "2024-11-01T04:40:55Z", "job_type": "email_send", "status": "failed", "job_id": "job-753736", "worker_id": "worker-8", "attempt": 2, "error": "disk full", "next_retry_at": "2024-11-01T05:09:55Z"}
+{"ts": "2024-11-01T04:41:26Z", "job_type": "notification_push", "status": "completed", "job_id": "job-957877", "worker_id": "worker-5", "attempt": 2, "duration_ms": 108658, "items_processed": 34812}
+{"ts": "2024-11-01T04:41:36Z", "job_type": "notification_push", "status": "retrying", "job_id": "job-139293", "worker_id": "worker-4", "attempt": 3, "error": "invalid token", "next_retry_at": "2024-11-01T04:59:36Z"}
+{"ts": "2024-11-01T04:41:41Z", "job_type": "data_export", "status": "completed", "job_id": "job-324388", "worker_id": "worker-1", "attempt": 2, "duration_ms": 18805, "items_processed": 63780, "file_size_bytes": 7042395}
+{"ts": "2024-11-01T04:42:12Z", "job_type": "cleanup", "status": "started", "job_id": "job-998855", "worker_id": "worker-2", "attempt": 2}
+{"ts": "2024-11-01T04:43:38Z", "job_type": "csv_import", "status": "completed", "job_id": "job-575306", "worker_id": "worker-2", "attempt": 3, "duration_ms": 99056, "items_processed": 75892}
+{"ts": "2024-11-01T04:44:12Z", "job_type": "notification_push", "status": "completed", "job_id": "job-122657", "worker_id": "worker-7", "attempt": 3, "duration_ms": 104602, "items_processed": 5885}
+{"ts": "2024-11-01T04:45:10Z", "job_type": "index_rebuild", "status": "completed", "job_id": "job-828941", "worker_id": "worker-1", "attempt": 3, "duration_ms": 22867, "items_processed": 22692}
+{"ts": "2024-11-01T04:46:19Z", "job_type": "csv_import", "status": "retrying", "job_id": "job-633879", "worker_id": "worker-8", "attempt": 2, "error": "payload too large", "next_retry_at": "2024-11-01T05:11:19Z"}
+{"ts": "2024-11-01T04:47:08Z", "job_type": "report_generate", "status": "failed", "job_id": "job-348648", "worker_id": "worker-6", "attempt": 3, "error": "disk full", "next_retry_at": "2024-11-01T05:16:08Z", "file_size_bytes": 7612419}
+{"ts": "2024-11-01T04:47:30Z", "job_type": "index_rebuild", "status": "started", "job_id": "job-378797", "worker_id": "worker-4", "attempt": 1}
+{"ts": "2024-11-01T04:48:57Z", "job_type": "cleanup", "status": "failed", "job_id": "job-687150", "worker_id": "worker-2", "attempt": 1, "error": "rate limit exceeded", "next_retry_at": "2024-11-01T05:15:57Z"}
+{"ts": "2024-11-01T04:50:48Z", "job_type": "csv_import", "status": "completed", "job_id": "job-902859", "worker_id": "worker-1", "attempt": 1, "duration_ms": 40085, "items_processed": 27297}
+{"ts": "2024-11-01T04:52:08Z", "job_type": "report_generate", "status": "completed", "job_id": "job-315531", "worker_id": "worker-8", "attempt": 2, "duration_ms": 85545, "items_processed": 97964, "file_size_bytes": 6026464}
+{"ts": "2024-11-01T04:53:18Z", "job_type": "image_resize", "status": "completed", "job_id": "job-324866", "worker_id": "worker-7", "attempt": 2, "duration_ms": 99843, "items_processed": 62245}
+{"ts": "2024-11-01T04:54:20Z", "job_type": "email_send", "status": "failed", "job_id": "job-198873", "worker_id": "worker-4", "attempt": 3, "error": "timeout", "next_retry_at": "2024-11-01T05:14:20Z"}
+{"ts": "2024-11-01T04:54:26Z", "job_type": "report_generate", "status": "retrying", "job_id": "job-466064", "worker_id": "worker-4", "attempt": 3, "error": "disk full", "next_retry_at": "2024-11-01T05:22:26Z", "file_size_bytes": 7032877}
+{"ts": "2024-11-01T04:54:33Z", "job_type": "data_export", "status": "completed", "job_id": "job-515129", "worker_id": "worker-3", "attempt": 2, "duration_ms": 34769, "items_processed": 21870, "file_size_bytes": 664046}
+{"ts": "2024-11-01T04:55:11Z", "job_type": "report_generate", "status": "completed", "job_id": "job-278662", "worker_id": "worker-4", "attempt": 1, "duration_ms": 80212, "items_processed": 4567, "file_size_bytes": 5975381}
+{"ts": "2024-11-01T04:56:13Z", "job_type": "index_rebuild", "status": "started", "job_id": "job-381575", "worker_id": "worker-5", "attempt": 1}
+{"ts": "2024-11-01T04:56:20Z", "job_type": "email_send", "status": "completed", "job_id": "job-618780", "worker_id": "worker-5", "attempt": 1, "duration_ms": 74159, "items_processed": 28192}
+{"ts": "2024-11-01T04:56:45Z", "job_type": "csv_import", "status": "completed", "job_id": "job-918710", "worker_id": "worker-4", "attempt": 3, "duration_ms": 84411, "items_processed": 9867}
+{"ts": "2024-11-01T04:56:57Z", "job_type": "index_rebuild", "status": "completed", "job_id": "job-424603", "worker_id": "worker-2", "attempt": 3, "duration_ms": 19032, "items_processed": 18900}
+{"ts": "2024-11-01T04:58:38Z", "job_type": "csv_import", "status": "completed", "job_id": "job-588233", "worker_id": "worker-1", "attempt": 3, "duration_ms": 95807, "items_processed": 96387}
+{"ts": "2024-11-01T04:59:54Z", "job_type": "index_rebuild", "status": "started", "job_id": "job-508708", "worker_id": "worker-5", "attempt": 3}
+{"ts": "2024-11-01T05:00:51Z", "job_type": "image_resize", "status": "started", "job_id": "job-491322", "worker_id": "worker-2", "attempt": 2}
+{"ts": "2024-11-01T05:02:43Z", "job_type": "csv_import", "status": "completed", "job_id": "job-294534", "worker_id": "worker-5", "attempt": 1, "duration_ms": 34836, "items_processed": 90950}
+{"ts": "2024-11-01T05:04:10Z", "job_type": "image_resize", "status": "started", "job_id": "job-204520", "worker_id": "worker-2", "attempt": 3}
+{"ts": "2024-11-01T05:06:01Z", "job_type": "email_send", "status": "started", "job_id": "job-420317", "worker_id": "worker-7", "attempt": 3}
+{"ts": "2024-11-01T05:07:01Z", "job_type": "report_generate", "status": "completed", "job_id": "job-325561", "worker_id": "worker-1", "attempt": 2, "duration_ms": 1672, "items_processed": 19570, "file_size_bytes": 9163990}
+{"ts": "2024-11-01T05:07:57Z", "job_type": "index_rebuild", "status": "completed", "job_id": "job-278085", "worker_id": "worker-1", "attempt": 1, "duration_ms": 102209, "items_processed": 4606}
+{"ts": "2024-11-01T05:08:06Z", "job_type": "notification_push", "status": "completed", "job_id": "job-347931", "worker_id": "worker-7", "attempt": 2, "duration_ms": 94660, "items_processed": 17765}
+{"ts": "2024-11-01T05:08:19Z", "job_type": "notification_push", "status": "started", "job_id": "job-670112", "worker_id": "worker-1", "attempt": 1}
+{"ts": "2024-11-01T05:09:07Z", "job_type": "index_rebuild", "status": "completed", "job_id": "job-428192", "worker_id": "worker-1", "attempt": 1, "duration_ms": 12654, "items_processed": 64871}
+{"ts": "2024-11-01T05:09:43Z", "job_type": "data_export", "status": "completed", "job_id": "job-936702", "worker_id": "worker-1", "attempt": 1, "duration_ms": 104764, "items_processed": 60475, "file_size_bytes": 3628054}
+{"ts": "2024-11-01T05:11:06Z", "job_type": "index_rebuild", "status": "started", "job_id": "job-889195", "worker_id": "worker-1", "attempt": 3}
+{"ts": "2024-11-01T05:12:08Z", "job_type": "data_export", "status": "started", "job_id": "job-214459", "worker_id": "worker-4", "attempt": 3, "file_size_bytes": 6387686}
+{"ts": "2024-11-01T05:13:25Z", "job_type": "email_send", "status": "completed", "job_id": "job-595571", "worker_id": "worker-2", "attempt": 3, "duration_ms": 51198, "items_processed": 64961}
+{"ts": "2024-11-01T05:13:48Z", "job_type": "data_export", "status": "started", "job_id": "job-943332", "worker_id": "worker-5", "attempt": 2, "file_size_bytes": 4687365}
+{"ts": "2024-11-01T05:15:28Z", "job_type": "cleanup", "status": "completed", "job_id": "job-620070", "worker_id": "worker-2", "attempt": 3, "duration_ms": 22013, "items_processed": 71717}
+{"ts": "2024-11-01T05:17:16Z", "job_type": "report_generate", "status": "completed", "job_id": "job-106594", "worker_id": "worker-8", "attempt": 2, "duration_ms": 40259, "items_processed": 32096, "file_size_bytes": 6830396}
+{"ts": "2024-11-01T05:17:27Z", "job_type": "data_export", "status": "failed", "job_id": "job-896473", "worker_id": "worker-5", "attempt": 2, "error": "connection refused", "next_retry_at": "2024-11-01T05:23:27Z", "file_size_bytes": 6049980}
+{"ts": "2024-11-01T05:17:50Z", "job_type": "report_generate", "status": "completed", "job_id": "job-116144", "worker_id": "worker-3", "attempt": 2, "duration_ms": 23835, "items_processed": 28137, "file_size_bytes": 9861214}
+{"ts": "2024-11-01T05:18:29Z", "job_type": "report_generate", "status": "started", "job_id": "job-868153", "worker_id": "worker-1", "attempt": 3, "file_size_bytes": 4557668}
+{"ts": "2024-11-01T05:19:13Z", "job_type": "index_rebuild", "status": "completed", "job_id": "job-597507", "worker_id": "worker-3", "attempt": 2, "duration_ms": 80974, "items_processed": 2962}
+{"ts": "2024-11-01T05:19:44Z", "job_type": "data_export", "status": "completed", "job_id": "job-755894", "worker_id": "worker-6", "attempt": 2, "duration_ms": 12469, "items_processed": 29445, "file_size_bytes": 2191289}
+{"ts": "2024-11-01T05:20:49Z", "job_type": "cleanup", "status": "started", "job_id": "job-588236", "worker_id": "worker-5", "attempt": 3}
+{"ts": "2024-11-01T05:22:05Z", "job_type": "email_send", "status": "retrying", "job_id": "job-810019", "worker_id": "worker-3", "attempt": 2, "error": "payload too large", "next_retry_at": "2024-11-01T05:49:05Z"}
+{"ts": "2024-11-01T05:23:38Z", "job_type": "notification_push", "status": "completed", "job_id": "job-467793", "worker_id": "worker-2", "attempt": 2, "duration_ms": 4956, "items_processed": 17224}
+{"ts": "2024-11-01T05:23:56Z", "job_type": "report_generate", "status": "completed", "job_id": "job-215804", "worker_id": "worker-6", "attempt": 3, "duration_ms": 76310, "items_processed": 11916, "file_size_bytes": 2865390}
+{"ts": "2024-11-01T05:25:44Z", "job_type": "cleanup", "status": "completed", "job_id": "job-524257", "worker_id": "worker-5", "attempt": 3, "duration_ms": 79614, "items_processed": 70236}
+{"ts": "2024-11-01T05:27:42Z", "job_type": "cleanup", "status": "started", "job_id": "job-683010", "worker_id": "worker-7", "attempt": 3}
+{"ts": "2024-11-01T05:29:13Z", "job_type": "cleanup", "status": "started", "job_id": "job-586129", "worker_id": "worker-7", "attempt": 1}
+{"ts": "2024-11-01T05:29:19Z", "job_type": "csv_import", "status": "completed", "job_id": "job-371390", "worker_id": "worker-1", "attempt": 3, "duration_ms": 98299, "items_processed": 30241}
+{"ts": "2024-11-01T05:30:20Z", "job_type": "report_generate", "status": "retrying", "job_id": "job-214856", "worker_id": "worker-1", "attempt": 2, "error": "payload too large", "next_retry_at": "2024-11-01T05:50:20Z", "file_size_bytes": 9517963}
+{"ts": "2024-11-01T05:30:41Z", "job_type": "report_generate", "status": "completed", "job_id": "job-145730", "worker_id": "worker-1", "attempt": 2, "duration_ms": 74978, "items_processed": 96597, "file_size_bytes": 8877622}
+{"ts": "2024-11-01T05:32:31Z", "job_type": "image_resize", "status": "completed", "job_id": "job-865840", "worker_id": "worker-3", "attempt": 1, "duration_ms": 103046, "items_processed": 42734}
+{"ts": "2024-11-01T05:33:05Z", "job_type": "csv_import", "status": "completed", "job_id": "job-634628", "worker_id": "worker-7", "attempt": 2, "duration_ms": 58957, "items_processed": 5121}
+{"ts": "2024-11-01T05:34:14Z", "job_type": "data_export", "status": "started", "job_id": "job-701970", "worker_id": "worker-7", "attempt": 2, "file_size_bytes": 4603367}
+{"ts": "2024-11-01T05:35:14Z", "job_type": "data_export", "status": "started", "job_id": "job-997248", "worker_id": "worker-1", "attempt": 1, "file_size_bytes": 1106945}
+{"ts": "2024-11-01T05:35:40Z", "job_type": "image_resize", "status": "completed", "job_id": "job-615551", "worker_id": "worker-3", "attempt": 1, "duration_ms": 47191, "items_processed": 43103}
+{"ts": "2024-11-01T05:35:45Z", "job_type": "image_resize", "status": "completed", "job_id": "job-102074", "worker_id": "worker-1", "attempt": 1, "duration_ms": 2482, "items_processed": 71898}
+{"ts": "2024-11-01T05:36:56Z", "job_type": "cleanup", "status": "started", "job_id": "job-405859", "worker_id": "worker-7", "attempt": 2}
+{"ts": "2024-11-01T05:37:31Z", "job_type": "report_generate", "status": "completed", "job_id": "job-103521", "worker_id": "worker-2", "attempt": 1, "duration_ms": 33146, "items_processed": 15612, "file_size_bytes": 6815824}
+{"ts": "2024-11-01T05:39:18Z", "job_type": "email_send", "status": "started", "job_id": "job-997448", "worker_id": "worker-2", "attempt": 2}
+{"ts": "2024-11-01T05:40:35Z", "job_type": "data_export", "status": "failed", "job_id": "job-245609", "worker_id": "worker-8", "attempt": 1, "error": "rate limit exceeded", "next_retry_at": "2024-11-01T06:04:35Z", "file_size_bytes": 9764898}
+{"ts": "2024-11-01T05:42:06Z", "job_type": "index_rebuild", "status": "completed", "job_id": "job-747785", "worker_id": "worker-1", "attempt": 2, "duration_ms": 1267, "items_processed": 71011}
+{"ts": "2024-11-01T05:43:52Z", "job_type": "notification_push", "status": "completed", "job_id": "job-983577", "worker_id": "worker-2", "attempt": 3, "duration_ms": 55839, "items_processed": 62918}
+{"ts": "2024-11-01T05:44:30Z", "job_type": "cleanup", "status": "started", "job_id": "job-153123", "worker_id": "worker-1", "attempt": 3}
+{"ts": "2024-11-01T05:46:19Z", "job_type": "csv_import", "status": "completed", "job_id": "job-361138", "worker_id": "worker-7", "attempt": 1, "duration_ms": 116795, "items_processed": 12685}
+{"ts": "2024-11-01T05:47:56Z", "job_type": "image_resize", "status": "retrying", "job_id": "job-186488", "worker_id": "worker-2", "attempt": 3, "error": "timeout", "next_retry_at": "2024-11-01T05:58:56Z"}
+{"ts": "2024-11-01T05:48:12Z", "job_type": "notification_push", "status": "completed", "job_id": "job-445742", "worker_id": "worker-3", "attempt": 3, "duration_ms": 105594, "items_processed": 40507}
+{"ts": "2024-11-01T05:48:36Z", "job_type": "email_send", "status": "started", "job_id": "job-372393", "worker_id": "worker-1", "attempt": 1}
+{"ts": "2024-11-01T05:49:27Z", "job_type": "image_resize", "status": "completed", "job_id": "job-350791", "worker_id": "worker-5", "attempt": 2, "duration_ms": 53985, "items_processed": 3928}
+{"ts": "2024-11-01T05:50:29Z", "job_type": "notification_push", "status": "completed", "job_id": "job-702673", "worker_id": "worker-5", "attempt": 2, "duration_ms": 76384, "items_processed": 92281}
+{"ts": "2024-11-01T05:51:08Z", "job_type": "cleanup", "status": "completed", "job_id": "job-255472", "worker_id": "worker-1", "attempt": 1, "duration_ms": 7775, "items_processed": 72159}
+{"ts": "2024-11-01T05:51:30Z", "job_type": "csv_import", "status": "failed", "job_id": "job-856041", "worker_id": "worker-1", "attempt": 1, "error": "disk full", "next_retry_at": "2024-11-01T06:16:30Z"}
+{"ts": "2024-11-01T05:52:44Z", "job_type": "report_generate", "status": "completed", "job_id": "job-259601", "worker_id": "worker-3", "attempt": 3, "duration_ms": 29262, "items_processed": 67284, "file_size_bytes": 7496049}
+{"ts": "2024-11-01T05:54:05Z", "job_type": "csv_import", "status": "retrying", "job_id": "job-256543", "worker_id": "worker-7", "attempt": 1, "error": "timeout", "next_retry_at": "2024-11-01T06:11:05Z"}
+{"ts": "2024-11-01T05:54:54Z", "job_type": "report_generate", "status": "completed", "job_id": "job-822287", "worker_id": "worker-6", "attempt": 1, "duration_ms": 61385, "items_processed": 29805, "file_size_bytes": 6015840}
+{"ts": "2024-11-01T05:56:20Z", "job_type": "image_resize", "status": "completed", "job_id": "job-267530", "worker_id": "worker-4", "attempt": 2, "duration_ms": 59663, "items_processed": 2280}
+{"ts": "2024-11-01T05:56:26Z", "job_type": "csv_import", "status": "started", "job_id": "job-749860", "worker_id": "worker-2", "attempt": 3}
+{"ts": "2024-11-01T05:56:48Z", "job_type": "notification_push", "status": "started", "job_id": "job-221839", "worker_id": "worker-7", "attempt": 1}
+{"ts": "2024-11-01T05:58:13Z", "job_type": "data_export", "status": "completed", "job_id": "job-443266", "worker_id": "worker-6", "attempt": 3, "duration_ms": 2446, "items_processed": 37599, "file_size_bytes": 6671355}
+{"ts": "2024-11-01T05:58:32Z", "job_type": "email_send", "status": "started", "job_id": "job-730839", "worker_id": "worker-3", "attempt": 1}
+{"ts": "2024-11-01T05:58:44Z", "job_type": "csv_import", "status": "completed", "job_id": "job-124674", "worker_id": "worker-1", "attempt": 1, "duration_ms": 16849, "items_processed": 73604}
+{"ts": "2024-11-01T05:59:20Z", "job_type": "data_export", "status": "completed", "job_id": "job-131063", "worker_id": "worker-2", "attempt": 3, "duration_ms": 115309, "items_processed": 97732, "file_size_bytes": 2950140}
+{"ts": "2024-11-01T05:59:50Z", "job_type": "data_export", "status": "completed", "job_id": "job-757610", "worker_id": "worker-7", "attempt": 1, "duration_ms": 46086, "items_processed": 11740, "file_size_bytes": 2099743}
+{"ts": "2024-11-01T05:59:58Z", "job_type": "csv_import", "status": "retrying", "job_id": "job-850078", "worker_id": "worker-6", "attempt": 1, "error": "rate limit exceeded", "next_retry_at": "2024-11-01T06:23:58Z"}
+{"ts": "2024-11-01T06:00:57Z", "job_type": "cleanup", "status": "completed", "job_id": "job-335288", "worker_id": "worker-5", "attempt": 2, "duration_ms": 50147, "items_processed": 95080}
+{"ts": "2024-11-01T06:01:07Z", "job_type": "csv_import", "status": "completed", "job_id": "job-251337", "worker_id": "worker-8", "attempt": 2, "duration_ms": 28773, "items_processed": 83101}
+{"ts": "2024-11-01T06:01:50Z", "job_type": "cleanup", "status": "failed", "job_id": "job-126375", "worker_id": "worker-2", "attempt": 3, "error": "timeout", "next_retry_at": "2024-11-01T06:12:50Z"}
+{"ts": "2024-11-01T06:02:25Z", "job_type": "email_send", "status": "completed", "job_id": "job-854113", "worker_id": "worker-4", "attempt": 3, "duration_ms": 40617, "items_processed": 64463}
+{"ts": "2024-11-01T06:04:18Z", "job_type": "data_export", "status": "started", "job_id": "job-466710", "worker_id": "worker-7", "attempt": 1, "file_size_bytes": 8241472}
+{"ts": "2024-11-01T06:05:15Z", "job_type": "data_export", "status": "started", "job_id": "job-433290", "worker_id": "worker-2", "attempt": 3, "file_size_bytes": 2118603}
+{"ts": "2024-11-01T06:07:05Z", "job_type": "index_rebuild", "status": "completed", "job_id": "job-292175", "worker_id": "worker-7", "attempt": 2, "duration_ms": 597, "items_processed": 66766}
+{"ts": "2024-11-01T06:08:00Z", "job_type": "cleanup", "status": "completed", "job_id": "job-506246", "worker_id": "worker-6", "attempt": 3, "duration_ms": 102751, "items_processed": 52453}
+{"ts": "2024-11-01T06:08:24Z", "job_type": "data_export", "status": "started", "job_id": "job-180308", "worker_id": "worker-8", "attempt": 2, "file_size_bytes": 9157652}
+{"ts": "2024-11-01T06:09:25Z", "job_type": "csv_import", "status": "completed", "job_id": "job-407706", "worker_id": "worker-8", "attempt": 2, "duration_ms": 108872, "items_processed": 10553}
+{"ts": "2024-11-01T06:10:54Z", "job_type": "data_export", "status": "completed", "job_id": "job-770157", "worker_id": "worker-4", "attempt": 2, "duration_ms": 2071, "items_processed": 4784, "file_size_bytes": 6926339}
+{"ts": "2024-11-01T06:11:12Z", "job_type": "csv_import", "status": "completed", "job_id": "job-606852", "worker_id": "worker-5", "attempt": 1, "duration_ms": 16556, "items_processed": 30840}
+{"ts": "2024-11-01T06:11:57Z", "job_type": "csv_import", "status": "failed", "job_id": "job-422541", "worker_id": "worker-1", "attempt": 2, "error": "disk full", "next_retry_at": "2024-11-01T06:25:57Z"}
+{"ts": "2024-11-01T06:13:54Z", "job_type": "cleanup", "status": "completed", "job_id": "job-215828", "worker_id": "worker-3", "attempt": 1, "duration_ms": 44176, "items_processed": 83518}
+{"ts": "2024-11-01T06:14:54Z", "job_type": "csv_import", "status": "completed", "job_id": "job-887700", "worker_id": "worker-6", "attempt": 1, "duration_ms": 46881, "items_processed": 33656}
+{"ts": "2024-11-01T06:16:12Z", "job_type": "data_export", "status": "started", "job_id": "job-519083", "worker_id": "worker-5", "attempt": 2, "file_size_bytes": 1476436}
+{"ts": "2024-11-01T06:17:55Z", "job_type": "report_generate", "status": "started", "job_id": "job-844758", "worker_id": "worker-8", "attempt": 1, "file_size_bytes": 9173161}
+{"ts": "2024-11-01T06:19:10Z", "job_type": "report_generate", "status": "completed", "job_id": "job-586119", "worker_id": "worker-4", "attempt": 1, "duration_ms": 112451, "items_processed": 87646, "file_size_bytes": 7199028}
+{"ts": "2024-11-01T06:19:44Z", "job_type": "csv_import", "status": "started", "job_id": "job-810062", "worker_id": "worker-5", "attempt": 3}
+{"ts": "2024-11-01T06:21:40Z", "job_type": "data_export", "status": "completed", "job_id": "job-653894", "worker_id": "worker-5", "attempt": 3, "duration_ms": 105137, "items_processed": 55020, "file_size_bytes": 9007710}
+{"ts": "2024-11-01T06:21:47Z", "job_type": "cleanup", "status": "completed", "job_id": "job-911735", "worker_id": "worker-1", "attempt": 2, "duration_ms": 111084, "items_processed": 12889}
+{"ts": "2024-11-01T06:23:36Z", "job_type": "report_generate", "status": "retrying", "job_id": "job-290573", "worker_id": "worker-2", "attempt": 1, "error": "payload too large", "next_retry_at": "2024-11-01T06:33:36Z", "file_size_bytes": 3290588}
+{"ts": "2024-11-01T06:25:05Z", "job_type": "csv_import", "status": "started", "job_id": "job-861483", "worker_id": "worker-3", "attempt": 1}
+{"ts": "2024-11-01T06:27:00Z", "job_type": "email_send", "status": "started", "job_id": "job-520949", "worker_id": "worker-1", "attempt": 2}
+{"ts": "2024-11-01T06:28:23Z", "job_type": "cleanup", "status": "started", "job_id": "job-351361", "worker_id": "worker-8", "attempt": 1}
+{"ts": "2024-11-01T06:28:40Z", "job_type": "cleanup", "status": "started", "job_id": "job-161293", "worker_id": "worker-4", "attempt": 1}
+{"ts": "2024-11-01T06:28:52Z", "job_type": "image_resize", "status": "started", "job_id": "job-568421", "worker_id": "worker-1", "attempt": 1}
+{"ts": "2024-11-01T06:29:08Z", "job_type": "csv_import", "status": "started", "job_id": "job-113847", "worker_id": "worker-4", "attempt": 2}
+{"ts": "2024-11-01T06:30:13Z", "job_type": "report_generate", "status": "started", "job_id": "job-886654", "worker_id": "worker-8", "attempt": 3, "file_size_bytes": 1660314}
+{"ts": "2024-11-01T06:31:33Z", "job_type": "index_rebuild", "status": "completed", "job_id": "job-681724", "worker_id": "worker-7", "attempt": 1, "duration_ms": 102424, "items_processed": 98201}
+{"ts": "2024-11-01T06:31:51Z", "job_type": "cleanup", "status": "failed", "job_id": "job-263145", "worker_id": "worker-6", "attempt": 3, "error": "disk full", "next_retry_at": "2024-11-01T06:51:51Z"}
+{"ts": "2024-11-01T06:33:32Z", "job_type": "email_send", "status": "completed", "job_id": "job-370921", "worker_id": "worker-2", "attempt": 3, "duration_ms": 85036, "items_processed": 37341}
+{"ts": "2024-11-01T06:35:25Z", "job_type": "index_rebuild", "status": "failed", "job_id": "job-444621", "worker_id": "worker-6", "attempt": 1, "error": "disk full", "next_retry_at": "2024-11-01T06:39:25Z"}
+{"ts": "2024-11-01T06:35:39Z", "job_type": "image_resize", "status": "retrying", "job_id": "job-457277", "worker_id": "worker-4", "attempt": 2, "error": "invalid token", "next_retry_at": "2024-11-01T06:41:39Z"}
+{"ts": "2024-11-01T06:37:14Z", "job_type": "report_generate", "status": "started", "job_id": "job-274554", "worker_id": "worker-8", "attempt": 3, "file_size_bytes": 59125}
+{"ts": "2024-11-01T06:38:19Z", "job_type": "data_export", "status": "completed", "job_id": "job-727828", "worker_id": "worker-1", "attempt": 3, "duration_ms": 29813, "items_processed": 61334, "file_size_bytes": 1879251}
+{"ts": "2024-11-01T06:39:17Z", "job_type": "report_generate", "status": "completed", "job_id": "job-679364", "worker_id": "worker-2", "attempt": 3, "duration_ms": 61701, "items_processed": 20267, "file_size_bytes": 2178345}
+{"ts": "2024-11-01T06:41:16Z", "job_type": "image_resize", "status": "completed", "job_id": "job-894996", "worker_id": "worker-7", "attempt": 2, "duration_ms": 63161, "items_processed": 64279}
+{"ts": "2024-11-01T06:43:00Z", "job_type": "report_generate", "status": "completed", "job_id": "job-608732", "worker_id": "worker-6", "attempt": 1, "duration_ms": 5384, "items_processed": 58642, "file_size_bytes": 7034457}
+{"ts": "2024-11-01T06:44:16Z", "job_type": "report_generate", "status": "failed", "job_id": "job-107312", "worker_id": "worker-3", "attempt": 2, "error": "invalid token", "next_retry_at": "2024-11-01T06:45:16Z", "file_size_bytes": 9212403}
+{"ts": "2024-11-01T06:45:07Z", "job_type": "notification_push", "status": "completed", "job_id": "job-624813", "worker_id": "worker-1", "attempt": 1, "duration_ms": 22345, "items_processed": 85371}
+{"ts": "2024-11-01T06:45:44Z", "job_type": "csv_import", "status": "started", "job_id": "job-905340", "worker_id": "worker-3", "attempt": 1}
+{"ts": "2024-11-01T06:47:41Z", "job_type": "cleanup", "status": "retrying", "job_id": "job-270151", "worker_id": "worker-2", "attempt": 2, "error": "invalid token", "next_retry_at": "2024-11-01T06:49:41Z"}
+{"ts": "2024-11-01T06:49:27Z", "job_type": "cleanup", "status": "completed", "job_id": "job-900502", "worker_id": "worker-7", "attempt": 3, "duration_ms": 46291, "items_processed": 59754}
+{"ts": "2024-11-01T06:50:05Z", "job_type": "cleanup", "status": "completed", "job_id": "job-120890", "worker_id": "worker-7", "attempt": 2, "duration_ms": 89522, "items_processed": 89474}
+{"ts": "2024-11-01T06:50:55Z", "job_type": "report_generate", "status": "completed", "job_id": "job-823615", "worker_id": "worker-2", "attempt": 1, "duration_ms": 75868, "items_processed": 47798, "file_size_bytes": 2384018}
+{"ts": "2024-11-01T06:51:11Z", "job_type": "notification_push", "status": "started", "job_id": "job-221047", "worker_id": "worker-7", "attempt": 2}
+{"ts": "2024-11-01T06:53:01Z", "job_type": "data_export", "status": "completed", "job_id": "job-104626", "worker_id": "worker-8", "attempt": 1, "duration_ms": 28619, "items_processed": 25903, "file_size_bytes": 6107572}
+{"ts": "2024-11-01T06:53:11Z", "job_type": "csv_import", "status": "failed", "job_id": "job-264144", "worker_id": "worker-5", "attempt": 1, "error": "disk full", "next_retry_at": "2024-11-01T07:17:11Z"}
+{"ts": "2024-11-01T06:54:44Z", "job_type": "report_generate", "status": "completed", "job_id": "job-332921", "worker_id": "worker-3", "attempt": 2, "duration_ms": 71118, "items_processed": 38382, "file_size_bytes": 8446493}
+{"ts": "2024-11-01T06:54:57Z", "job_type": "image_resize", "status": "started", "job_id": "job-416069", "worker_id": "worker-2", "attempt": 3}
+{"ts": "2024-11-01T06:55:56Z", "job_type": "report_generate", "status": "failed", "job_id": "job-431761", "worker_id": "worker-4", "attempt": 1, "error": "connection refused", "next_retry_at": "2024-11-01T06:59:56Z", "file_size_bytes": 6180088}
+{"ts": "2024-11-01T06:56:10Z", "job_type": "cleanup", "status": "completed", "job_id": "job-482445", "worker_id": "worker-7", "attempt": 3, "duration_ms": 38215, "items_processed": 52989}
+{"ts": "2024-11-01T06:57:46Z", "job_type": "image_resize", "status": "started", "job_id": "job-744312", "worker_id": "worker-6", "attempt": 1}
+{"ts": "2024-11-01T06:58:30Z", "job_type": "report_generate", "status": "started", "job_id": "job-441680", "worker_id": "worker-1", "attempt": 1, "file_size_bytes": 4633838}
+{"ts": "2024-11-01T06:59:38Z", "job_type": "cleanup", "status": "started", "job_id": "job-263020", "worker_id": "worker-8", "attempt": 3}
+{"ts": "2024-11-01T07:01:27Z", "job_type": "cleanup", "status": "failed", "job_id": "job-228219", "worker_id": "worker-6", "attempt": 2, "error": "connection refused", "next_retry_at": "2024-11-01T07:19:27Z"}
+{"ts": "2024-11-01T07:02:15Z", "job_type": "notification_push", "status": "completed", "job_id": "job-216567", "worker_id": "worker-3", "attempt": 3, "duration_ms": 101081, "items_processed": 10008}
+{"ts": "2024-11-01T07:04:15Z", "job_type": "index_rebuild", "status": "retrying", "job_id": "job-445522", "worker_id": "worker-2", "attempt": 1, "error": "connection refused", "next_retry_at": "2024-11-01T07:23:15Z"}
+{"ts": "2024-11-01T07:05:07Z", "job_type": "index_rebuild", "status": "completed", "job_id": "job-457948", "worker_id": "worker-6", "attempt": 2, "duration_ms": 20385, "items_processed": 49332}
+{"ts": "2024-11-01T07:07:01Z", "job_type": "email_send", "status": "completed", "job_id": "job-951546", "worker_id": "worker-8", "attempt": 1, "duration_ms": 29864, "items_processed": 96252}
+{"ts": "2024-11-01T07:07:55Z", "job_type": "email_send", "status": "started", "job_id": "job-924985", "worker_id": "worker-5", "attempt": 2}
+{"ts": "2024-11-01T07:09:37Z", "job_type": "notification_push", "status": "completed", "job_id": "job-543391", "worker_id": "worker-8", "attempt": 2, "duration_ms": 18626, "items_processed": 4807}
+{"ts": "2024-11-01T07:10:27Z", "job_type": "report_generate", "status": "completed", "job_id": "job-128643", "worker_id": "worker-8", "attempt": 1, "duration_ms": 8114, "items_processed": 65541, "file_size_bytes": 7783056}
+{"ts": "2024-11-01T07:10:47Z", "job_type": "notification_push", "status": "completed", "job_id": "job-376377", "worker_id": "worker-8", "attempt": 3, "duration_ms": 84145, "items_processed": 98649}
+{"ts": "2024-11-01T07:11:21Z", "job_type": "index_rebuild", "status": "completed", "job_id": "job-164174", "worker_id": "worker-4", "attempt": 1, "duration_ms": 63889, "items_processed": 41687}
+{"ts": "2024-11-01T07:12:05Z", "job_type": "image_resize", "status": "completed", "job_id": "job-914027", "worker_id": "worker-3", "attempt": 2, "duration_ms": 38963, "items_processed": 9554}
+{"ts": "2024-11-01T07:13:57Z", "job_type": "csv_import", "status": "completed", "job_id": "job-440071", "worker_id": "worker-8", "attempt": 3, "duration_ms": 23832, "items_processed": 50242}
+{"ts": "2024-11-01T07:14:08Z", "job_type": "data_export", "status": "completed", "job_id": "job-448474", "worker_id": "worker-5", "attempt": 2, "duration_ms": 89917, "items_processed": 69216, "file_size_bytes": 6759333}
+{"ts": "2024-11-01T07:14:31Z", "job_type": "index_rebuild", "status": "started", "job_id": "job-641269", "worker_id": "worker-5", "attempt": 1}
+{"ts": "2024-11-01T07:15:33Z", "job_type": "cleanup", "status": "completed", "job_id": "job-242718", "worker_id": "worker-1", "attempt": 2, "duration_ms": 85651, "items_processed": 49446}
+{"ts": "2024-11-01T07:17:05Z", "job_type": "image_resize", "status": "started", "job_id": "job-170881", "worker_id": "worker-4", "attempt": 2}
+{"ts": "2024-11-01T07:17:36Z", "job_type": "cleanup", "status": "completed", "job_id": "job-825225", "worker_id": "worker-3", "attempt": 2, "duration_ms": 79233, "items_processed": 16433}
+{"ts": "2024-11-01T07:18:08Z", "job_type": "cleanup", "status": "completed", "job_id": "job-976500", "worker_id": "worker-8", "attempt": 3, "duration_ms": 6931, "items_processed": 53272}
+{"ts": "2024-11-01T07:20:07Z", "job_type": "email_send", "status": "completed", "job_id": "job-642126", "worker_id": "worker-7", "attempt": 3, "duration_ms": 89153, "items_processed": 30638}
+{"ts": "2024-11-01T07:20:34Z", "job_type": "email_send", "status": "completed", "job_id": "job-918069", "worker_id": "worker-6", "attempt": 1, "duration_ms": 34140, "items_processed": 789}
+{"ts": "2024-11-01T07:21:23Z", "job_type": "email_send", "status": "completed", "job_id": "job-974768", "worker_id": "worker-3", "attempt": 2, "duration_ms": 26316, "items_processed": 75721}
+{"ts": "2024-11-01T07:22:21Z", "job_type": "report_generate", "status": "retrying", "job_id": "job-443274", "worker_id": "worker-8", "attempt": 2, "error": "payload too large", "next_retry_at": "2024-11-01T07:47:21Z", "file_size_bytes": 149243}
+{"ts": "2024-11-01T07:23:06Z", "job_type": "image_resize", "status": "completed", "job_id": "job-873709", "worker_id": "worker-6", "attempt": 2, "duration_ms": 59112, "items_processed": 7572}
+{"ts": "2024-11-01T07:24:45Z", "job_type": "index_rebuild", "status": "completed", "job_id": "job-585882", "worker_id": "worker-8", "attempt": 3, "duration_ms": 44533, "items_processed": 45123}
+{"ts": "2024-11-01T07:25:22Z", "job_type": "data_export", "status": "completed", "job_id": "job-180713", "worker_id": "worker-1", "attempt": 1, "duration_ms": 109043, "items_processed": 69070, "file_size_bytes": 4357596}
+{"ts": "2024-11-01T07:25:45Z", "job_type": "data_export", "status": "completed", "job_id": "job-521990", "worker_id": "worker-3", "attempt": 2, "duration_ms": 95604, "items_processed": 27032, "file_size_bytes": 3025324}
+{"ts": "2024-11-01T07:25:57Z", "job_type": "data_export", "status": "started", "job_id": "job-774721", "worker_id": "worker-3", "attempt": 2, "file_size_bytes": 1733899}
+{"ts": "2024-11-01T07:26:15Z", "job_type": "report_generate", "status": "failed", "job_id": "job-970456", "worker_id": "worker-6", "attempt": 3, "error": "rate limit exceeded", "next_retry_at": "2024-11-01T07:40:15Z", "file_size_bytes": 10180554}
+{"ts": "2024-11-01T07:26:35Z", "job_type": "index_rebuild", "status": "started", "job_id": "job-272366", "worker_id": "worker-1", "attempt": 2}
+{"ts": "2024-11-01T07:27:00Z", "job_type": "notification_push", "status": "started", "job_id": "job-381233", "worker_id": "worker-7", "attempt": 3}
+{"ts": "2024-11-01T07:28:15Z", "job_type": "image_resize", "status": "started", "job_id": "job-284257", "worker_id": "worker-2", "attempt": 2}
+{"ts": "2024-11-01T07:29:34Z", "job_type": "email_send", "status": "started", "job_id": "job-998082", "worker_id": "worker-3", "attempt": 1}
+{"ts": "2024-11-01T07:29:42Z", "job_type": "data_export", "status": "completed", "job_id": "job-696261", "worker_id": "worker-1", "attempt": 1, "duration_ms": 116817, "items_processed": 34883, "file_size_bytes": 3094486}
+{"ts": "2024-11-01T07:31:13Z", "job_type": "cleanup", "status": "started", "job_id": "job-969086", "worker_id": "worker-2", "attempt": 1}
+{"ts": "2024-11-01T07:32:12Z", "job_type": "email_send", "status": "failed", "job_id": "job-572464", "worker_id": "worker-8", "attempt": 1, "error": "connection refused", "next_retry_at": "2024-11-01T07:58:12Z"}
+{"ts": "2024-11-01T07:32:27Z", "job_type": "cleanup", "status": "retrying", "job_id": "job-567296", "worker_id": "worker-1", "attempt": 2, "error": "disk full", "next_retry_at": "2024-11-01T07:33:27Z"}
+{"ts": "2024-11-01T07:32:36Z", "job_type": "csv_import", "status": "completed", "job_id": "job-318815", "worker_id": "worker-3", "attempt": 2, "duration_ms": 109562, "items_processed": 60140}
+{"ts": "2024-11-01T07:33:04Z", "job_type": "csv_import", "status": "retrying", "job_id": "job-495035", "worker_id": "worker-4", "attempt": 1, "error": "rate limit exceeded", "next_retry_at": "2024-11-01T07:39:04Z"}
+{"ts": "2024-11-01T07:34:21Z", "job_type": "csv_import", "status": "completed", "job_id": "job-554275", "worker_id": "worker-4", "attempt": 3, "duration_ms": 798, "items_processed": 70769}
+{"ts": "2024-11-01T07:34:54Z", "job_type": "email_send", "status": "completed", "job_id": "job-892966", "worker_id": "worker-6", "attempt": 2, "duration_ms": 8077, "items_processed": 20483}
+{"ts": "2024-11-01T07:36:51Z", "job_type": "notification_push", "status": "completed", "job_id": "job-742513", "worker_id": "worker-6", "attempt": 1, "duration_ms": 91703, "items_processed": 79118}
+{"ts": "2024-11-01T07:37:24Z", "job_type": "image_resize", "status": "started", "job_id": "job-834752", "worker_id": "worker-3", "attempt": 2}
+{"ts": "2024-11-01T07:37:52Z", "job_type": "report_generate", "status": "started", "job_id": "job-700406", "worker_id": "worker-2", "attempt": 2, "file_size_bytes": 3729066}
+{"ts": "2024-11-01T07:38:41Z", "job_type": "email_send", "status": "started", "job_id": "job-909924", "worker_id": "worker-7", "attempt": 1}
+{"ts": "2024-11-01T07:39:02Z", "job_type": "cleanup", "status": "completed", "job_id": "job-574546", "worker_id": "worker-7", "attempt": 3, "duration_ms": 43501, "items_processed": 22497}
+{"ts": "2024-11-01T07:40:05Z", "job_type": "data_export", "status": "completed", "job_id": "job-418476", "worker_id": "worker-6", "attempt": 1, "duration_ms": 77185, "items_processed": 64127, "file_size_bytes": 4443211}
+{"ts": "2024-11-01T07:41:29Z", "job_type": "notification_push", "status": "started", "job_id": "job-857896", "worker_id": "worker-1", "attempt": 3}
+{"ts": "2024-11-01T07:43:23Z", "job_type": "cleanup", "status": "completed", "job_id": "job-102924", "worker_id": "worker-7", "attempt": 3, "duration_ms": 65001, "items_processed": 47629}
+{"ts": "2024-11-01T07:45:04Z", "job_type": "cleanup", "status": "failed", "job_id": "job-122754", "worker_id": "worker-3", "attempt": 1, "error": "invalid token", "next_retry_at": "2024-11-01T07:46:04Z"}
+{"ts": "2024-11-01T07:46:34Z", "job_type": "report_generate", "status": "completed", "job_id": "job-983325", "worker_id": "worker-3", "attempt": 3, "duration_ms": 6189, "items_processed": 21745, "file_size_bytes": 3124451}
+{"ts": "2024-11-01T07:48:17Z", "job_type": "report_generate", "status": "retrying", "job_id": "job-914355", "worker_id": "worker-5", "attempt": 1, "error": "invalid token", "next_retry_at": "2024-11-01T07:50:17Z", "file_size_bytes": 4690135}
+{"ts": "2024-11-01T07:48:55Z", "job_type": "email_send", "status": "completed", "job_id": "job-281773", "worker_id": "worker-3", "attempt": 2, "duration_ms": 25321, "items_processed": 32409}
+{"ts": "2024-11-01T07:49:26Z", "job_type": "data_export", "status": "started", "job_id": "job-275922", "worker_id": "worker-4", "attempt": 2, "file_size_bytes": 1129051}
+{"ts": "2024-11-01T07:49:36Z", "job_type": "data_export", "status": "failed", "job_id": "job-783646", "worker_id": "worker-6", "attempt": 2, "error": "timeout", "next_retry_at": "2024-11-01T07:53:36Z", "file_size_bytes": 10372560}
+{"ts": "2024-11-01T07:51:34Z", "job_type": "image_resize", "status": "retrying", "job_id": "job-397459", "worker_id": "worker-6", "attempt": 3, "error": "disk full", "next_retry_at": "2024-11-01T08:20:34Z"}
+{"ts": "2024-11-01T07:51:43Z", "job_type": "image_resize", "status": "failed", "job_id": "job-709112", "worker_id": "worker-5", "attempt": 3, "error": "connection refused", "next_retry_at": "2024-11-01T08:11:43Z"}
+{"ts": "2024-11-01T07:52:12Z", "job_type": "image_resize", "status": "started", "job_id": "job-270080", "worker_id": "worker-5", "attempt": 1}
+{"ts": "2024-11-01T07:53:07Z", "job_type": "data_export", "status": "completed", "job_id": "job-238687", "worker_id": "worker-1", "attempt": 3, "duration_ms": 3593, "items_processed": 45458, "file_size_bytes": 9468921}
+{"ts": "2024-11-01T07:54:47Z", "job_type": "image_resize", "status": "started", "job_id": "job-972051", "worker_id": "worker-5", "attempt": 2}
+{"ts": "2024-11-01T07:55:03Z", "job_type": "data_export", "status": "failed", "job_id": "job-160326", "worker_id": "worker-8", "attempt": 2, "error": "invalid token", "next_retry_at": "2024-11-01T08:08:03Z", "file_size_bytes": 5253247}
+{"ts": "2024-11-01T07:56:59Z", "job_type": "data_export", "status": "retrying", "job_id": "job-223631", "worker_id": "worker-3", "attempt": 1, "error": "rate limit exceeded", "next_retry_at": "2024-11-01T08:09:59Z", "file_size_bytes": 3324387}
+{"ts": "2024-11-01T07:57:13Z", "job_type": "index_rebuild", "status": "completed", "job_id": "job-716560", "worker_id": "worker-6", "attempt": 2, "duration_ms": 21078, "items_processed": 8593}
+{"ts": "2024-11-01T07:57:19Z", "job_type": "cleanup", "status": "started", "job_id": "job-912514", "worker_id": "worker-5", "attempt": 3}
+{"ts": "2024-11-01T07:57:35Z", "job_type": "image_resize", "status": "retrying", "job_id": "job-458505", "worker_id": "worker-2", "attempt": 3, "error": "connection refused", "next_retry_at": "2024-11-01T08:03:35Z"}
+{"ts": "2024-11-01T07:58:30Z", "job_type": "index_rebuild", "status": "started", "job_id": "job-340207", "worker_id": "worker-2", "attempt": 2}
+{"ts": "2024-11-01T07:59:22Z", "job_type": "image_resize", "status": "completed", "job_id": "job-234331", "worker_id": "worker-7", "attempt": 2, "duration_ms": 62156, "items_processed": 41746}
+{"ts": "2024-11-01T07:59:46Z", "job_type": "cleanup", "status": "started", "job_id": "job-207883", "worker_id": "worker-3", "attempt": 3}
+{"ts": "2024-11-01T07:59:54Z", "job_type": "cleanup", "status": "started", "job_id": "job-947932", "worker_id": "worker-4", "attempt": 1}
+{"ts": "2024-11-01T07:59:59Z", "job_type": "data_export", "status": "completed", "job_id": "job-658939", "worker_id": "worker-5", "attempt": 2, "duration_ms": 114730, "items_processed": 18013, "file_size_bytes": 4538960}
+{"ts": "2024-11-01T08:00:11Z", "job_type": "image_resize", "status": "started", "job_id": "job-211038", "worker_id": "worker-2", "attempt": 2}
+{"ts": "2024-11-01T08:01:44Z", "job_type": "image_resize", "status": "failed", "job_id": "job-471852", "worker_id": "worker-1", "attempt": 2, "error": "timeout", "next_retry_at": "2024-11-01T08:10:44Z"}
+{"ts": "2024-11-01T08:02:15Z", "job_type": "data_export", "status": "started", "job_id": "job-770928", "worker_id": "worker-2", "attempt": 2, "file_size_bytes": 3990021}
+{"ts": "2024-11-01T08:03:45Z", "job_type": "email_send", "status": "completed", "job_id": "job-563068", "worker_id": "worker-8", "attempt": 3, "duration_ms": 60523, "items_processed": 83586}
+{"ts": "2024-11-01T08:04:07Z", "job_type": "csv_import", "status": "completed", "job_id": "job-233011", "worker_id": "worker-6", "attempt": 3, "duration_ms": 97256, "items_processed": 32941}
+{"ts": "2024-11-01T08:06:02Z", "job_type": "data_export", "status": "started", "job_id": "job-197962", "worker_id": "worker-4", "attempt": 3, "file_size_bytes": 4268683}
+{"ts": "2024-11-01T08:07:27Z", "job_type": "notification_push", "status": "completed", "job_id": "job-665917", "worker_id": "worker-2", "attempt": 3, "duration_ms": 23736, "items_processed": 96462}
+{"ts": "2024-11-01T08:07:32Z", "job_type": "csv_import", "status": "completed", "job_id": "job-606569", "worker_id": "worker-8", "attempt": 1, "duration_ms": 56647, "items_processed": 64580}
+{"ts": "2024-11-01T08:08:58Z", "job_type": "cleanup", "status": "failed", "job_id": "job-307905", "worker_id": "worker-4", "attempt": 1, "error": "connection refused", "next_retry_at": "2024-11-01T08:27:58Z"}
+{"ts": "2024-11-01T08:10:18Z", "job_type": "cleanup", "status": "completed", "job_id": "job-475357", "worker_id": "worker-1", "attempt": 1, "duration_ms": 44702, "items_processed": 61246}
+{"ts": "2024-11-01T08:11:54Z", "job_type": "csv_import", "status": "retrying", "job_id": "job-388292", "worker_id": "worker-1", "attempt": 3, "error": "payload too large", "next_retry_at": "2024-11-01T08:32:54Z"}
+{"ts": "2024-11-01T08:13:03Z", "job_type": "notification_push", "status": "completed", "job_id": "job-656169", "worker_id": "worker-4", "attempt": 3, "duration_ms": 71073, "items_processed": 22517}
+{"ts": "2024-11-01T08:14:47Z", "job_type": "notification_push", "status": "completed", "job_id": "job-845119", "worker_id": "worker-8", "attempt": 1, "duration_ms": 53122, "items_processed": 22531}
+{"ts": "2024-11-01T08:14:54Z", "job_type": "csv_import", "status": "completed", "job_id": "job-231417", "worker_id": "worker-3", "attempt": 2, "duration_ms": 40095, "items_processed": 28404}
+{"ts": "2024-11-01T08:16:49Z", "job_type": "notification_push", "status": "completed", "job_id": "job-184046", "worker_id": "worker-7", "attempt": 1, "duration_ms": 72903, "items_processed": 20843}
+{"ts": "2024-11-01T08:17:16Z", "job_type": "data_export", "status": "failed", "job_id": "job-109041", "worker_id": "worker-2", "attempt": 3, "error": "connection refused", "next_retry_at": "2024-11-01T08:29:16Z", "file_size_bytes": 6808127}
+{"ts": "2024-11-01T08:17:42Z", "job_type": "csv_import", "status": "completed", "job_id": "job-679307", "worker_id": "worker-7", "attempt": 1, "duration_ms": 77299, "items_processed": 99677}
+{"ts": "2024-11-01T08:18:19Z", "job_type": "data_export", "status": "completed", "job_id": "job-195042", "worker_id": "worker-3", "attempt": 1, "duration_ms": 32302, "items_processed": 35851, "file_size_bytes": 1463821}
+{"ts": "2024-11-01T08:19:00Z", "job_type": "data_export", "status": "completed", "job_id": "job-926341", "worker_id": "worker-1", "attempt": 3, "duration_ms": 92134, "items_processed": 85868, "file_size_bytes": 7005603}
+{"ts": "2024-11-01T08:19:55Z", "job_type": "data_export", "status": "failed", "job_id": "job-564921", "worker_id": "worker-1", "attempt": 1, "error": "rate limit exceeded", "next_retry_at": "2024-11-01T08:32:55Z", "file_size_bytes": 5163}
+{"ts": "2024-11-01T08:20:33Z", "job_type": "notification_push", "status": "failed", "job_id": "job-155171", "worker_id": "worker-6", "attempt": 2, "error": "connection refused", "next_retry_at": "2024-11-01T08:26:33Z"}
+{"ts": "2024-11-01T08:20:46Z", "job_type": "index_rebuild", "status": "failed", "job_id": "job-778445", "worker_id": "worker-1", "attempt": 1, "error": "disk full", "next_retry_at": "2024-11-01T08:28:46Z"}
+{"ts": "2024-11-01T08:22:09Z", "job_type": "report_generate", "status": "started", "job_id": "job-897188", "worker_id": "worker-2", "attempt": 3, "file_size_bytes": 3685401}
+{"ts": "2024-11-01T08:22:45Z", "job_type": "notification_push", "status": "completed", "job_id": "job-664913", "worker_id": "worker-3", "attempt": 1, "duration_ms": 21113, "items_processed": 39043}
+{"ts": "2024-11-01T08:24:37Z", "job_type": "index_rebuild", "status": "started", "job_id": "job-720637", "worker_id": "worker-4", "attempt": 2}
+{"ts": "2024-11-01T08:26:31Z", "job_type": "email_send", "status": "completed", "job_id": "job-540267", "worker_id": "worker-1", "attempt": 3, "duration_ms": 18917, "items_processed": 60477}
+{"ts": "2024-11-01T08:27:38Z", "job_type": "email_send", "status": "completed", "job_id": "job-394635", "worker_id": "worker-7", "attempt": 1, "duration_ms": 89895, "items_processed": 98089}
+{"ts": "2024-11-01T08:28:36Z", "job_type": "email_send", "status": "completed", "job_id": "job-557102", "worker_id": "worker-3", "attempt": 2, "duration_ms": 36981, "items_processed": 28624}
+{"ts": "2024-11-01T08:30:11Z", "job_type": "notification_push", "status": "started", "job_id": "job-700249", "worker_id": "worker-6", "attempt": 1}
+{"ts": "2024-11-01T08:31:15Z", "job_type": "data_export", "status": "started", "job_id": "job-544238", "worker_id": "worker-2", "attempt": 2, "file_size_bytes": 7141586}
+{"ts": "2024-11-01T08:32:44Z", "job_type": "data_export", "status": "failed", "job_id": "job-806002", "worker_id": "worker-2", "attempt": 1, "error": "connection refused", "next_retry_at": "2024-11-01T08:58:44Z", "file_size_bytes": 6885833}
+{"ts": "2024-11-01T08:33:03Z", "job_type": "email_send", "status": "completed", "job_id": "job-931063", "worker_id": "worker-5", "attempt": 2, "duration_ms": 93495, "items_processed": 12209}
+{"ts": "2024-11-01T08:34:03Z", "job_type": "csv_import", "status": "started", "job_id": "job-309767", "worker_id": "worker-2", "attempt": 2}
+{"ts": "2024-11-01T08:34:52Z", "job_type": "csv_import", "status": "failed", "job_id": "job-401681", "worker_id": "worker-2", "attempt": 3, "error": "connection refused", "next_retry_at": "2024-11-01T08:49:52Z"}
+{"ts": "2024-11-01T08:35:19Z", "job_type": "index_rebuild", "status": "completed", "job_id": "job-507226", "worker_id": "worker-6", "attempt": 2, "duration_ms": 55179, "items_processed": 98572}
+{"ts": "2024-11-01T08:35:28Z", "job_type": "cleanup", "status": "failed", "job_id": "job-318552", "worker_id": "worker-5", "attempt": 3, "error": "payload too large", "next_retry_at": "2024-11-01T08:41:28Z"}
+{"ts": "2024-11-01T08:36:52Z", "job_type": "email_send", "status": "failed", "job_id": "job-549384", "worker_id": "worker-2", "attempt": 2, "error": "payload too large", "next_retry_at": "2024-11-01T09:04:52Z"}
+{"ts": "2024-11-01T08:37:40Z", "job_type": "report_generate", "status": "completed", "job_id": "job-562820", "worker_id": "worker-1", "attempt": 1, "duration_ms": 109662, "items_processed": 64803, "file_size_bytes": 10398243}
+{"ts": "2024-11-01T08:39:03Z", "job_type": "image_resize", "status": "started", "job_id": "job-831206", "worker_id": "worker-3", "attempt": 1}
+{"ts": "2024-11-01T08:41:00Z", "job_type": "data_export", "status": "started", "job_id": "job-329840", "worker_id": "worker-8", "attempt": 2, "file_size_bytes": 4473975}
+{"ts": "2024-11-01T08:42:43Z", "job_type": "csv_import", "status": "started", "job_id": "job-620314", "worker_id": "worker-3", "attempt": 1}
+{"ts": "2024-11-01T08:43:22Z", "job_type": "notification_push", "status": "completed", "job_id": "job-451525", "worker_id": "worker-4", "attempt": 3, "duration_ms": 108092, "items_processed": 50950}
+{"ts": "2024-11-01T08:44:40Z", "job_type": "csv_import", "status": "completed", "job_id": "job-897814", "worker_id": "worker-1", "attempt": 1, "duration_ms": 47146, "items_processed": 38459}
+{"ts": "2024-11-01T08:46:23Z", "job_type": "notification_push", "status": "completed", "job_id": "job-496886", "worker_id": "worker-3", "attempt": 2, "duration_ms": 73423, "items_processed": 74425}
+{"ts": "2024-11-01T08:46:33Z", "job_type": "csv_import", "status": "completed", "job_id": "job-281358", "worker_id": "worker-4", "attempt": 3, "duration_ms": 56968, "items_processed": 96199}
+{"ts": "2024-11-01T08:48:08Z", "job_type": "csv_import", "status": "started", "job_id": "job-112675", "worker_id": "worker-1", "attempt": 3}
+{"ts": "2024-11-01T08:48:56Z", "job_type": "image_resize", "status": "completed", "job_id": "job-453596", "worker_id": "worker-6", "attempt": 2, "duration_ms": 97344, "items_processed": 35116}
+{"ts": "2024-11-01T08:49:23Z", "job_type": "report_generate", "status": "completed", "job_id": "job-392056", "worker_id": "worker-4", "attempt": 2, "duration_ms": 102366, "items_processed": 77328, "file_size_bytes": 10124494}
+{"ts": "2024-11-01T08:49:30Z", "job_type": "email_send", "status": "completed", "job_id": "job-331079", "worker_id": "worker-8", "attempt": 3, "duration_ms": 10278, "items_processed": 34321}
+{"ts": "2024-11-01T08:51:01Z", "job_type": "cleanup", "status": "started", "job_id": "job-612469", "worker_id": "worker-7", "attempt": 3}
+{"ts": "2024-11-01T08:51:18Z", "job_type": "csv_import", "status": "started", "job_id": "job-629728", "worker_id": "worker-5", "attempt": 2}
+{"ts": "2024-11-01T08:51:50Z", "job_type": "index_rebuild", "status": "started", "job_id": "job-863092", "worker_id": "worker-7", "attempt": 1}
+{"ts": "2024-11-01T08:53:04Z", "job_type": "index_rebuild", "status": "failed", "job_id": "job-997726", "worker_id": "worker-6", "attempt": 2, "error": "payload too large", "next_retry_at": "2024-11-01T09:22:04Z"}
+{"ts": "2024-11-01T08:54:02Z", "job_type": "index_rebuild", "status": "started", "job_id": "job-506532", "worker_id": "worker-4", "attempt": 2}
+{"ts": "2024-11-01T08:55:17Z", "job_type": "report_generate", "status": "completed", "job_id": "job-411358", "worker_id": "worker-2", "attempt": 3, "duration_ms": 48959, "items_processed": 67833, "file_size_bytes": 10217153}
+{"ts": "2024-11-01T08:56:35Z", "job_type": "email_send", "status": "retrying", "job_id": "job-256397", "worker_id": "worker-8", "attempt": 2, "error": "disk full", "next_retry_at": "2024-11-01T09:02:35Z"}
+{"ts": "2024-11-01T08:57:53Z", "job_type": "report_generate", "status": "started", "job_id": "job-642138", "worker_id": "worker-5", "attempt": 2, "file_size_bytes": 689052}
+{"ts": "2024-11-01T08:59:27Z", "job_type": "index_rebuild", "status": "completed", "job_id": "job-978316", "worker_id": "worker-7", "attempt": 1, "duration_ms": 38118, "items_processed": 30957}
+{"ts": "2024-11-01T09:00:18Z", "job_type": "cleanup", "status": "completed", "job_id": "job-549214", "worker_id": "worker-1", "attempt": 2, "duration_ms": 117989, "items_processed": 4784}
+{"ts": "2024-11-01T09:00:52Z", "job_type": "image_resize", "status": "completed", "job_id": "job-545441", "worker_id": "worker-4", "attempt": 1, "duration_ms": 3645, "items_processed": 51951}
+{"ts": "2024-11-01T09:01:58Z", "job_type": "index_rebuild", "status": "completed", "job_id": "job-123334", "worker_id": "worker-7", "attempt": 2, "duration_ms": 91960, "items_processed": 15760}
+{"ts": "2024-11-01T09:03:13Z", "job_type": "data_export", "status": "started", "job_id": "job-292319", "worker_id": "worker-7", "attempt": 2, "file_size_bytes": 7976491}
+{"ts": "2024-11-01T09:04:31Z", "job_type": "csv_import", "status": "completed", "job_id": "job-744149", "worker_id": "worker-1", "attempt": 3, "duration_ms": 59360, "items_processed": 66595}
+{"ts": "2024-11-01T09:05:58Z", "job_type": "cleanup", "status": "completed", "job_id": "job-626785", "worker_id": "worker-6", "attempt": 3, "duration_ms": 78454, "items_processed": 6119}
+{"ts": "2024-11-01T09:06:52Z", "job_type": "index_rebuild", "status": "completed", "job_id": "job-700457", "worker_id": "worker-7", "attempt": 1, "duration_ms": 40035, "items_processed": 89094}
+{"ts": "2024-11-01T09:08:41Z", "job_type": "data_export", "status": "completed", "job_id": "job-827291", "worker_id": "worker-8", "attempt": 2, "duration_ms": 3254, "items_processed": 97241, "file_size_bytes": 5284380}
+{"ts": "2024-11-01T09:10:28Z", "job_type": "notification_push", "status": "failed", "job_id": "job-984832", "worker_id": "worker-5", "attempt": 3, "error": "connection refused", "next_retry_at": "2024-11-01T09:15:28Z"}
+{"ts": "2024-11-01T09:12:19Z", "job_type": "report_generate", "status": "completed", "job_id": "job-161533", "worker_id": "worker-5", "attempt": 3, "duration_ms": 112356, "items_processed": 73535, "file_size_bytes": 7090864}
+{"ts": "2024-11-01T09:14:01Z", "job_type": "report_generate", "status": "completed", "job_id": "job-520974", "worker_id": "worker-8", "attempt": 1, "duration_ms": 53463, "items_processed": 51216, "file_size_bytes": 3456002}
+{"ts": "2024-11-01T09:14:29Z", "job_type": "email_send", "status": "completed", "job_id": "job-521757", "worker_id": "worker-3", "attempt": 3, "duration_ms": 88726, "items_processed": 1943}
+{"ts": "2024-11-01T09:15:34Z", "job_type": "image_resize", "status": "retrying", "job_id": "job-708401", "worker_id": "worker-3", "attempt": 3, "error": "invalid token", "next_retry_at": "2024-11-01T09:18:34Z"}
+{"ts": "2024-11-01T09:17:05Z", "job_type": "data_export", "status": "completed", "job_id": "job-689144", "worker_id": "worker-3", "attempt": 2, "duration_ms": 92168, "items_processed": 42317, "file_size_bytes": 3424809}
+{"ts": "2024-11-01T09:18:48Z", "job_type": "image_resize", "status": "completed", "job_id": "job-579766", "worker_id": "worker-1", "attempt": 3, "duration_ms": 55528, "items_processed": 40365}
+{"ts": "2024-11-01T09:20:11Z", "job_type": "csv_import", "status": "started", "job_id": "job-715841", "worker_id": "worker-5", "attempt": 1}
+{"ts": "2024-11-01T09:20:19Z", "job_type": "image_resize", "status": "completed", "job_id": "job-720084", "worker_id": "worker-4", "attempt": 1, "duration_ms": 88517, "items_processed": 31117}
+{"ts": "2024-11-01T09:21:05Z", "job_type": "csv_import", "status": "completed", "job_id": "job-770809", "worker_id": "worker-1", "attempt": 1, "duration_ms": 37098, "items_processed": 47027}
+{"ts": "2024-11-01T09:22:49Z", "job_type": "cleanup", "status": "completed", "job_id": "job-498858", "worker_id": "worker-3", "attempt": 1, "duration_ms": 80962, "items_processed": 44561}
+{"ts": "2024-11-01T09:24:38Z", "job_type": "index_rebuild", "status": "started", "job_id": "job-485733", "worker_id": "worker-5", "attempt": 3}
+{"ts": "2024-11-01T09:25:50Z", "job_type": "data_export", "status": "retrying", "job_id": "job-384745", "worker_id": "worker-4", "attempt": 3, "error": "invalid token", "next_retry_at": "2024-11-01T09:49:50Z", "file_size_bytes": 4664017}
+{"ts": "2024-11-01T09:27:19Z", "job_type": "image_resize", "status": "failed", "job_id": "job-831250", "worker_id": "worker-3", "attempt": 3, "error": "disk full", "next_retry_at": "2024-11-01T09:54:19Z"}
+{"ts": "2024-11-01T09:28:58Z", "job_type": "report_generate", "status": "completed", "job_id": "job-664948", "worker_id": "worker-2", "attempt": 2, "duration_ms": 61897, "items_processed": 65797, "file_size_bytes": 94647}
+{"ts": "2024-11-01T09:29:52Z", "job_type": "cleanup", "status": "retrying", "job_id": "job-384247", "worker_id": "worker-4", "attempt": 3, "error": "timeout", "next_retry_at": "2024-11-01T09:40:52Z"}
+{"ts": "2024-11-01T09:31:50Z", "job_type": "email_send", "status": "started", "job_id": "job-782089", "worker_id": "worker-5", "attempt": 3}
+{"ts": "2024-11-01T09:33:27Z", "job_type": "data_export", "status": "retrying", "job_id": "job-785820", "worker_id": "worker-2", "attempt": 2, "error": "timeout", "next_retry_at": "2024-11-01T09:40:27Z", "file_size_bytes": 7530106}
+{"ts": "2024-11-01T09:35:11Z", "job_type": "email_send", "status": "started", "job_id": "job-157041", "worker_id": "worker-3", "attempt": 2}
+{"ts": "2024-11-01T09:36:36Z", "job_type": "csv_import", "status": "started", "job_id": "job-150252", "worker_id": "worker-4", "attempt": 1}
+{"ts": "2024-11-01T09:37:46Z", "job_type": "email_send", "status": "completed", "job_id": "job-168776", "worker_id": "worker-8", "attempt": 1, "duration_ms": 52805, "items_processed": 19689}
+{"ts": "2024-11-01T09:38:58Z", "job_type": "data_export", "status": "completed", "job_id": "job-534759", "worker_id": "worker-3", "attempt": 3, "duration_ms": 114148, "items_processed": 38795, "file_size_bytes": 5019884}
+{"ts": "2024-11-01T09:40:50Z", "job_type": "notification_push", "status": "completed", "job_id": "job-131657", "worker_id": "worker-1", "attempt": 2, "duration_ms": 19407, "items_processed": 67677}
+{"ts": "2024-11-01T09:41:59Z", "job_type": "notification_push", "status": "retrying", "job_id": "job-292781", "worker_id": "worker-8", "attempt": 3, "error": "payload too large", "next_retry_at": "2024-11-01T09:44:59Z"}
+{"ts": "2024-11-01T09:42:13Z", "job_type": "cleanup", "status": "completed", "job_id": "job-543529", "worker_id": "worker-2", "attempt": 3, "duration_ms": 78722, "items_processed": 50446}
+{"ts": "2024-11-01T09:44:07Z", "job_type": "report_generate", "status": "started", "job_id": "job-595187", "worker_id": "worker-7", "attempt": 2, "file_size_bytes": 2222859}
+{"ts": "2024-11-01T09:44:13Z", "job_type": "email_send", "status": "completed", "job_id": "job-981508", "worker_id": "worker-1", "attempt": 1, "duration_ms": 82006, "items_processed": 15734}
+{"ts": "2024-11-01T09:45:16Z", "job_type": "email_send", "status": "completed", "job_id": "job-943542", "worker_id": "worker-3", "attempt": 2, "duration_ms": 25609, "items_processed": 88148}
+{"ts": "2024-11-01T09:47:16Z", "job_type": "csv_import", "status": "started", "job_id": "job-328948", "worker_id": "worker-6", "attempt": 3}
+{"ts": "2024-11-01T09:48:09Z", "job_type": "data_export", "status": "completed", "job_id": "job-450232", "worker_id": "worker-8", "attempt": 1, "duration_ms": 10746, "items_processed": 23415, "file_size_bytes": 184768}
+{"ts": "2024-11-01T09:49:48Z", "job_type": "csv_import", "status": "failed", "job_id": "job-789700", "worker_id": "worker-3", "attempt": 2, "error": "connection refused", "next_retry_at": "2024-11-01T10:11:48Z"}
+{"ts": "2024-11-01T09:51:45Z", "job_type": "notification_push", "status": "started", "job_id": "job-725654", "worker_id": "worker-1", "attempt": 3}
+{"ts": "2024-11-01T09:52:01Z", "job_type": "data_export", "status": "retrying", "job_id": "job-580802", "worker_id": "worker-6", "attempt": 1, "error": "timeout", "next_retry_at": "2024-11-01T09:58:01Z", "file_size_bytes": 9250633}
+{"ts": "2024-11-01T09:52:40Z", "job_type": "index_rebuild", "status": "completed", "job_id": "job-956018", "worker_id": "worker-1", "attempt": 1, "duration_ms": 80059, "items_processed": 49377}
+{"ts": "2024-11-01T09:54:08Z", "job_type": "index_rebuild", "status": "started", "job_id": "job-890851", "worker_id": "worker-5", "attempt": 1}
+{"ts": "2024-11-01T09:55:01Z", "job_type": "notification_push", "status": "started", "job_id": "job-902008", "worker_id": "worker-5", "attempt": 1}
+{"ts": "2024-11-01T09:55:51Z", "job_type": "notification_push", "status": "started", "job_id": "job-901215", "worker_id": "worker-7", "attempt": 2}
+{"ts": "2024-11-01T09:57:00Z", "job_type": "report_generate", "status": "completed", "job_id": "job-954749", "worker_id": "worker-8", "attempt": 2, "duration_ms": 102189, "items_processed": 36488, "file_size_bytes": 273961}
+{"ts": "2024-11-01T09:57:36Z", "job_type": "cleanup", "status": "failed", "job_id": "job-385188", "worker_id": "worker-3", "attempt": 1, "error": "payload too large", "next_retry_at": "2024-11-01T10:25:36Z"}
+{"ts": "2024-11-01T09:59:12Z", "job_type": "index_rebuild", "status": "retrying", "job_id": "job-360853", "worker_id": "worker-6", "attempt": 2, "error": "disk full", "next_retry_at": "2024-11-01T10:12:12Z"}
+{"ts": "2024-11-01T10:00:09Z", "job_type": "data_export", "status": "retrying", "job_id": "job-233350", "worker_id": "worker-4", "attempt": 2, "error": "timeout", "next_retry_at": "2024-11-01T10:13:09Z", "file_size_bytes": 6766136}
+{"ts": "2024-11-01T10:01:57Z", "job_type": "index_rebuild", "status": "completed", "job_id": "job-755285", "worker_id": "worker-7", "attempt": 2, "duration_ms": 76817, "items_processed": 9658}
+{"ts": "2024-11-01T10:02:18Z", "job_type": "notification_push", "status": "completed", "job_id": "job-694487", "worker_id": "worker-8", "attempt": 3, "duration_ms": 118730, "items_processed": 22830}
+{"ts": "2024-11-01T10:02:40Z", "job_type": "email_send", "status": "retrying", "job_id": "job-295030", "worker_id": "worker-7", "attempt": 1, "error": "connection refused", "next_retry_at": "2024-11-01T10:16:40Z"}

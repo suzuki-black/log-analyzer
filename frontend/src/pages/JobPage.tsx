@@ -1,5 +1,5 @@
-import { useEffect, useState } from 'react'
-import { useParams, Link } from 'react-router-dom'
+import { useEffect, useRef, useState } from 'react'
+import { useParams, Link, useNavigate } from 'react-router-dom'
 import { getJob } from '../api/client'
 import { useSSE } from '../hooks/useSSE'
 import type { Job, SseEvent } from '../types'
@@ -7,27 +7,76 @@ import styles from './JobPage.module.css'
 
 export default function JobPage() {
   const { id } = useParams<{ id: string }>()
+  const navigate = useNavigate()
   const [job, setJob] = useState<Job | null>(null)
+  const [doneModal, setDoneModal] = useState<{ status: 'done' | 'error'; rows: number; dups: number; ms: number; error?: string } | null>(null)
   const { events } = useSSE(id ?? null)
+  const notifiedRef = useRef(false)
 
-  // Poll job status on mount + when done
+  // Poll job status; show modal on first transition to done/error
   useEffect(() => {
     if (!id) return
     getJob(id).then(setJob).catch(() => {})
     const iv = setInterval(() => {
       getJob(id).then(j => {
         setJob(j)
-        if (j.status === 'done' || j.status === 'error') clearInterval(iv)
+        if ((j.status === 'done' || j.status === 'error') && !notifiedRef.current) {
+          notifiedRef.current = true
+          clearInterval(iv)
+          setDoneModal({
+            status: j.status,
+            rows: j.rows_inserted,
+            dups: j.duplicates_found,
+            ms: 0,
+            error: j.error,
+          })
+        }
       }).catch(() => {})
     }, 1000)
     return () => clearInterval(iv)
   }, [id])
+
+  // Also capture duration from SSE 'done' event
+  useEffect(() => {
+    for (const ev of events) {
+      if (ev.type === 'done' && !notifiedRef.current) {
+        notifiedRef.current = true
+        setDoneModal({ status: 'done', rows: ev.total_rows, dups: ev.duplicates, ms: ev.duration_ms })
+      }
+    }
+  }, [events])
 
   // Derive progress from SSE events
   const progress = deriveProgress(events, job)
 
   return (
     <div className={styles.page}>
+      {doneModal && (
+        <div className={styles.overlay}>
+          <div className={styles.modal}>
+            {doneModal.status === 'done' ? (
+              <>
+                <div className={styles.modalIcon}>✅</div>
+                <h3 className={styles.modalTitle}>取り込み完了</h3>
+                <div className={styles.modalStats}>
+                  <div><span>挿入レコード</span><strong>{doneModal.rows.toLocaleString()} 行</strong></div>
+                  <div><span>重複検出</span><strong>{doneModal.dups.toLocaleString()} 件</strong></div>
+                  {doneModal.ms > 0 && <div><span>処理時間</span><strong>{(doneModal.ms / 1000).toFixed(1)} 秒</strong></div>}
+                </div>
+              </>
+            ) : (
+              <>
+                <div className={styles.modalIcon}>❌</div>
+                <h3 className={styles.modalTitleError}>取り込みエラー</h3>
+                <p className={styles.modalError}>{doneModal.error}</p>
+              </>
+            )}
+            <button className={styles.modalBtn} onClick={() => navigate('/')}>
+              ホームへ戻る
+            </button>
+          </div>
+        </div>
+      )}
       <div className={styles.topBar}>
         <Link to="/">← ホームへ戻る</Link>
         {job && <span className={styles.tableLabel}>{job.table_name}</span>}

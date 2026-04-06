@@ -1,51 +1,84 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  background: #0f1117;
-  color: #e2e8f0;
-  min-height: 100vh;
+:root {
+  --bg:            #09090b;
+  --surface:       #111113;
+  --card:          #18181b;
+  --card-hover:    #1c1c21;
+  --border:        #27272a;
+  --border-mid:    #3f3f46;
+  --accent:        #7c3aed;
+  --accent-h:      #6d28d9;
+  --accent-sub:    rgba(124,58,237,0.12);
+  --accent-ring:   rgba(124,58,237,0.35);
+  --success:       #22c55e;
+  --success-sub:   rgba(34,197,94,0.12);
+  --error:         #ef4444;
+  --error-sub:     rgba(239,68,68,0.12);
+  --warning:       #f59e0b;
+  --warning-sub:   rgba(245,158,11,0.12);
+  --text:          #fafafa;
+  --text-2:        #a1a1aa;
+  --text-3:        #71717a;
+  --text-4:        #52525b;
 }
 
-a { color: #63b3ed; text-decoration: none; }
-a:hover { text-decoration: underline; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  font-size: 14px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: #a78bfa; text-decoration: none; transition: color 0.15s; }
+a:hover { color: #c4b5fd; }
 
 button {
   cursor: pointer;
   border: none;
   border-radius: 6px;
-  padding: 8px 18px;
-  font-size: 14px;
-  font-weight: 600;
-  transition: background 0.15s, opacity 0.15s;
+  padding: 7px 16px;
+  font-size: 13px;
+  font-weight: 500;
+  transition: background 0.15s, opacity 0.15s, box-shadow 0.15s;
+  letter-spacing: 0.01em;
 }
-button:disabled { opacity: 0.45; cursor: not-allowed; }
+button:disabled { opacity: 0.4; cursor: not-allowed; }
 
 input, select {
-  background: #1e2330;
-  border: 1px solid #2d3748;
+  background: var(--card);
+  border: 1px solid var(--border);
   border-radius: 6px;
-  color: #e2e8f0;
-  padding: 8px 12px;
-  font-size: 14px;
+  color: var(--text);
+  padding: 7px 11px;
+  font-size: 13px;
   outline: none;
   width: 100%;
+  transition: border-color 0.15s, box-shadow 0.15s;
 }
-input:focus, select:focus { border-color: #63b3ed; }
+input:focus, select:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-ring);
+}
+select option { background: var(--card); }
 
 .card {
-  background: #1a1f2e;
-  border: 1px solid #2d3748;
+  background: var(--card);
+  border: 1px solid var(--border);
   border-radius: 10px;
   padding: 20px;
 }
 
 .tag {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
   font-size: 11px;
-  font-weight: 700;
+  font-weight: 600;
   padding: 2px 8px;
   border-radius: 4px;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.06em;
 }

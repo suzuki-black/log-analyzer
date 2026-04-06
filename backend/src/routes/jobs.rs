@@ -90,3 +90,36 @@ pub async fn list_tables(
     let tables = rows.into_iter().map(|(name,)| TableInfo { name, created_at: None }).collect();
     Ok(Json(tables))
 }
+
+pub async fn truncate_table(
+    State(state): State<Arc<AppState>>,
+    Path(name): Path<String>,
+) -> Result<Json<serde_json::Value>, AppError> {
+    validate_managed_table(&state, &name)?;
+    sqlx::query(&format!("TRUNCATE TABLE `{}`", name))
+        .execute(&state.pool)
+        .await?;
+    Ok(Json(serde_json::json!({"ok": true})))
+}
+
+pub async fn drop_table(
+    State(state): State<Arc<AppState>>,
+    Path(name): Path<String>,
+) -> Result<Json<serde_json::Value>, AppError> {
+    validate_managed_table(&state, &name)?;
+    sqlx::query(&format!("DROP TABLE IF EXISTS `{}`", name))
+        .execute(&state.pool)
+        .await?;
+    Ok(Json(serde_json::json!({"ok": true})))
+}
+
+/// Guard: only allow operations on tables ending with the configured suffix
+fn validate_managed_table(state: &crate::AppState, name: &str) -> Result<(), AppError> {
+    if !name.ends_with(&state.config.table_suffix) {
+        return Err(AppError::Bad(format!(
+            "テーブル '{}' は本ツール管理外のテーブルです",
+            name
+        )));
+    }
+    Ok(())
+}

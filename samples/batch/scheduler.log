@@ -1,0 +1,500 @@
+{"ts": "2024-11-01T00:43:00Z", "task": "index_optimize", "result": "success", "host": "cron-2.internal", "duration_ms": 229122}
+{"ts": "2024-11-01T00:53:00Z", "task": "backup", "result": "success", "host": "cron-2.internal", "duration_ms": 96075}
+{"ts": "2024-11-01T01:23:00Z", "task": "daily_report", "result": "success", "host": "cron-3.internal", "duration_ms": 190154, "triggered_by": "webhook"}
+{"ts": "2024-11-01T02:06:00Z", "task": "db_vacuum", "result": "success", "host": "cron-1.internal", "duration_ms": 1795}
+{"ts": "2024-11-01T02:12:00Z", "task": "sync_inventory", "result": "skipped", "host": "cron-3.internal", "duration_ms": 134440, "triggered_by": "cron"}
+{"ts": "2024-11-01T02:54:00Z", "task": "send_digest", "result": "success", "host": "cron-1.internal", "duration_ms": 129552}
+{"ts": "2024-11-01T03:31:00Z", "task": "backup", "result": "success", "host": "cron-3.internal", "duration_ms": 211703}
+{"ts": "2024-11-01T04:28:00Z", "task": "db_vacuum", "result": "success", "host": "cron-3.internal", "duration_ms": 78376}
+{"ts": "2024-11-01T05:14:00Z", "task": "send_digest", "result": "success", "host": "cron-3.internal", "duration_ms": 143907, "triggered_by": "webhook"}
+{"ts": "2024-11-01T06:02:00Z", "task": "index_optimize", "result": "failed", "host": "cron-2.internal", "duration_ms": 87169, "exit_code": 214, "stderr": "non-zero exit status", "triggered_by": "webhook"}
+{"ts": "2024-11-01T06:04:00Z", "task": "sync_inventory", "result": "failed", "host": "cron-3.internal", "duration_ms": 87044, "exit_code": 114, "stderr": "non-zero exit status", "triggered_by": "manual"}
+{"ts": "2024-11-01T06:21:00Z", "task": "index_optimize", "result": "skipped", "host": "cron-3.internal", "duration_ms": 65846}
+{"ts": "2024-11-01T06:26:00Z", "task": "daily_report", "result": "skipped", "host": "cron-3.internal", "duration_ms": 113311}
+{"ts": "2024-11-01T07:11:00Z", "task": "backup", "result": "success", "host": "cron-2.internal", "duration_ms": 49996}
+{"ts": "2024-11-01T07:37:00Z", "task": "daily_report", "result": "success", "host": "cron-1.internal", "duration_ms": 165141, "triggered_by": "webhook"}
+{"ts": "2024-11-01T07:56:00Z", "task": "daily_report", "result": "success", "host": "cron-1.internal", "duration_ms": 298045, "triggered_by": "webhook"}
+{"ts": "2024-11-01T08:25:00Z", "task": "log_rotate", "result": "success", "host": "cron-2.internal", "duration_ms": 157659}
+{"ts": "2024-11-01T08:27:00Z", "task": "log_rotate", "result": "success", "host": "cron-2.internal", "duration_ms": 288926}
+{"ts": "2024-11-01T08:31:00Z", "task": "index_optimize", "result": "success", "host": "cron-3.internal", "duration_ms": 111190, "triggered_by": "webhook"}
+{"ts": "2024-11-01T08:54:00Z", "task": "cache_warm", "result": "success", "host": "cron-2.internal", "duration_ms": 236892}
+{"ts": "2024-11-01T09:20:00Z", "task": "backup", "result": "success", "host": "cron-3.internal", "duration_ms": 245987}
+{"ts": "2024-11-01T09:53:00Z", "task": "db_vacuum", "result": "success", "host": "cron-1.internal", "duration_ms": 36357}
+{"ts": "2024-11-01T10:01:00Z", "task": "sync_inventory", "result": "success", "host": "cron-1.internal", "duration_ms": 185261}
+{"ts": "2024-11-01T10:29:00Z", "task": "db_vacuum", "result": "success", "host": "cron-1.internal", "duration_ms": 93546}
+{"ts": "2024-11-01T11:25:00Z", "task": "log_rotate", "result": "success", "host": "cron-1.internal", "duration_ms": 41994}
+{"ts": "2024-11-01T11:34:00Z", "task": "index_optimize", "result": "skipped", "host": "cron-3.internal", "duration_ms": 70082, "triggered_by": "cron"}
+{"ts": "2024-11-01T12:24:00Z", "task": "db_vacuum", "result": "failed", "host": "cron-2.internal", "duration_ms": 104489, "exit_code": 182, "stderr": "non-zero exit status", "triggered_by": "webhook"}
+{"ts": "2024-11-01T12:25:00Z", "task": "backup", "result": "success", "host": "cron-3.internal", "duration_ms": 131134}
+{"ts": "2024-11-01T12:37:00Z", "task": "cache_warm", "result": "failed", "host": "cron-1.internal", "duration_ms": 131210, "exit_code": 36, "stderr": "non-zero exit status"}
+{"ts": "2024-11-01T12:39:00Z", "task": "cache_warm", "result": "skipped", "host": "cron-1.internal", "duration_ms": 174459}
+{"ts": "2024-11-01T12:48:00Z", "task": "index_optimize", "result": "success", "host": "cron-3.internal", "duration_ms": 135058}
+{"ts": "2024-11-01T13:02:00Z", "task": "send_digest", "result": "success", "host": "cron-1.internal", "duration_ms": 127715}
+{"ts": "2024-11-01T13:54:00Z", "task": "cache_warm", "result": "success", "host": "cron-1.internal", "duration_ms": 147512}
+{"ts": "2024-11-01T14:48:00Z", "task": "send_digest", "result": "success", "host": "cron-2.internal", "duration_ms": 261568}
+{"ts": "2024-11-01T15:01:00Z", "task": "send_digest", "result": "success", "host": "cron-1.internal", "duration_ms": 89578}
+{"ts": "2024-11-01T15:21:00Z", "task": "sync_inventory", "result": "success", "host": "cron-2.internal", "duration_ms": 169093}
+{"ts": "2024-11-01T15:25:00Z", "task": "cache_warm", "result": "success", "host": "cron-3.internal", "duration_ms": 15969}
+{"ts": "2024-11-01T16:15:00Z", "task": "daily_report", "result": "success", "host": "cron-2.internal", "duration_ms": 43673}
+{"ts": "2024-11-01T16:49:00Z", "task": "send_digest", "result": "success", "host": "cron-2.internal", "duration_ms": 159785, "triggered_by": "manual"}
+{"ts": "2024-11-01T17:49:00Z", "task": "sync_inventory", "result": "success", "host": "cron-2.internal", "duration_ms": 209849}
+{"ts": "2024-11-01T18:01:00Z", "task": "backup", "result": "success", "host": "cron-2.internal", "duration_ms": 129203}
+{"ts": "2024-11-01T18:16:00Z", "task": "cache_warm", "result": "failed", "host": "cron-2.internal", "duration_ms": 904, "exit_code": 254, "stderr": "non-zero exit status"}
+{"ts": "2024-11-01T18:45:00Z", "task": "db_vacuum", "result": "success", "host": "cron-2.internal", "duration_ms": 159258, "triggered_by": "cron"}
+{"ts": "2024-11-01T19:26:00Z", "task": "backup", "result": "success", "host": "cron-1.internal", "duration_ms": 39284, "triggered_by": "manual"}
+{"ts": "2024-11-01T20:03:00Z", "task": "index_optimize", "result": "failed", "host": "cron-3.internal", "duration_ms": 9746, "exit_code": 76, "stderr": "non-zero exit status"}
+{"ts": "2024-11-01T20:18:00Z", "task": "backup", "result": "success", "host": "cron-1.internal", "duration_ms": 33431, "triggered_by": "manual"}
+{"ts": "2024-11-01T20:30:00Z", "task": "send_digest", "result": "skipped", "host": "cron-1.internal", "duration_ms": 12543, "triggered_by": "cron"}
+{"ts": "2024-11-01T20:33:00Z", "task": "send_digest", "result": "success", "host": "cron-1.internal", "duration_ms": 225702}
+{"ts": "2024-11-01T21:27:00Z", "task": "index_optimize", "result": "success", "host": "cron-2.internal", "duration_ms": 57022, "triggered_by": "webhook"}
+{"ts": "2024-11-01T22:12:00Z", "task": "sync_inventory", "result": "failed", "host": "cron-1.internal", "duration_ms": 97892, "exit_code": 156, "stderr": "non-zero exit status"}
+{"ts": "2024-11-01T22:28:00Z", "task": "cache_warm", "result": "success", "host": "cron-2.internal", "duration_ms": 35930, "triggered_by": "manual"}
+{"ts": "2024-11-01T22:36:00Z", "task": "db_vacuum", "result": "success", "host": "cron-1.internal", "duration_ms": 272015, "triggered_by": "cron"}
+{"ts": "2024-11-01T23:28:00Z", "task": "sync_inventory", "result": "success", "host": "cron-1.internal", "duration_ms": 163439, "triggered_by": "manual"}
+{"ts": "2024-11-02T00:08:00Z", "task": "db_vacuum", "result": "failed", "host": "cron-1.internal", "duration_ms": 165866, "exit_code": 120, "stderr": "non-zero exit status"}
+{"ts": "2024-11-02T00:56:00Z", "task": "daily_report", "result": "success", "host": "cron-3.internal", "duration_ms": 232207}
+{"ts": "2024-11-02T01:55:00Z", "task": "index_optimize", "result": "failed", "host": "cron-1.internal", "duration_ms": 210599, "exit_code": 30, "stderr": "non-zero exit status", "triggered_by": "manual"}
+{"ts": "2024-11-02T02:23:00Z", "task": "db_vacuum", "result": "success", "host": "cron-2.internal", "duration_ms": 287200}
+{"ts": "2024-11-02T03:17:00Z", "task": "log_rotate", "result": "success", "host": "cron-1.internal", "duration_ms": 257737, "triggered_by": "cron"}
+{"ts": "2024-11-02T04:16:00Z", "task": "sync_inventory", "result": "success", "host": "cron-2.internal", "duration_ms": 185472, "triggered_by": "manual"}
+{"ts": "2024-11-02T04:32:00Z", "task": "cache_warm", "result": "skipped", "host": "cron-1.internal", "duration_ms": 211732}
+{"ts": "2024-11-02T05:10:00Z", "task": "cache_warm", "result": "success", "host": "cron-2.internal", "duration_ms": 284869, "triggered_by": "webhook"}
+{"ts": "2024-11-02T06:07:00Z", "task": "send_digest", "result": "success", "host": "cron-1.internal", "duration_ms": 55829}
+{"ts": "2024-11-02T06:53:00Z", "task": "index_optimize", "result": "success", "host": "cron-2.internal", "duration_ms": 155151}
+{"ts": "2024-11-02T07:14:00Z", "task": "backup", "result": "skipped", "host": "cron-2.internal", "duration_ms": 210505}
+{"ts": "2024-11-02T07:50:00Z", "task": "db_vacuum", "result": "success", "host": "cron-1.internal", "duration_ms": 263649}
+{"ts": "2024-11-02T08:16:00Z", "task": "db_vacuum", "result": "success", "host": "cron-1.internal", "duration_ms": 67836}
+{"ts": "2024-11-02T08:25:00Z", "task": "cache_warm", "result": "skipped", "host": "cron-2.internal", "duration_ms": 227101}
+{"ts": "2024-11-02T08:54:00Z", "task": "daily_report", "result": "success", "host": "cron-1.internal", "duration_ms": 262205}
+{"ts": "2024-11-02T09:08:00Z", "task": "index_optimize", "result": "success", "host": "cron-1.internal", "duration_ms": 188902}
+{"ts": "2024-11-02T09:58:00Z", "task": "sync_inventory", "result": "success", "host": "cron-3.internal", "duration_ms": 48747, "triggered_by": "webhook"}
+{"ts": "2024-11-02T09:59:00Z", "task": "db_vacuum", "result": "success", "host": "cron-2.internal", "duration_ms": 266572, "triggered_by": "webhook"}
+{"ts": "2024-11-02T10:28:00Z", "task": "log_rotate", "result": "success", "host": "cron-1.internal", "duration_ms": 69420}
+{"ts": "2024-11-02T10:55:00Z", "task": "send_digest", "result": "success", "host": "cron-1.internal", "duration_ms": 180275}
+{"ts": "2024-11-02T11:21:00Z", "task": "log_rotate", "result": "success", "host": "cron-1.internal", "duration_ms": 254249}
+{"ts": "2024-11-02T11:42:00Z", "task": "log_rotate", "result": "success", "host": "cron-1.internal", "duration_ms": 93045}
+{"ts": "2024-11-02T12:29:00Z", "task": "db_vacuum", "result": "failed", "host": "cron-2.internal", "duration_ms": 221090, "exit_code": 160, "stderr": "non-zero exit status"}
+{"ts": "2024-11-02T13:13:00Z", "task": "log_rotate", "result": "success", "host": "cron-1.internal", "duration_ms": 91623, "triggered_by": "webhook"}
+{"ts": "2024-11-02T13:55:00Z", "task": "backup", "result": "success", "host": "cron-2.internal", "duration_ms": 178350}
+{"ts": "2024-11-02T14:00:00Z", "task": "send_digest", "result": "success", "host": "cron-2.internal", "duration_ms": 269746}
+{"ts": "2024-11-02T14:12:00Z", "task": "sync_inventory", "result": "success", "host": "cron-3.internal", "duration_ms": 10961}
+{"ts": "2024-11-02T15:09:00Z", "task": "log_rotate", "result": "success", "host": "cron-1.internal", "duration_ms": 261549}
+{"ts": "2024-11-02T15:22:00Z", "task": "send_digest", "result": "success", "host": "cron-3.internal", "duration_ms": 244726}
+{"ts": "2024-11-02T15:42:00Z", "task": "sync_inventory", "result": "success", "host": "cron-2.internal", "duration_ms": 176457}
+{"ts": "2024-11-02T16:30:00Z", "task": "index_optimize", "result": "success", "host": "cron-1.internal", "duration_ms": 124961, "triggered_by": "webhook"}
+{"ts": "2024-11-02T17:25:00Z", "task": "send_digest", "result": "success", "host": "cron-2.internal", "duration_ms": 228408, "triggered_by": "manual"}
+{"ts": "2024-11-02T17:27:00Z", "task": "cache_warm", "result": "success", "host": "cron-2.internal", "duration_ms": 182039}
+{"ts": "2024-11-02T18:24:00Z", "task": "backup", "result": "success", "host": "cron-2.internal", "duration_ms": 85838}
+{"ts": "2024-11-02T19:24:00Z", "task": "backup", "result": "success", "host": "cron-2.internal", "duration_ms": 246668}
+{"ts": "2024-11-02T19:45:00Z", "task": "cache_warm", "result": "success", "host": "cron-1.internal", "duration_ms": 105913, "triggered_by": "manual"}
+{"ts": "2024-11-02T19:59:00Z", "task": "send_digest", "result": "success", "host": "cron-2.internal", "duration_ms": 291659}
+{"ts": "2024-11-02T20:00:00Z", "task": "sync_inventory", "result": "success", "host": "cron-3.internal", "duration_ms": 251241, "triggered_by": "cron"}
+{"ts": "2024-11-02T20:17:00Z", "task": "backup", "result": "success", "host": "cron-3.internal", "duration_ms": 7389, "triggered_by": "cron"}
+{"ts": "2024-11-02T20:44:00Z", "task": "index_optimize", "result": "success", "host": "cron-3.internal", "duration_ms": 90068, "triggered_by": "webhook"}
+{"ts": "2024-11-02T20:55:00Z", "task": "index_optimize", "result": "success", "host": "cron-3.internal", "duration_ms": 51088}
+{"ts": "2024-11-02T21:31:00Z", "task": "index_optimize", "result": "success", "host": "cron-3.internal", "duration_ms": 29780}
+{"ts": "2024-11-02T22:07:00Z", "task": "db_vacuum", "result": "success", "host": "cron-1.internal", "duration_ms": 97629}
+{"ts": "2024-11-02T23:00:00Z", "task": "cache_warm", "result": "success", "host": "cron-1.internal", "duration_ms": 71912}
+{"ts": "2024-11-02T23:58:00Z", "task": "daily_report", "result": "success", "host": "cron-3.internal", "duration_ms": 68706}
+{"ts": "2024-11-03T00:47:00Z", "task": "db_vacuum", "result": "success", "host": "cron-2.internal", "duration_ms": 237681}
+{"ts": "2024-11-03T01:10:00Z", "task": "send_digest", "result": "success", "host": "cron-2.internal", "duration_ms": 280579}
+{"ts": "2024-11-03T02:06:00Z", "task": "index_optimize", "result": "failed", "host": "cron-2.internal", "duration_ms": 67683, "exit_code": 155, "stderr": "non-zero exit status"}
+{"ts": "2024-11-03T02:46:00Z", "task": "db_vacuum", "result": "success", "host": "cron-3.internal", "duration_ms": 55560, "triggered_by": "cron"}
+{"ts": "2024-11-03T03:24:00Z", "task": "sync_inventory", "result": "skipped", "host": "cron-1.internal", "duration_ms": 193898}
+{"ts": "2024-11-03T04:14:00Z", "task": "db_vacuum", "result": "success", "host": "cron-3.internal", "duration_ms": 170424}
+{"ts": "2024-11-03T04:27:00Z", "task": "log_rotate", "result": "success", "host": "cron-3.internal", "duration_ms": 38954}
+{"ts": "2024-11-03T05:12:00Z", "task": "index_optimize", "result": "success", "host": "cron-1.internal", "duration_ms": 50675}
+{"ts": "2024-11-03T05:40:00Z", "task": "log_rotate", "result": "success", "host": "cron-3.internal", "duration_ms": 298213}
+{"ts": "2024-11-03T06:08:00Z", "task": "db_vacuum", "result": "success", "host": "cron-1.internal", "duration_ms": 1420}
+{"ts": "2024-11-03T06:49:00Z", "task": "send_digest", "result": "success", "host": "cron-2.internal", "duration_ms": 144997, "triggered_by": "webhook"}
+{"ts": "2024-11-03T07:31:00Z", "task": "cache_warm", "result": "success", "host": "cron-3.internal", "duration_ms": 234024, "triggered_by": "webhook"}
+{"ts": "2024-11-03T07:51:00Z", "task": "sync_inventory", "result": "success", "host": "cron-3.internal", "duration_ms": 293080}
+{"ts": "2024-11-03T08:12:00Z", "task": "daily_report", "result": "success", "host": "cron-2.internal", "duration_ms": 219923, "triggered_by": "cron"}
+{"ts": "2024-11-03T08:26:00Z", "task": "index_optimize", "result": "success", "host": "cron-2.internal", "duration_ms": 141218}
+{"ts": "2024-11-03T08:57:00Z", "task": "sync_inventory", "result": "success", "host": "cron-2.internal", "duration_ms": 27858}
+{"ts": "2024-11-03T09:16:00Z", "task": "db_vacuum", "result": "success", "host": "cron-2.internal", "duration_ms": 38878}
+{"ts": "2024-11-03T09:19:00Z", "task": "cache_warm", "result": "success", "host": "cron-3.internal", "duration_ms": 16953}
+{"ts": "2024-11-03T09:31:00Z", "task": "backup", "result": "skipped", "host": "cron-3.internal", "duration_ms": 91368, "triggered_by": "webhook"}
+{"ts": "2024-11-03T10:15:00Z", "task": "send_digest", "result": "success", "host": "cron-2.internal", "duration_ms": 129318, "triggered_by": "webhook"}
+{"ts": "2024-11-03T10:29:00Z", "task": "send_digest", "result": "failed", "host": "cron-2.internal", "duration_ms": 138555, "exit_code": 247, "stderr": "non-zero exit status"}
+{"ts": "2024-11-03T11:17:00Z", "task": "index_optimize", "result": "success", "host": "cron-2.internal", "duration_ms": 254509}
+{"ts": "2024-11-03T11:41:00Z", "task": "db_vacuum", "result": "success", "host": "cron-1.internal", "duration_ms": 271274}
+{"ts": "2024-11-03T12:20:00Z", "task": "backup", "result": "success", "host": "cron-3.internal", "duration_ms": 103033}
+{"ts": "2024-11-03T13:08:00Z", "task": "cache_warm", "result": "success", "host": "cron-3.internal", "duration_ms": 117858}
+{"ts": "2024-11-03T13:33:00Z", "task": "cache_warm", "result": "skipped", "host": "cron-1.internal", "duration_ms": 4822}
+{"ts": "2024-11-03T13:49:00Z", "task": "log_rotate", "result": "skipped", "host": "cron-2.internal", "duration_ms": 111058}
+{"ts": "2024-11-03T14:40:00Z", "task": "db_vacuum", "result": "success", "host": "cron-1.internal", "duration_ms": 287355}
+{"ts": "2024-11-03T15:18:00Z", "task": "cache_warm", "result": "success", "host": "cron-3.internal", "duration_ms": 115036}
+{"ts": "2024-11-03T15:50:00Z", "task": "index_optimize", "result": "success", "host": "cron-3.internal", "duration_ms": 207105, "triggered_by": "cron"}
+{"ts": "2024-11-03T15:53:00Z", "task": "send_digest", "result": "success", "host": "cron-1.internal", "duration_ms": 46080}
+{"ts": "2024-11-03T16:29:00Z", "task": "log_rotate", "result": "failed", "host": "cron-1.internal", "duration_ms": 43258, "exit_code": 81, "stderr": "non-zero exit status"}
+{"ts": "2024-11-03T17:11:00Z", "task": "daily_report", "result": "skipped", "host": "cron-1.internal", "duration_ms": 216860, "triggered_by": "manual"}
+{"ts": "2024-11-03T17:28:00Z", "task": "daily_report", "result": "success", "host": "cron-1.internal", "duration_ms": 169641, "triggered_by": "cron"}
+{"ts": "2024-11-03T17:57:00Z", "task": "daily_report", "result": "success", "host": "cron-1.internal", "duration_ms": 175572}
+{"ts": "2024-11-03T17:59:00Z", "task": "db_vacuum", "result": "success", "host": "cron-3.internal", "duration_ms": 130377, "triggered_by": "cron"}
+{"ts": "2024-11-03T18:45:00Z", "task": "backup", "result": "success", "host": "cron-2.internal", "duration_ms": 76277}
+{"ts": "2024-11-03T19:09:00Z", "task": "cache_warm", "result": "success", "host": "cron-2.internal", "duration_ms": 60851}
+{"ts": "2024-11-03T20:05:00Z", "task": "daily_report", "result": "success", "host": "cron-3.internal", "duration_ms": 281028}
+{"ts": "2024-11-03T20:08:00Z", "task": "index_optimize", "result": "success", "host": "cron-1.internal", "duration_ms": 89151}
+{"ts": "2024-11-03T20:41:00Z", "task": "db_vacuum", "result": "success", "host": "cron-1.internal", "duration_ms": 31081}
+{"ts": "2024-11-03T21:33:00Z", "task": "log_rotate", "result": "success", "host": "cron-3.internal", "duration_ms": 95662}
+{"ts": "2024-11-03T21:55:00Z", "task": "cache_warm", "result": "skipped", "host": "cron-2.internal", "duration_ms": 81595}
+{"ts": "2024-11-03T22:06:00Z", "task": "backup", "result": "success", "host": "cron-1.internal", "duration_ms": 250545, "triggered_by": "manual"}
+{"ts": "2024-11-03T22:49:00Z", "task": "backup", "result": "success", "host": "cron-1.internal", "duration_ms": 107200}
+{"ts": "2024-11-03T23:09:00Z", "task": "cache_warm", "result": "success", "host": "cron-1.internal", "duration_ms": 168229}
+{"ts": "2024-11-03T23:30:00Z", "task": "send_digest", "result": "success", "host": "cron-3.internal", "duration_ms": 275005}
+{"ts": "2024-11-04T00:09:00Z", "task": "backup", "result": "success", "host": "cron-2.internal", "duration_ms": 62294}
+{"ts": "2024-11-04T01:02:00Z", "task": "backup", "result": "success", "host": "cron-1.internal", "duration_ms": 258560}
+{"ts": "2024-11-04T01:47:00Z", "task": "db_vacuum", "result": "success", "host": "cron-1.internal", "duration_ms": 98211}
+{"ts": "2024-11-04T02:12:00Z", "task": "send_digest", "result": "failed", "host": "cron-1.internal", "duration_ms": 226761, "exit_code": 28, "stderr": "non-zero exit status"}
+{"ts": "2024-11-04T02:56:00Z", "task": "daily_report", "result": "success", "host": "cron-2.internal", "duration_ms": 227940, "triggered_by": "webhook"}
+{"ts": "2024-11-04T03:01:00Z", "task": "db_vacuum", "result": "success", "host": "cron-1.internal", "duration_ms": 213606, "triggered_by": "webhook"}
+{"ts": "2024-11-04T03:31:00Z", "task": "backup", "result": "skipped", "host": "cron-2.internal", "duration_ms": 130506}
+{"ts": "2024-11-04T04:16:00Z", "task": "backup", "result": "success", "host": "cron-3.internal", "duration_ms": 283247}
+{"ts": "2024-11-04T04:21:00Z", "task": "sync_inventory", "result": "success", "host": "cron-3.internal", "duration_ms": 252886}
+{"ts": "2024-11-04T04:27:00Z", "task": "daily_report", "result": "skipped", "host": "cron-1.internal", "duration_ms": 272952}
+{"ts": "2024-11-04T04:42:00Z", "task": "db_vacuum", "result": "success", "host": "cron-3.internal", "duration_ms": 32497}
+{"ts": "2024-11-04T05:30:00Z", "task": "log_rotate", "result": "failed", "host": "cron-2.internal", "duration_ms": 110030, "exit_code": 107, "stderr": "non-zero exit status"}
+{"ts": "2024-11-04T05:45:00Z", "task": "cache_warm", "result": "success", "host": "cron-3.internal", "duration_ms": 111571}
+{"ts": "2024-11-04T06:04:00Z", "task": "db_vacuum", "result": "skipped", "host": "cron-3.internal", "duration_ms": 274070}
+{"ts": "2024-11-04T06:41:00Z", "task": "sync_inventory", "result": "success", "host": "cron-3.internal", "duration_ms": 146104}
+{"ts": "2024-11-04T07:26:00Z", "task": "daily_report", "result": "success", "host": "cron-3.internal", "duration_ms": 103110, "triggered_by": "webhook"}
+{"ts": "2024-11-04T07:55:00Z", "task": "cache_warm", "result": "skipped", "host": "cron-1.internal", "duration_ms": 115017}
+{"ts": "2024-11-04T08:13:00Z", "task": "send_digest", "result": "success", "host": "cron-3.internal", "duration_ms": 136029, "triggered_by": "cron"}
+{"ts": "2024-11-04T08:24:00Z", "task": "db_vacuum", "result": "success", "host": "cron-2.internal", "duration_ms": 20912}
+{"ts": "2024-11-04T09:06:00Z", "task": "cache_warm", "result": "success", "host": "cron-1.internal", "duration_ms": 78249}
+{"ts": "2024-11-04T09:58:00Z", "task": "index_optimize", "result": "failed", "host": "cron-1.internal", "duration_ms": 60665, "exit_code": 198, "stderr": "non-zero exit status"}
+{"ts": "2024-11-04T10:07:00Z", "task": "send_digest", "result": "success", "host": "cron-3.internal", "duration_ms": 284963}
+{"ts": "2024-11-04T10:33:00Z", "task": "daily_report", "result": "success", "host": "cron-3.internal", "duration_ms": 97983}
+{"ts": "2024-11-04T11:15:00Z", "task": "send_digest", "result": "failed", "host": "cron-3.internal", "duration_ms": 259666, "exit_code": 80, "stderr": "non-zero exit status", "triggered_by": "manual"}
+{"ts": "2024-11-04T12:10:00Z", "task": "backup", "result": "success", "host": "cron-1.internal", "duration_ms": 14244}
+{"ts": "2024-11-04T12:43:00Z", "task": "log_rotate", "result": "success", "host": "cron-3.internal", "duration_ms": 199116}
+{"ts": "2024-11-04T13:27:00Z", "task": "sync_inventory", "result": "success", "host": "cron-2.internal", "duration_ms": 5141}
+{"ts": "2024-11-04T14:13:00Z", "task": "backup", "result": "success", "host": "cron-3.internal", "duration_ms": 124126}
+{"ts": "2024-11-04T14:52:00Z", "task": "index_optimize", "result": "success", "host": "cron-3.internal", "duration_ms": 202925}
+{"ts": "2024-11-04T15:10:00Z", "task": "sync_inventory", "result": "success", "host": "cron-2.internal", "duration_ms": 158061}
+{"ts": "2024-11-04T15:22:00Z", "task": "db_vacuum", "result": "success", "host": "cron-2.internal", "duration_ms": 157761}
+{"ts": "2024-11-04T16:11:00Z", "task": "send_digest", "result": "success", "host": "cron-2.internal", "duration_ms": 18332}
+{"ts": "2024-11-04T16:40:00Z", "task": "db_vacuum", "result": "success", "host": "cron-2.internal", "duration_ms": 57275, "triggered_by": "cron"}
+{"ts": "2024-11-04T17:11:00Z", "task": "daily_report", "result": "failed", "host": "cron-1.internal", "duration_ms": 89455, "exit_code": 156, "stderr": "non-zero exit status"}
+{"ts": "2024-11-04T18:01:00Z", "task": "index_optimize", "result": "success", "host": "cron-1.internal", "duration_ms": 276583, "triggered_by": "webhook"}
+{"ts": "2024-11-04T18:53:00Z", "task": "index_optimize", "result": "success", "host": "cron-1.internal", "duration_ms": 186132, "triggered_by": "webhook"}
+{"ts": "2024-11-04T19:33:00Z", "task": "cache_warm", "result": "success", "host": "cron-1.internal", "duration_ms": 248383}
+{"ts": "2024-11-04T19:37:00Z", "task": "log_rotate", "result": "success", "host": "cron-1.internal", "duration_ms": 99331, "triggered_by": "webhook"}
+{"ts": "2024-11-04T20:00:00Z", "task": "send_digest", "result": "failed", "host": "cron-3.internal", "duration_ms": 272599, "exit_code": 242, "stderr": "non-zero exit status"}
+{"ts": "2024-11-04T20:09:00Z", "task": "sync_inventory", "result": "success", "host": "cron-3.internal", "duration_ms": 92148}
+{"ts": "2024-11-04T20:29:00Z", "task": "log_rotate", "result": "success", "host": "cron-1.internal", "duration_ms": 250115}
+{"ts": "2024-11-04T21:29:00Z", "task": "send_digest", "result": "success", "host": "cron-2.internal", "duration_ms": 117615}
+{"ts": "2024-11-04T21:33:00Z", "task": "sync_inventory", "result": "success", "host": "cron-3.internal", "duration_ms": 65996, "triggered_by": "manual"}
+{"ts": "2024-11-04T22:09:00Z", "task": "backup", "result": "success", "host": "cron-1.internal", "duration_ms": 8290, "triggered_by": "webhook"}
+{"ts": "2024-11-04T23:05:00Z", "task": "backup", "result": "success", "host": "cron-3.internal", "duration_ms": 295111}
+{"ts": "2024-11-04T23:07:00Z", "task": "backup", "result": "success", "host": "cron-3.internal", "duration_ms": 206879, "triggered_by": "manual"}
+{"ts": "2024-11-04T23:41:00Z", "task": "index_optimize", "result": "success", "host": "cron-2.internal", "duration_ms": 97344, "triggered_by": "webhook"}
+{"ts": "2024-11-05T00:38:00Z", "task": "send_digest", "result": "success", "host": "cron-3.internal", "duration_ms": 192257}
+{"ts": "2024-11-05T01:12:00Z", "task": "sync_inventory", "result": "success", "host": "cron-3.internal", "duration_ms": 237713}
+{"ts": "2024-11-05T01:21:00Z", "task": "cache_warm", "result": "success", "host": "cron-2.internal", "duration_ms": 65178, "triggered_by": "cron"}
+{"ts": "2024-11-05T01:47:00Z", "task": "daily_report", "result": "success", "host": "cron-3.internal", "duration_ms": 225581, "triggered_by": "cron"}
+{"ts": "2024-11-05T02:00:00Z", "task": "send_digest", "result": "success", "host": "cron-2.internal", "duration_ms": 131225, "triggered_by": "webhook"}
+{"ts": "2024-11-05T02:45:00Z", "task": "index_optimize", "result": "success", "host": "cron-2.internal", "duration_ms": 85469}
+{"ts": "2024-11-05T03:21:00Z", "task": "index_optimize", "result": "success", "host": "cron-2.internal", "duration_ms": 256760}
+{"ts": "2024-11-05T03:32:00Z", "task": "send_digest", "result": "success", "host": "cron-2.internal", "duration_ms": 257095}
+{"ts": "2024-11-05T04:04:00Z", "task": "backup", "result": "success", "host": "cron-3.internal", "duration_ms": 242803}
+{"ts": "2024-11-05T04:07:00Z", "task": "db_vacuum", "result": "success", "host": "cron-1.internal", "duration_ms": 107046}
+{"ts": "2024-11-05T04:11:00Z", "task": "index_optimize", "result": "success", "host": "cron-3.internal", "duration_ms": 88547, "triggered_by": "manual"}
+{"ts": "2024-11-05T04:46:00Z", "task": "log_rotate", "result": "failed", "host": "cron-2.internal", "duration_ms": 266832, "exit_code": 240, "stderr": "non-zero exit status"}
+{"ts": "2024-11-05T05:13:00Z", "task": "index_optimize", "result": "success", "host": "cron-1.internal", "duration_ms": 163772}
+{"ts": "2024-11-05T06:04:00Z", "task": "sync_inventory", "result": "success", "host": "cron-1.internal", "duration_ms": 293886}
+{"ts": "2024-11-05T06:30:00Z", "task": "sync_inventory", "result": "success", "host": "cron-1.internal", "duration_ms": 23202}
+{"ts": "2024-11-05T07:30:00Z", "task": "cache_warm", "result": "success", "host": "cron-3.internal", "duration_ms": 45042}
+{"ts": "2024-11-05T07:31:00Z", "task": "send_digest", "result": "success", "host": "cron-2.internal", "duration_ms": 276900}
+{"ts": "2024-11-05T08:06:00Z", "task": "log_rotate", "result": "success", "host": "cron-2.internal", "duration_ms": 117415}
+{"ts": "2024-11-05T08:43:00Z", "task": "index_optimize", "result": "failed", "host": "cron-2.internal", "duration_ms": 213985, "exit_code": 186, "stderr": "non-zero exit status"}
+{"ts": "2024-11-05T09:16:00Z", "task": "db_vacuum", "result": "success", "host": "cron-1.internal", "duration_ms": 298121, "triggered_by": "webhook"}
+{"ts": "2024-11-05T09:47:00Z", "task": "send_digest", "result": "success", "host": "cron-3.internal", "duration_ms": 163972}
+{"ts": "2024-11-05T10:31:00Z", "task": "send_digest", "result": "success", "host": "cron-2.internal", "duration_ms": 288434}
+{"ts": "2024-11-05T11:00:00Z", "task": "send_digest", "result": "success", "host": "cron-3.internal", "duration_ms": 60245}
+{"ts": "2024-11-05T11:14:00Z", "task": "sync_inventory", "result": "success", "host": "cron-1.internal", "duration_ms": 278462}
+{"ts": "2024-11-05T11:37:00Z", "task": "cache_warm", "result": "success", "host": "cron-3.internal", "duration_ms": 38693}
+{"ts": "2024-11-05T11:55:00Z", "task": "index_optimize", "result": "success", "host": "cron-1.internal", "duration_ms": 219310}
+{"ts": "2024-11-05T12:13:00Z", "task": "send_digest", "result": "failed", "host": "cron-1.internal", "duration_ms": 276603, "exit_code": 21, "stderr": "non-zero exit status"}
+{"ts": "2024-11-05T13:11:00Z", "task": "db_vacuum", "result": "skipped", "host": "cron-2.internal", "duration_ms": 199435}
+{"ts": "2024-11-05T14:00:00Z", "task": "send_digest", "result": "success", "host": "cron-3.internal", "duration_ms": 182905}
+{"ts": "2024-11-05T14:47:00Z", "task": "backup", "result": "failed", "host": "cron-1.internal", "duration_ms": 25153, "exit_code": 147, "stderr": "non-zero exit status"}
+{"ts": "2024-11-05T14:59:00Z", "task": "log_rotate", "result": "failed", "host": "cron-1.internal", "duration_ms": 65094, "exit_code": 218, "stderr": "non-zero exit status", "triggered_by": "webhook"}
+{"ts": "2024-11-05T15:10:00Z", "task": "backup", "result": "skipped", "host": "cron-3.internal", "duration_ms": 187904}
+{"ts": "2024-11-05T15:33:00Z", "task": "log_rotate", "result": "failed", "host": "cron-1.internal", "duration_ms": 28709, "exit_code": 204, "stderr": "non-zero exit status"}
+{"ts": "2024-11-05T16:07:00Z", "task": "index_optimize", "result": "failed", "host": "cron-3.internal", "duration_ms": 90018, "exit_code": 148, "stderr": "non-zero exit status"}
+{"ts": "2024-11-05T17:03:00Z", "task": "cache_warm", "result": "failed", "host": "cron-3.internal", "duration_ms": 17902, "exit_code": 128, "stderr": "non-zero exit status"}
+{"ts": "2024-11-05T17:20:00Z", "task": "backup", "result": "success", "host": "cron-1.internal", "duration_ms": 142584, "triggered_by": "manual"}
+{"ts": "2024-11-05T17:48:00Z", "task": "db_vacuum", "result": "skipped", "host": "cron-2.internal", "duration_ms": 190947}
+{"ts": "2024-11-05T18:33:00Z", "task": "index_optimize", "result": "success", "host": "cron-1.internal", "duration_ms": 153577}
+{"ts": "2024-11-05T18:36:00Z", "task": "log_rotate", "result": "failed", "host": "cron-2.internal", "duration_ms": 103307, "exit_code": 42, "stderr": "non-zero exit status"}
+{"ts": "2024-11-05T18:57:00Z", "task": "backup", "result": "skipped", "host": "cron-1.internal", "duration_ms": 161776}
+{"ts": "2024-11-05T19:49:00Z", "task": "daily_report", "result": "success", "host": "cron-1.internal", "duration_ms": 243560}
+{"ts": "2024-11-05T20:18:00Z", "task": "db_vacuum", "result": "success", "host": "cron-3.internal", "duration_ms": 219304}
+{"ts": "2024-11-05T20:48:00Z", "task": "log_rotate", "result": "success", "host": "cron-3.internal", "duration_ms": 252651}
+{"ts": "2024-11-05T21:43:00Z", "task": "send_digest", "result": "success", "host": "cron-3.internal", "duration_ms": 162982}
+{"ts": "2024-11-05T22:02:00Z", "task": "daily_report", "result": "success", "host": "cron-3.internal", "duration_ms": 138210}
+{"ts": "2024-11-05T22:53:00Z", "task": "index_optimize", "result": "failed", "host": "cron-3.internal", "duration_ms": 111287, "exit_code": 143, "stderr": "non-zero exit status"}
+{"ts": "2024-11-05T23:20:00Z", "task": "log_rotate", "result": "failed", "host": "cron-2.internal", "duration_ms": 89770, "exit_code": 254, "stderr": "non-zero exit status"}
+{"ts": "2024-11-05T23:47:00Z", "task": "daily_report", "result": "success", "host": "cron-3.internal", "duration_ms": 152544}
+{"ts": "2024-11-06T00:45:00Z", "task": "daily_report", "result": "success", "host": "cron-2.internal", "duration_ms": 108505}
+{"ts": "2024-11-06T01:03:00Z", "task": "sync_inventory", "result": "failed", "host": "cron-3.internal", "duration_ms": 182544, "exit_code": 227, "stderr": "non-zero exit status"}
+{"ts": "2024-11-06T01:35:00Z", "task": "backup", "result": "success", "host": "cron-1.internal", "duration_ms": 207904, "triggered_by": "cron"}
+{"ts": "2024-11-06T01:56:00Z", "task": "send_digest", "result": "success", "host": "cron-1.internal", "duration_ms": 87378}
+{"ts": "2024-11-06T02:02:00Z", "task": "db_vacuum", "result": "failed", "host": "cron-1.internal", "duration_ms": 27834, "exit_code": 43, "stderr": "non-zero exit status"}
+{"ts": "2024-11-06T02:05:00Z", "task": "daily_report", "result": "skipped", "host": "cron-2.internal", "duration_ms": 207803}
+{"ts": "2024-11-06T02:28:00Z", "task": "sync_inventory", "result": "success", "host": "cron-1.internal", "duration_ms": 28781}
+{"ts": "2024-11-06T02:55:00Z", "task": "daily_report", "result": "success", "host": "cron-2.internal", "duration_ms": 5727}
+{"ts": "2024-11-06T03:55:00Z", "task": "sync_inventory", "result": "failed", "host": "cron-2.internal", "duration_ms": 272435, "exit_code": 217, "stderr": "non-zero exit status"}
+{"ts": "2024-11-06T04:01:00Z", "task": "index_optimize", "result": "success", "host": "cron-2.internal", "duration_ms": 168337, "triggered_by": "cron"}
+{"ts": "2024-11-06T04:54:00Z", "task": "send_digest", "result": "success", "host": "cron-3.internal", "duration_ms": 12712}
+{"ts": "2024-11-06T05:52:00Z", "task": "log_rotate", "result": "success", "host": "cron-2.internal", "duration_ms": 256661}
+{"ts": "2024-11-06T06:34:00Z", "task": "send_digest", "result": "success", "host": "cron-3.internal", "duration_ms": 239885}
+{"ts": "2024-11-06T07:28:00Z", "task": "db_vacuum", "result": "success", "host": "cron-3.internal", "duration_ms": 151593, "triggered_by": "manual"}
+{"ts": "2024-11-06T07:43:00Z", "task": "backup", "result": "success", "host": "cron-1.internal", "duration_ms": 299640}
+{"ts": "2024-11-06T08:35:00Z", "task": "send_digest", "result": "success", "host": "cron-1.internal", "duration_ms": 249116, "triggered_by": "webhook"}
+{"ts": "2024-11-06T09:03:00Z", "task": "db_vacuum", "result": "success", "host": "cron-3.internal", "duration_ms": 155711}
+{"ts": "2024-11-06T09:48:00Z", "task": "index_optimize", "result": "success", "host": "cron-3.internal", "duration_ms": 146002}
+{"ts": "2024-11-06T10:30:00Z", "task": "log_rotate", "result": "skipped", "host": "cron-1.internal", "duration_ms": 124952}
+{"ts": "2024-11-06T10:36:00Z", "task": "sync_inventory", "result": "success", "host": "cron-2.internal", "duration_ms": 264510}
+{"ts": "2024-11-06T10:41:00Z", "task": "send_digest", "result": "success", "host": "cron-3.internal", "duration_ms": 228784}
+{"ts": "2024-11-06T10:54:00Z", "task": "db_vacuum", "result": "failed", "host": "cron-1.internal", "duration_ms": 146199, "exit_code": 57, "stderr": "non-zero exit status"}
+{"ts": "2024-11-06T11:10:00Z", "task": "log_rotate", "result": "success", "host": "cron-2.internal", "duration_ms": 3336}
+{"ts": "2024-11-06T11:57:00Z", "task": "backup", "result": "success", "host": "cron-1.internal", "duration_ms": 51469}
+{"ts": "2024-11-06T12:55:00Z", "task": "log_rotate", "result": "failed", "host": "cron-1.internal", "duration_ms": 254158, "exit_code": 167, "stderr": "non-zero exit status", "triggered_by": "cron"}
+{"ts": "2024-11-06T13:25:00Z", "task": "cache_warm", "result": "success", "host": "cron-1.internal", "duration_ms": 264893}
+{"ts": "2024-11-06T14:06:00Z", "task": "cache_warm", "result": "success", "host": "cron-3.internal", "duration_ms": 235815}
+{"ts": "2024-11-06T14:36:00Z", "task": "sync_inventory", "result": "success", "host": "cron-3.internal", "duration_ms": 162347}
+{"ts": "2024-11-06T14:37:00Z", "task": "index_optimize", "result": "success", "host": "cron-1.internal", "duration_ms": 253406, "triggered_by": "manual"}
+{"ts": "2024-11-06T15:21:00Z", "task": "backup", "result": "failed", "host": "cron-2.internal", "duration_ms": 59813, "exit_code": 133, "stderr": "non-zero exit status"}
+{"ts": "2024-11-06T16:20:00Z", "task": "db_vacuum", "result": "success", "host": "cron-1.internal", "duration_ms": 184144}
+{"ts": "2024-11-06T17:16:00Z", "task": "index_optimize", "result": "skipped", "host": "cron-2.internal", "duration_ms": 252271}
+{"ts": "2024-11-06T17:50:00Z", "task": "index_optimize", "result": "success", "host": "cron-3.internal", "duration_ms": 277881, "triggered_by": "webhook"}
+{"ts": "2024-11-06T17:51:00Z", "task": "sync_inventory", "result": "success", "host": "cron-2.internal", "duration_ms": 121557}
+{"ts": "2024-11-06T18:42:00Z", "task": "send_digest", "result": "success", "host": "cron-2.internal", "duration_ms": 115779}
+{"ts": "2024-11-06T19:34:00Z", "task": "send_digest", "result": "success", "host": "cron-3.internal", "duration_ms": 181182, "triggered_by": "webhook"}
+{"ts": "2024-11-06T20:28:00Z", "task": "daily_report", "result": "success", "host": "cron-2.internal", "duration_ms": 289939}
+{"ts": "2024-11-06T21:12:00Z", "task": "daily_report", "result": "success", "host": "cron-1.internal", "duration_ms": 181528, "triggered_by": "webhook"}
+{"ts": "2024-11-06T21:24:00Z", "task": "cache_warm", "result": "success", "host": "cron-2.internal", "duration_ms": 9772}
+{"ts": "2024-11-06T21:43:00Z", "task": "send_digest", "result": "success", "host": "cron-3.internal", "duration_ms": 15386}
+{"ts": "2024-11-06T22:14:00Z", "task": "db_vacuum", "result": "failed", "host": "cron-2.internal", "duration_ms": 221439, "exit_code": 37, "stderr": "non-zero exit status"}
+{"ts": "2024-11-06T22:26:00Z", "task": "index_optimize", "result": "success", "host": "cron-3.internal", "duration_ms": 214351}
+{"ts": "2024-11-06T22:59:00Z", "task": "index_optimize", "result": "success", "host": "cron-2.internal", "duration_ms": 98374}
+{"ts": "2024-11-06T23:02:00Z", "task": "daily_report", "result": "success", "host": "cron-1.internal", "duration_ms": 164846}
+{"ts": "2024-11-06T23:51:00Z", "task": "log_rotate", "result": "success", "host": "cron-1.internal", "duration_ms": 94649}
+{"ts": "2024-11-07T00:22:00Z", "task": "backup", "result": "success", "host": "cron-1.internal", "duration_ms": 125834}
+{"ts": "2024-11-07T00:25:00Z", "task": "daily_report", "result": "skipped", "host": "cron-1.internal", "duration_ms": 114945}
+{"ts": "2024-11-07T00:53:00Z", "task": "index_optimize", "result": "success", "host": "cron-2.internal", "duration_ms": 205664, "triggered_by": "cron"}
+{"ts": "2024-11-07T01:48:00Z", "task": "cache_warm", "result": "success", "host": "cron-3.internal", "duration_ms": 21998}
+{"ts": "2024-11-07T02:30:00Z", "task": "index_optimize", "result": "success", "host": "cron-1.internal", "duration_ms": 273454}
+{"ts": "2024-11-07T03:05:00Z", "task": "db_vacuum", "result": "failed", "host": "cron-2.internal", "duration_ms": 273171, "exit_code": 151, "stderr": "non-zero exit status"}
+{"ts": "2024-11-07T04:01:00Z", "task": "daily_report", "result": "success", "host": "cron-1.internal", "duration_ms": 285780}
+{"ts": "2024-11-07T04:40:00Z", "task": "db_vacuum", "result": "success", "host": "cron-1.internal", "duration_ms": 202939}
+{"ts": "2024-11-07T05:40:00Z", "task": "log_rotate", "result": "success", "host": "cron-2.internal", "duration_ms": 228269}
+{"ts": "2024-11-07T06:22:00Z", "task": "send_digest", "result": "success", "host": "cron-3.internal", "duration_ms": 153282, "triggered_by": "manual"}
+{"ts": "2024-11-07T06:57:00Z", "task": "index_optimize", "result": "success", "host": "cron-2.internal", "duration_ms": 62921}
+{"ts": "2024-11-07T07:21:00Z", "task": "db_vacuum", "result": "success", "host": "cron-2.internal", "duration_ms": 137896}
+{"ts": "2024-11-07T08:12:00Z", "task": "log_rotate", "result": "success", "host": "cron-3.internal", "duration_ms": 196522}
+{"ts": "2024-11-07T08:59:00Z", "task": "log_rotate", "result": "skipped", "host": "cron-2.internal", "duration_ms": 122557}
+{"ts": "2024-11-07T09:00:00Z", "task": "db_vacuum", "result": "success", "host": "cron-2.internal", "duration_ms": 185680}
+{"ts": "2024-11-07T09:18:00Z", "task": "send_digest", "result": "failed", "host": "cron-2.internal", "duration_ms": 291565, "exit_code": 179, "stderr": "non-zero exit status"}
+{"ts": "2024-11-07T09:58:00Z", "task": "send_digest", "result": "success", "host": "cron-2.internal", "duration_ms": 291915, "triggered_by": "webhook"}
+{"ts": "2024-11-07T10:36:00Z", "task": "db_vacuum", "result": "success", "host": "cron-1.internal", "duration_ms": 225379, "triggered_by": "cron"}
+{"ts": "2024-11-07T11:30:00Z", "task": "log_rotate", "result": "success", "host": "cron-3.internal", "duration_ms": 182955}
+{"ts": "2024-11-07T12:23:00Z", "task": "cache_warm", "result": "skipped", "host": "cron-2.internal", "duration_ms": 221888}
+{"ts": "2024-11-07T12:37:00Z", "task": "index_optimize", "result": "skipped", "host": "cron-1.internal", "duration_ms": 199744}
+{"ts": "2024-11-07T12:43:00Z", "task": "sync_inventory", "result": "success", "host": "cron-2.internal", "duration_ms": 29400}
+{"ts": "2024-11-07T13:05:00Z", "task": "db_vacuum", "result": "success", "host": "cron-1.internal", "duration_ms": 164310}
+{"ts": "2024-11-07T13:53:00Z", "task": "cache_warm", "result": "success", "host": "cron-2.internal", "duration_ms": 66334}
+{"ts": "2024-11-07T14:33:00Z", "task": "cache_warm", "result": "success", "host": "cron-1.internal", "duration_ms": 94415}
+{"ts": "2024-11-07T15:32:00Z", "task": "backup", "result": "failed", "host": "cron-3.internal", "duration_ms": 47271, "exit_code": 58, "stderr": "non-zero exit status", "triggered_by": "manual"}
+{"ts": "2024-11-07T16:11:00Z", "task": "send_digest", "result": "success", "host": "cron-3.internal", "duration_ms": 289458}
+{"ts": "2024-11-07T16:19:00Z", "task": "log_rotate", "result": "success", "host": "cron-2.internal", "duration_ms": 257147, "triggered_by": "manual"}
+{"ts": "2024-11-07T16:28:00Z", "task": "send_digest", "result": "skipped", "host": "cron-2.internal", "duration_ms": 35969}
+{"ts": "2024-11-07T17:11:00Z", "task": "backup", "result": "success", "host": "cron-1.internal", "duration_ms": 1124, "triggered_by": "manual"}
+{"ts": "2024-11-07T17:15:00Z", "task": "daily_report", "result": "failed", "host": "cron-2.internal", "duration_ms": 185754, "exit_code": 81, "stderr": "non-zero exit status"}
+{"ts": "2024-11-07T18:08:00Z", "task": "db_vacuum", "result": "failed", "host": "cron-3.internal", "duration_ms": 187267, "exit_code": 92, "stderr": "non-zero exit status"}
+{"ts": "2024-11-07T18:35:00Z", "task": "index_optimize", "result": "success", "host": "cron-3.internal", "duration_ms": 61378}
+{"ts": "2024-11-07T18:57:00Z", "task": "cache_warm", "result": "skipped", "host": "cron-2.internal", "duration_ms": 51829, "triggered_by": "cron"}
+{"ts": "2024-11-07T19:55:00Z", "task": "db_vacuum", "result": "success", "host": "cron-1.internal", "duration_ms": 22928}
+{"ts": "2024-11-07T20:22:00Z", "task": "daily_report", "result": "failed", "host": "cron-2.internal", "duration_ms": 275778, "exit_code": 168, "stderr": "non-zero exit status"}
+{"ts": "2024-11-07T20:34:00Z", "task": "index_optimize", "result": "success", "host": "cron-1.internal", "duration_ms": 17811}
+{"ts": "2024-11-07T20:39:00Z", "task": "cache_warm", "result": "failed", "host": "cron-1.internal", "duration_ms": 169624, "exit_code": 79, "stderr": "non-zero exit status", "triggered_by": "webhook"}
+{"ts": "2024-11-07T21:27:00Z", "task": "daily_report", "result": "success", "host": "cron-3.internal", "duration_ms": 25640, "triggered_by": "cron"}
+{"ts": "2024-11-07T22:12:00Z", "task": "backup", "result": "success", "host": "cron-3.internal", "duration_ms": 18017}
+{"ts": "2024-11-07T22:35:00Z", "task": "sync_inventory", "result": "success", "host": "cron-3.internal", "duration_ms": 293021}
+{"ts": "2024-11-07T23:10:00Z", "task": "send_digest", "result": "success", "host": "cron-1.internal", "duration_ms": 47513}
+{"ts": "2024-11-07T23:53:00Z", "task": "cache_warm", "result": "success", "host": "cron-2.internal", "duration_ms": 133859}
+{"ts": "2024-11-08T00:19:00Z", "task": "db_vacuum", "result": "success", "host": "cron-3.internal", "duration_ms": 189506}
+{"ts": "2024-11-08T00:31:00Z", "task": "index_optimize", "result": "success", "host": "cron-2.internal", "duration_ms": 237499}
+{"ts": "2024-11-08T00:57:00Z", "task": "sync_inventory", "result": "success", "host": "cron-2.internal", "duration_ms": 15736, "triggered_by": "cron"}
+{"ts": "2024-11-08T01:54:00Z", "task": "cache_warm", "result": "failed", "host": "cron-1.internal", "duration_ms": 168244, "exit_code": 53, "stderr": "non-zero exit status"}
+{"ts": "2024-11-08T02:50:00Z", "task": "log_rotate", "result": "failed", "host": "cron-1.internal", "duration_ms": 207908, "exit_code": 136, "stderr": "non-zero exit status"}
+{"ts": "2024-11-08T03:23:00Z", "task": "backup", "result": "success", "host": "cron-2.internal", "duration_ms": 163911}
+{"ts": "2024-11-08T04:12:00Z", "task": "send_digest", "result": "failed", "host": "cron-2.internal", "duration_ms": 294353, "exit_code": 159, "stderr": "non-zero exit status", "triggered_by": "manual"}
+{"ts": "2024-11-08T05:01:00Z", "task": "cache_warm", "result": "success", "host": "cron-3.internal", "duration_ms": 230473}
+{"ts": "2024-11-08T05:05:00Z", "task": "backup", "result": "failed", "host": "cron-1.internal", "duration_ms": 241533, "exit_code": 75, "stderr": "non-zero exit status"}
+{"ts": "2024-11-08T06:04:00Z", "task": "daily_report", "result": "skipped", "host": "cron-3.internal", "duration_ms": 209928}
+{"ts": "2024-11-08T06:48:00Z", "task": "log_rotate", "result": "success", "host": "cron-3.internal", "duration_ms": 291198}
+{"ts": "2024-11-08T06:58:00Z", "task": "cache_warm", "result": "failed", "host": "cron-2.internal", "duration_ms": 39175, "exit_code": 182, "stderr": "non-zero exit status"}
+{"ts": "2024-11-08T07:09:00Z", "task": "log_rotate", "result": "skipped", "host": "cron-1.internal", "duration_ms": 21748}
+{"ts": "2024-11-08T07:13:00Z", "task": "index_optimize", "result": "success", "host": "cron-1.internal", "duration_ms": 258969}
+{"ts": "2024-11-08T07:54:00Z", "task": "backup", "result": "success", "host": "cron-1.internal", "duration_ms": 170374}
+{"ts": "2024-11-08T08:24:00Z", "task": "log_rotate", "result": "success", "host": "cron-3.internal", "duration_ms": 211523}
+{"ts": "2024-11-08T08:46:00Z", "task": "db_vacuum", "result": "success", "host": "cron-3.internal", "duration_ms": 283211}
+{"ts": "2024-11-08T09:13:00Z", "task": "db_vacuum", "result": "success", "host": "cron-1.internal", "duration_ms": 218261}
+{"ts": "2024-11-08T10:03:00Z", "task": "index_optimize", "result": "success", "host": "cron-1.internal", "duration_ms": 145896}
+{"ts": "2024-11-08T10:41:00Z", "task": "index_optimize", "result": "success", "host": "cron-3.internal", "duration_ms": 6462}
+{"ts": "2024-11-08T11:03:00Z", "task": "index_optimize", "result": "success", "host": "cron-2.internal", "duration_ms": 91034}
+{"ts": "2024-11-08T11:52:00Z", "task": "index_optimize", "result": "success", "host": "cron-1.internal", "duration_ms": 125173, "triggered_by": "cron"}
+{"ts": "2024-11-08T12:52:00Z", "task": "sync_inventory", "result": "success", "host": "cron-3.internal", "duration_ms": 106659, "triggered_by": "cron"}
+{"ts": "2024-11-08T12:57:00Z", "task": "index_optimize", "result": "success", "host": "cron-2.internal", "duration_ms": 201730}
+{"ts": "2024-11-08T13:55:00Z", "task": "sync_inventory", "result": "success", "host": "cron-3.internal", "duration_ms": 130968}
+{"ts": "2024-11-08T14:37:00Z", "task": "db_vacuum", "result": "success", "host": "cron-2.internal", "duration_ms": 83895, "triggered_by": "webhook"}
+{"ts": "2024-11-08T15:33:00Z", "task": "sync_inventory", "result": "success", "host": "cron-1.internal", "duration_ms": 57582, "triggered_by": "cron"}
+{"ts": "2024-11-08T16:11:00Z", "task": "daily_report", "result": "skipped", "host": "cron-3.internal", "duration_ms": 179793, "triggered_by": "manual"}
+{"ts": "2024-11-08T16:53:00Z", "task": "send_digest", "result": "failed", "host": "cron-1.internal", "duration_ms": 135701, "exit_code": 7, "stderr": "non-zero exit status", "triggered_by": "manual"}
+{"ts": "2024-11-08T17:28:00Z", "task": "daily_report", "result": "success", "host": "cron-1.internal", "duration_ms": 237390, "triggered_by": "cron"}
+{"ts": "2024-11-08T18:21:00Z", "task": "db_vacuum", "result": "success", "host": "cron-3.internal", "duration_ms": 289714}
+{"ts": "2024-11-08T18:47:00Z", "task": "backup", "result": "success", "host": "cron-2.internal", "duration_ms": 255947}
+{"ts": "2024-11-08T19:29:00Z", "task": "backup", "result": "success", "host": "cron-1.internal", "duration_ms": 289417}
+{"ts": "2024-11-08T20:05:00Z", "task": "db_vacuum", "result": "success", "host": "cron-3.internal", "duration_ms": 161759}
+{"ts": "2024-11-08T20:49:00Z", "task": "sync_inventory", "result": "success", "host": "cron-3.internal", "duration_ms": 191171, "triggered_by": "webhook"}
+{"ts": "2024-11-08T21:23:00Z", "task": "sync_inventory", "result": "success", "host": "cron-2.internal", "duration_ms": 280719}
+{"ts": "2024-11-08T22:15:00Z", "task": "backup", "result": "success", "host": "cron-2.internal", "duration_ms": 121290}
+{"ts": "2024-11-08T22:21:00Z", "task": "log_rotate", "result": "skipped", "host": "cron-3.internal", "duration_ms": 241050}
+{"ts": "2024-11-08T23:13:00Z", "task": "cache_warm", "result": "success", "host": "cron-1.internal", "duration_ms": 261692}
+{"ts": "2024-11-08T23:54:00Z", "task": "index_optimize", "result": "success", "host": "cron-2.internal", "duration_ms": 68327}
+{"ts": "2024-11-09T00:39:00Z", "task": "send_digest", "result": "success", "host": "cron-2.internal", "duration_ms": 82765, "triggered_by": "manual"}
+{"ts": "2024-11-09T00:45:00Z", "task": "sync_inventory", "result": "skipped", "host": "cron-2.internal", "duration_ms": 239361}
+{"ts": "2024-11-09T01:08:00Z", "task": "backup", "result": "success", "host": "cron-3.internal", "duration_ms": 178246}
+{"ts": "2024-11-09T01:51:00Z", "task": "sync_inventory", "result": "success", "host": "cron-3.internal", "duration_ms": 292673}
+{"ts": "2024-11-09T01:58:00Z", "task": "daily_report", "result": "skipped", "host": "cron-1.internal", "duration_ms": 144631, "triggered_by": "webhook"}
+{"ts": "2024-11-09T02:13:00Z", "task": "send_digest", "result": "failed", "host": "cron-3.internal", "duration_ms": 142937, "exit_code": 224, "stderr": "non-zero exit status", "triggered_by": "cron"}
+{"ts": "2024-11-09T02:30:00Z", "task": "sync_inventory", "result": "failed", "host": "cron-2.internal", "duration_ms": 97685, "exit_code": 196, "stderr": "non-zero exit status"}
+{"ts": "2024-11-09T03:01:00Z", "task": "log_rotate", "result": "success", "host": "cron-2.internal", "duration_ms": 37798, "triggered_by": "cron"}
+{"ts": "2024-11-09T03:22:00Z", "task": "db_vacuum", "result": "success", "host": "cron-3.internal", "duration_ms": 73768, "triggered_by": "cron"}
+{"ts": "2024-11-09T03:42:00Z", "task": "send_digest", "result": "success", "host": "cron-1.internal", "duration_ms": 239978}
+{"ts": "2024-11-09T03:50:00Z", "task": "db_vacuum", "result": "success", "host": "cron-2.internal", "duration_ms": 258569}
+{"ts": "2024-11-09T04:12:00Z", "task": "db_vacuum", "result": "failed", "host": "cron-3.internal", "duration_ms": 196852, "exit_code": 19, "stderr": "non-zero exit status", "triggered_by": "manual"}
+{"ts": "2024-11-09T04:26:00Z", "task": "send_digest", "result": "failed", "host": "cron-2.internal", "duration_ms": 89210, "exit_code": 218, "stderr": "non-zero exit status"}
+{"ts": "2024-11-09T05:11:00Z", "task": "db_vacuum", "result": "success", "host": "cron-2.internal", "duration_ms": 240666}
+{"ts": "2024-11-09T05:30:00Z", "task": "db_vacuum", "result": "failed", "host": "cron-2.internal", "duration_ms": 94121, "exit_code": 29, "stderr": "non-zero exit status", "triggered_by": "cron"}
+{"ts": "2024-11-09T06:26:00Z", "task": "db_vacuum", "result": "success", "host": "cron-3.internal", "duration_ms": 53745}
+{"ts": "2024-11-09T07:11:00Z", "task": "cache_warm", "result": "success", "host": "cron-1.internal", "duration_ms": 197826}
+{"ts": "2024-11-09T07:51:00Z", "task": "index_optimize", "result": "success", "host": "cron-2.internal", "duration_ms": 212238}
+{"ts": "2024-11-09T08:15:00Z", "task": "sync_inventory", "result": "skipped", "host": "cron-1.internal", "duration_ms": 29969}
+{"ts": "2024-11-09T09:02:00Z", "task": "sync_inventory", "result": "success", "host": "cron-2.internal", "duration_ms": 273645}
+{"ts": "2024-11-09T09:21:00Z", "task": "sync_inventory", "result": "success", "host": "cron-3.internal", "duration_ms": 267070}
+{"ts": "2024-11-09T09:41:00Z", "task": "send_digest", "result": "skipped", "host": "cron-1.internal", "duration_ms": 199579, "triggered_by": "webhook"}
+{"ts": "2024-11-09T10:32:00Z", "task": "index_optimize", "result": "success", "host": "cron-3.internal", "duration_ms": 57088}
+{"ts": "2024-11-09T11:18:00Z", "task": "cache_warm", "result": "success", "host": "cron-2.internal", "duration_ms": 207260}
+{"ts": "2024-11-09T11:40:00Z", "task": "cache_warm", "result": "success", "host": "cron-1.internal", "duration_ms": 275552}
+{"ts": "2024-11-09T11:56:00Z", "task": "cache_warm", "result": "failed", "host": "cron-2.internal", "duration_ms": 170909, "exit_code": 136, "stderr": "non-zero exit status"}
+{"ts": "2024-11-09T12:46:00Z", "task": "db_vacuum", "result": "success", "host": "cron-1.internal", "duration_ms": 29842}
+{"ts": "2024-11-09T13:46:00Z", "task": "send_digest", "result": "success", "host": "cron-2.internal", "duration_ms": 272837, "triggered_by": "manual"}
+{"ts": "2024-11-09T14:15:00Z", "task": "backup", "result": "success", "host": "cron-1.internal", "duration_ms": 90996}
+{"ts": "2024-11-09T15:07:00Z", "task": "cache_warm", "result": "skipped", "host": "cron-3.internal", "duration_ms": 67471}
+{"ts": "2024-11-09T15:29:00Z", "task": "backup", "result": "success", "host": "cron-1.internal", "duration_ms": 188998}
+{"ts": "2024-11-09T16:04:00Z", "task": "db_vacuum", "result": "skipped", "host": "cron-3.internal", "duration_ms": 205849}
+{"ts": "2024-11-09T16:26:00Z", "task": "backup", "result": "success", "host": "cron-1.internal", "duration_ms": 79372}
+{"ts": "2024-11-09T17:00:00Z", "task": "db_vacuum", "result": "success", "host": "cron-1.internal", "duration_ms": 218464}
+{"ts": "2024-11-09T17:30:00Z", "task": "db_vacuum", "result": "success", "host": "cron-3.internal", "duration_ms": 131414}
+{"ts": "2024-11-09T18:04:00Z", "task": "log_rotate", "result": "success", "host": "cron-3.internal", "duration_ms": 111115}
+{"ts": "2024-11-09T18:07:00Z", "task": "send_digest", "result": "success", "host": "cron-2.internal", "duration_ms": 119759}
+{"ts": "2024-11-09T18:14:00Z", "task": "backup", "result": "success", "host": "cron-3.internal", "duration_ms": 7731}
+{"ts": "2024-11-09T18:28:00Z", "task": "send_digest", "result": "failed", "host": "cron-1.internal", "duration_ms": 106315, "exit_code": 132, "stderr": "non-zero exit status"}
+{"ts": "2024-11-09T18:49:00Z", "task": "daily_report", "result": "failed", "host": "cron-2.internal", "duration_ms": 53312, "exit_code": 169, "stderr": "non-zero exit status"}
+{"ts": "2024-11-09T19:48:00Z", "task": "cache_warm", "result": "success", "host": "cron-2.internal", "duration_ms": 179867}
+{"ts": "2024-11-09T20:06:00Z", "task": "sync_inventory", "result": "skipped", "host": "cron-3.internal", "duration_ms": 148474}
+{"ts": "2024-11-09T21:02:00Z", "task": "send_digest", "result": "success", "host": "cron-1.internal", "duration_ms": 272883}
+{"ts": "2024-11-09T21:15:00Z", "task": "sync_inventory", "result": "success", "host": "cron-2.internal", "duration_ms": 190453, "triggered_by": "manual"}
+{"ts": "2024-11-09T22:06:00Z", "task": "index_optimize", "result": "success", "host": "cron-1.internal", "duration_ms": 86599}
+{"ts": "2024-11-09T23:03:00Z", "task": "send_digest", "result": "skipped", "host": "cron-2.internal", "duration_ms": 160483}
+{"ts": "2024-11-09T23:09:00Z", "task": "db_vacuum", "result": "success", "host": "cron-3.internal", "duration_ms": 149835, "triggered_by": "webhook"}
+{"ts": "2024-11-09T23:45:00Z", "task": "cache_warm", "result": "success", "host": "cron-2.internal", "duration_ms": 181762}
+{"ts": "2024-11-09T23:56:00Z", "task": "send_digest", "result": "success", "host": "cron-2.internal", "duration_ms": 180153}
+{"ts": "2024-11-09T23:59:00Z", "task": "sync_inventory", "result": "success", "host": "cron-2.internal", "duration_ms": 201729}
+{"ts": "2024-11-10T00:49:00Z", "task": "backup", "result": "success", "host": "cron-3.internal", "duration_ms": 9452}
+{"ts": "2024-11-10T01:49:00Z", "task": "log_rotate", "result": "failed", "host": "cron-2.internal", "duration_ms": 87590, "exit_code": 110, "stderr": "non-zero exit status"}
+{"ts": "2024-11-10T02:08:00Z", "task": "backup", "result": "failed", "host": "cron-3.internal", "duration_ms": 56446, "exit_code": 26, "stderr": "non-zero exit status", "triggered_by": "cron"}
+{"ts": "2024-11-10T02:52:00Z", "task": "daily_report", "result": "success", "host": "cron-2.internal", "duration_ms": 145435}
+{"ts": "2024-11-10T03:31:00Z", "task": "send_digest", "result": "success", "host": "cron-1.internal", "duration_ms": 84679, "triggered_by": "manual"}
+{"ts": "2024-11-10T04:04:00Z", "task": "sync_inventory", "result": "success", "host": "cron-3.internal", "duration_ms": 239029}
+{"ts": "2024-11-10T04:59:00Z", "task": "cache_warm", "result": "success", "host": "cron-2.internal", "duration_ms": 257308}
+{"ts": "2024-11-10T05:04:00Z", "task": "index_optimize", "result": "failed", "host": "cron-1.internal", "duration_ms": 293817, "exit_code": 64, "stderr": "non-zero exit status"}
+{"ts": "2024-11-10T06:03:00Z", "task": "backup", "result": "success", "host": "cron-3.internal", "duration_ms": 77375, "triggered_by": "manual"}
+{"ts": "2024-11-10T07:01:00Z", "task": "daily_report", "result": "success", "host": "cron-3.internal", "duration_ms": 271369}
+{"ts": "2024-11-10T07:10:00Z", "task": "send_digest", "result": "success", "host": "cron-3.internal", "duration_ms": 56166, "triggered_by": "webhook"}
+{"ts": "2024-11-10T07:21:00Z", "task": "log_rotate", "result": "skipped", "host": "cron-1.internal", "duration_ms": 52723, "triggered_by": "cron"}
+{"ts": "2024-11-10T07:47:00Z", "task": "cache_warm", "result": "success", "host": "cron-3.internal", "duration_ms": 61717, "triggered_by": "manual"}
+{"ts": "2024-11-10T08:12:00Z", "task": "cache_warm", "result": "success", "host": "cron-3.internal", "duration_ms": 21008}
+{"ts": "2024-11-10T08:56:00Z", "task": "backup", "result": "success", "host": "cron-2.internal", "duration_ms": 119915}
+{"ts": "2024-11-10T09:14:00Z", "task": "cache_warm", "result": "skipped", "host": "cron-2.internal", "duration_ms": 215285}
+{"ts": "2024-11-10T09:19:00Z", "task": "log_rotate", "result": "success", "host": "cron-1.internal", "duration_ms": 265414}
+{"ts": "2024-11-10T10:09:00Z", "task": "log_rotate", "result": "success", "host": "cron-3.internal", "duration_ms": 172064}
+{"ts": "2024-11-10T10:15:00Z", "task": "daily_report", "result": "skipped", "host": "cron-3.internal", "duration_ms": 176351}
+{"ts": "2024-11-10T10:52:00Z", "task": "send_digest", "result": "success", "host": "cron-3.internal", "duration_ms": 25558}
+{"ts": "2024-11-10T11:12:00Z", "task": "daily_report", "result": "success", "host": "cron-2.internal", "duration_ms": 46387}
+{"ts": "2024-11-10T12:03:00Z", "task": "sync_inventory", "result": "success", "host": "cron-3.internal", "duration_ms": 27593}
+{"ts": "2024-11-10T12:45:00Z", "task": "sync_inventory", "result": "success", "host": "cron-1.internal", "duration_ms": 271580, "triggered_by": "webhook"}
+{"ts": "2024-11-10T13:04:00Z", "task": "daily_report", "result": "success", "host": "cron-3.internal", "duration_ms": 54418}
+{"ts": "2024-11-10T13:24:00Z", "task": "backup", "result": "success", "host": "cron-2.internal", "duration_ms": 11724}
+{"ts": "2024-11-10T13:47:00Z", "task": "cache_warm", "result": "success", "host": "cron-2.internal", "duration_ms": 235471, "triggered_by": "webhook"}
+{"ts": "2024-11-10T13:59:00Z", "task": "backup", "result": "success", "host": "cron-1.internal", "duration_ms": 88414}
+{"ts": "2024-11-10T14:51:00Z", "task": "index_optimize", "result": "success", "host": "cron-1.internal", "duration_ms": 74382, "triggered_by": "webhook"}
+{"ts": "2024-11-10T15:35:00Z", "task": "backup", "result": "success", "host": "cron-3.internal", "duration_ms": 226081}
+{"ts": "2024-11-10T16:31:00Z", "task": "index_optimize", "result": "skipped", "host": "cron-3.internal", "duration_ms": 26409}
+{"ts": "2024-11-10T16:37:00Z", "task": "cache_warm", "result": "success", "host": "cron-2.internal", "duration_ms": 213351}
+{"ts": "2024-11-10T16:56:00Z", "task": "log_rotate", "result": "success", "host": "cron-3.internal", "duration_ms": 193783}
+{"ts": "2024-11-10T17:20:00Z", "task": "log_rotate", "result": "skipped", "host": "cron-2.internal", "duration_ms": 259237}
+{"ts": "2024-11-10T17:24:00Z", "task": "log_rotate", "result": "failed", "host": "cron-1.internal", "duration_ms": 16729, "exit_code": 224, "stderr": "non-zero exit status"}
+{"ts": "2024-11-10T17:58:00Z", "task": "index_optimize", "result": "success", "host": "cron-3.internal", "duration_ms": 201833}
+{"ts": "2024-11-10T18:26:00Z", "task": "index_optimize", "result": "success", "host": "cron-3.internal", "duration_ms": 240466}
+{"ts": "2024-11-10T19:03:00Z", "task": "index_optimize", "result": "success", "host": "cron-1.internal", "duration_ms": 82653, "triggered_by": "manual"}
+{"ts": "2024-11-10T19:39:00Z", "task": "cache_warm", "result": "success", "host": "cron-1.internal", "duration_ms": 55884, "triggered_by": "cron"}
+{"ts": "2024-11-10T20:06:00Z", "task": "log_rotate", "result": "success", "host": "cron-2.internal", "duration_ms": 51075, "triggered_by": "manual"}
+{"ts": "2024-11-10T21:02:00Z", "task": "db_vacuum", "result": "failed", "host": "cron-1.internal", "duration_ms": 125438, "exit_code": 15, "stderr": "non-zero exit status"}
+{"ts": "2024-11-10T21:41:00Z", "task": "log_rotate", "result": "success", "host": "cron-2.internal", "duration_ms": 296745}
+{"ts": "2024-11-10T22:13:00Z", "task": "backup", "result": "success", "host": "cron-3.internal", "duration_ms": 48327, "triggered_by": "manual"}
+{"ts": "2024-11-10T23:12:00Z", "task": "index_optimize", "result": "success", "host": "cron-3.internal", "duration_ms": 22444}
+{"ts": "2024-11-10T23:41:00Z", "task": "db_vacuum", "result": "failed", "host": "cron-3.internal", "duration_ms": 159992, "exit_code": 132, "stderr": "non-zero exit status"}
+{"ts": "2024-11-10T23:52:00Z", "task": "backup", "result": "success", "host": "cron-2.internal", "duration_ms": 197653}
+{"ts": "2024-11-11T00:21:00Z", "task": "backup", "result": "success", "host": "cron-1.internal", "duration_ms": 5513, "triggered_by": "webhook"}
+{"ts": "2024-11-11T00:34:00Z", "task": "send_digest", "result": "success", "host": "cron-1.internal", "duration_ms": 5210, "triggered_by": "manual"}
+{"ts": "2024-11-11T01:09:00Z", "task": "backup", "result": "success", "host": "cron-2.internal", "duration_ms": 268145, "triggered_by": "manual"}
+{"ts": "2024-11-11T01:30:00Z", "task": "sync_inventory", "result": "success", "host": "cron-3.internal", "duration_ms": 137726}
+{"ts": "2024-11-11T02:01:00Z", "task": "daily_report", "result": "success", "host": "cron-1.internal", "duration_ms": 104616}
+{"ts": "2024-11-11T02:49:00Z", "task": "backup", "result": "success", "host": "cron-1.internal", "duration_ms": 42845, "triggered_by": "cron"}
+{"ts": "2024-11-11T03:05:00Z", "task": "daily_report", "result": "failed", "host": "cron-1.internal", "duration_ms": 120741, "exit_code": 8, "stderr": "non-zero exit status", "triggered_by": "manual"}
+{"ts": "2024-11-11T03:20:00Z", "task": "index_optimize", "result": "success", "host": "cron-2.internal", "duration_ms": 281760}
+{"ts": "2024-11-11T04:03:00Z", "task": "cache_warm", "result": "success", "host": "cron-2.internal", "duration_ms": 63655}
+{"ts": "2024-11-11T04:24:00Z", "task": "cache_warm", "result": "failed", "host": "cron-3.internal", "duration_ms": 281910, "exit_code": 99, "stderr": "non-zero exit status"}
+{"ts": "2024-11-11T04:30:00Z", "task": "send_digest", "result": "success", "host": "cron-3.internal", "duration_ms": 151118, "triggered_by": "manual"}
+{"ts": "2024-11-11T05:05:00Z", "task": "backup", "result": "success", "host": "cron-1.internal", "duration_ms": 106096, "triggered_by": "manual"}
+{"ts": "2024-11-11T05:59:00Z", "task": "db_vacuum", "result": "skipped", "host": "cron-2.internal", "duration_ms": 254121}
+{"ts": "2024-11-11T06:37:00Z", "task": "log_rotate", "result": "success", "host": "cron-1.internal", "duration_ms": 267331}
+{"ts": "2024-11-11T07:00:00Z", "task": "backup", "result": "success", "host": "cron-1.internal", "duration_ms": 152908}
+{"ts": "2024-11-11T07:56:00Z", "task": "backup", "result": "failed", "host": "cron-1.internal", "duration_ms": 270008, "exit_code": 90, "stderr": "non-zero exit status", "triggered_by": "cron"}
+{"ts": "2024-11-11T08:00:00Z", "task": "daily_report", "result": "success", "host": "cron-3.internal", "duration_ms": 158631}
+{"ts": "2024-11-11T08:40:00Z", "task": "cache_warm", "result": "success", "host": "cron-2.internal", "duration_ms": 139439}
+{"ts": "2024-11-11T09:25:00Z", "task": "cache_warm", "result": "success", "host": "cron-1.internal", "duration_ms": 95779}
+{"ts": "2024-11-11T09:27:00Z", "task": "log_rotate", "result": "success", "host": "cron-3.internal", "duration_ms": 251300}
+{"ts": "2024-11-11T09:54:00Z", "task": "index_optimize", "result": "success", "host": "cron-2.internal", "duration_ms": 192727, "triggered_by": "webhook"}
+{"ts": "2024-11-11T10:06:00Z", "task": "backup", "result": "success", "host": "cron-3.internal", "duration_ms": 97333}
+{"ts": "2024-11-11T10:34:00Z", "task": "index_optimize", "result": "success", "host": "cron-1.internal", "duration_ms": 34500}
+{"ts": "2024-11-11T10:48:00Z", "task": "send_digest", "result": "success", "host": "cron-3.internal", "duration_ms": 223252}
+{"ts": "2024-11-11T11:09:00Z", "task": "db_vacuum", "result": "success", "host": "cron-3.internal", "duration_ms": 266107, "triggered_by": "manual"}
+{"ts": "2024-11-11T11:51:00Z", "task": "send_digest", "result": "success", "host": "cron-3.internal", "duration_ms": 141662, "triggered_by": "cron"}
+{"ts": "2024-11-11T12:25:00Z", "task": "send_digest", "result": "success", "host": "cron-1.internal", "duration_ms": 62854}
+{"ts": "2024-11-11T12:44:00Z", "task": "index_optimize", "result": "success", "host": "cron-2.internal", "duration_ms": 59360}
+{"ts": "2024-11-11T13:29:00Z", "task": "backup", "result": "success", "host": "cron-3.internal", "duration_ms": 275347}
+{"ts": "2024-11-11T13:55:00Z", "task": "cache_warm", "result": "success", "host": "cron-1.internal", "duration_ms": 262595, "triggered_by": "webhook"}
+{"ts": "2024-11-11T14:23:00Z", "task": "send_digest", "result": "success", "host": "cron-3.internal", "duration_ms": 95291, "triggered_by": "manual"}
+{"ts": "2024-11-11T14:54:00Z", "task": "db_vacuum", "result": "skipped", "host": "cron-1.internal", "duration_ms": 104557}
+{"ts": "2024-11-11T15:20:00Z", "task": "backup", "result": "success", "host": "cron-1.internal", "duration_ms": 286775}
+{"ts": "2024-11-11T16:11:00Z", "task": "send_digest", "result": "success", "host": "cron-2.internal", "duration_ms": 3839, "triggered_by": "manual"}
+{"ts": "2024-11-11T16:28:00Z", "task": "backup", "result": "success", "host": "cron-1.internal", "duration_ms": 44744}
+{"ts": "2024-11-11T17:28:00Z", "task": "index_optimize", "result": "success", "host": "cron-1.internal", "duration_ms": 83812, "triggered_by": "cron"}
+{"ts": "2024-11-11T17:56:00Z", "task": "log_rotate", "result": "failed", "host": "cron-1.internal", "duration_ms": 150230, "exit_code": 227, "stderr": "non-zero exit status"}

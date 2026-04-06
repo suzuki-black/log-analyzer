@@ -86,6 +86,8 @@ async fn process(state: &Arc<AppState>, job: &mut Job) -> Result<()> {
     let mut notified_te_cols: std::collections::HashSet<String> = std::collections::HashSet::new();
 
     let mut dedup = DedupTracker::new();
+    // Load hashes already stored in the target table for cross-job dedup
+    dedup.load_existing(&state.pool, &job.table_name).await?;
 
     // pre-count total lines across all files
     let mut file_infos: Vec<(String, String, usize)> = Vec::new(); // (file_id, path, lines)
@@ -137,7 +139,7 @@ async fn process(state: &Arc<AppState>, job: &mut Job) -> Result<()> {
             job.lines_read += 1;
 
             // duplicate check
-            let is_dup = dedup.check(&raw);
+            let (is_dup, content_hash) = dedup.check(&raw);
             if is_dup {
                 job.duplicates_found += 1;
                 match job.dup_mode {
@@ -203,7 +205,7 @@ async fn process(state: &Arc<AppState>, job: &mut Job) -> Result<()> {
                 _ => None,
             };
 
-            insert_row(&state.pool, &job.table_name, &job.id, job.lines_read, is_dup_val, &raw, &col_map, &schema).await?;
+            insert_row(&state.pool, &job.table_name, &job.id, job.lines_read, is_dup_val, &raw, &content_hash, &col_map, &schema).await?;
             job.rows_inserted += 1;
 
             // send progress every 100 rows or on last line
@@ -236,11 +238,12 @@ async fn insert_row(
     line_no: usize,
     is_dup: Option<i64>,
     raw: &str,
+    content_hash: &str,
     col_map: &[(String, Option<String>, Value)],
     schema: &SchemaTracker,
 ) -> Result<()> {
-    let mut cols = vec!["_job_id".to_string(), "_line_no".to_string(), "_is_dup".to_string(), "_raw".to_string()];
-    let mut placeholders = vec!["?", "?", "?", "?"];
+    let mut cols = vec!["_job_id".to_string(), "_line_no".to_string(), "_is_dup".to_string(), "_content_hash".to_string(), "_raw".to_string()];
+    let mut placeholders = vec!["?", "?", "?", "?", "?"];
 
     for (col, te_col, _) in col_map {
         cols.push(format!("`{}`", col));
@@ -262,6 +265,7 @@ async fn insert_row(
         .bind(job_id)
         .bind(line_no as i64)
         .bind(is_dup)
+        .bind(content_hash)
         .bind(raw);
 
     for (col, te_col, val) in col_map {

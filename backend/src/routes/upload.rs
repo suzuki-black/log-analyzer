@@ -10,14 +10,26 @@ pub async fn upload_file(
 ) -> Result<Json<Vec<UploadResponse>>, AppError> {
     let mut results = Vec::new();
 
-    while let Some(field) = multipart.next_field().await.map_err(|e| AppError::Bad(e.to_string()))? {
-        let original_name = field
-            .file_name()
+    eprintln!("[upload] request received");
+    while let Some(field) = multipart.next_field().await.map_err(|e| {
+        eprintln!("[upload] multipart field error: {}", e);
+        AppError::Bad(e.to_string())
+    })? {
+        let raw_name = field.file_name().unwrap_or("unknown").to_string();
+        // webkitdirectory sends relative paths (e.g. "webapp/api-access.log") — take basename only
+        let original_name = raw_name
+            .split(['/', '\\'])
+            .last()
             .unwrap_or("unknown")
             .to_string();
+        eprintln!("[upload] receiving file: {} (raw: {})", original_name, raw_name);
 
-        let data = field.bytes().await.map_err(|e| AppError::Bad(e.to_string()))?;
+        let data = field.bytes().await.map_err(|e| {
+            eprintln!("[upload] bytes read error for {}: {}", original_name, e);
+            AppError::Bad(e.to_string())
+        })?;
         let size = data.len() as u64;
+        eprintln!("[upload] received {} bytes for {}", size, original_name);
         let file_id = Uuid::new_v4().to_string();
         let stored_path = format!("{}/{}_{}", state.config.upload_dir, file_id, original_name);
 

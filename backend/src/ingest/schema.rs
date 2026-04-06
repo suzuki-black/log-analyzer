@@ -117,15 +117,18 @@ impl SchemaTracker {
     pub async fn ensure_table(&self, pool: &MySqlPool, table: &str) -> Result<()> {
         sqlx::query(&format!(
             r#"CREATE TABLE IF NOT EXISTS `{table}` (
-                _id     BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-                _job_id VARCHAR(36) NOT NULL,
-                _line_no BIGINT NOT NULL,
-                _is_dup  TINYINT(1) DEFAULT NULL,
-                _raw     MEDIUMTEXT NOT NULL
+                _id           BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+                _job_id       VARCHAR(36) NOT NULL,
+                _line_no      BIGINT NOT NULL,
+                _is_dup       TINYINT(1) DEFAULT NULL,
+                _content_hash CHAR(64) DEFAULT NULL,
+                _raw          MEDIUMTEXT NOT NULL
             )"#
         ))
         .execute(pool)
         .await?;
+        // Add _content_hash to tables created before this version
+        self.add_column(pool, table, "_content_hash", "CHAR(64)").await?;
         Ok(())
     }
 
