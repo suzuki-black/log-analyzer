@@ -134,4 +134,4 @@ samples/
 
 ## ライセンス
 
-[MIT License](LICENSE)
+[MIT](LICENSE) © 2026 suzuki-black
