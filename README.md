@@ -10,10 +10,6 @@
 [![Database: MySQL 8](https://img.shields.io/badge/database-MySQL%208.4-4479A1.svg)](https://www.mysql.com)
 [![Deploy: Docker Compose](https://img.shields.io/badge/deploy-Docker%20Compose-2496ED.svg)](docker-compose.yml)
 
-<!-- Replace with actual demo GIF: docs/demo.gif
-     Capture: drag files to drop zone → real-time SSE progress bars → completion modal (~3s) -->
-![Demo](docs/demo.gif)
-
 | 🏗️ Zero Schema | 🔁 Cross-Job Dedup | ⚠️ Type Safety | 📡 Live Progress | 🌐 i18n |
 |:---:|:---:|:---:|:---:|:---:|
 | Schema evolves automatically | SHA-256 across all past jobs | Companion columns preserve bad data | SSE streams every record | EN / JA built-in |
