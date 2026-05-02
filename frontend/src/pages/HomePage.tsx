@@ -2,6 +2,7 @@ import { useState, useRef, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { uploadFiles, createJob, listJobs, listTables, truncateTable, dropTable } from '../api/client'
 import type { UploadResponse, Job, TableInfo, DupMode } from '../types'
+import { useI18n } from '../i18n'
 import styles from './HomePage.module.css'
 
 function fmt(n: number) {
@@ -66,6 +67,7 @@ function filePath(f: File): string {
 
 export default function HomePage() {
   const navigate = useNavigate()
+  const { t } = useI18n()
   const dropRef = useRef<HTMLDivElement>(null)
   const inputRef = useRef<HTMLInputElement>(null)
   const dirInputRef = useRef<HTMLInputElement>(null)
@@ -96,21 +98,16 @@ export default function HomePage() {
   }, [])
 
   function addFiles(incoming: File[]) {
-    console.log('[addFiles] incoming:', incoming.length, incoming.map(f => filePath(f)))
     const filtered = incoming.filter(f =>
       f.name.endsWith('.log') || f.name.endsWith('.gz')
     )
-    console.log('[addFiles] filtered (.log/.gz):', filtered.length)
     const merged = [...files, ...filtered].filter(
       (f, i, arr) => arr.findIndex(g => filePath(g) === filePath(f) && g.size === f.size) === i
     )
-    console.log('[addFiles] merged (deduped):', merged.length)
     setFiles(merged)
     setUploads([])
     setPairConfirmed(false)
-    const warnings = detectDuplicatePairs(merged)
-    console.log('[addFiles] pairWarnings:', warnings)
-    setPairWarnings(warnings)
+    setPairWarnings(detectDuplicatePairs(merged))
   }
 
   async function onDrop(e: React.DragEvent) {
@@ -121,22 +118,15 @@ export default function HomePage() {
   }
 
   async function handleUpload() {
-    console.log('[handleUpload] files:', files.length, 'canUpload:', canUpload)
     if (files.length === 0) return
     setUploading(true)
     setUploadPct(0)
     setError('')
     try {
-      console.log('[handleUpload] starting XHR upload')
-      const res = await uploadFiles(files, (pct) => {
-        console.log('[handleUpload] progress:', pct, '%')
-        setUploadPct(pct)
-      })
-      console.log('[handleUpload] upload done, responses:', res)
+      const res = await uploadFiles(files, (pct) => setUploadPct(pct))
       setUploads(res)
       setUploadDone(true)
     } catch (e: any) {
-      console.error('[handleUpload] error:', e)
       setError(e.message)
     } finally {
       setUploading(false)
@@ -165,15 +155,21 @@ export default function HomePage() {
         <div className={styles.dialogOverlay} onClick={() => setUploadDone(false)}>
           <div className={styles.dialog} onClick={e => e.stopPropagation()}>
             <div className={styles.dialogIcon}>✅</div>
-            <h3>アップロード完了</h3>
-            <p>{uploads.length} ファイルをサーバに保存しました。<br />テーブル名を入力して取り込みを開始してください。</p>
-            <button className={styles.btnPrimary} onClick={() => setUploadDone(false)}>OK</button>
+            <h3>{t('home.dialog.uploadDone.title')}</h3>
+            <p>
+              {t('home.dialog.uploadDone.body', { n: uploads.length })}<br />
+              {t('home.dialog.uploadDone.body2')}
+            </p>
+            <button className={styles.btnPrimary} onClick={() => setUploadDone(false)}>
+              {t('home.dialog.uploadDone.ok')}
+            </button>
           </div>
         </div>
       )}
+
       <header className={styles.header}>
         <h1>Log Analyzer</h1>
-        <p className={styles.sub}>NDJSON ログファイルを MySQL へ動的スキーマで取り込む</p>
+        <p className={styles.sub}>{t('app.subtitle')}</p>
       </header>
 
       <div className={styles.layout}>
@@ -181,7 +177,7 @@ export default function HomePage() {
         <div className={styles.main}>
           {/* Drop zone */}
           <div className="card">
-            <h2 className={styles.sectionTitle}>ファイル選択</h2>
+            <h2 className={styles.sectionTitle}>{t('home.fileSelect.title')}</h2>
             <div
               ref={dropRef}
               className={`${styles.dropzone} ${dragging ? styles.dragover : ''}`}
@@ -190,13 +186,13 @@ export default function HomePage() {
               onDrop={onDrop}
             >
               <span className={styles.dropIcon}>📂</span>
-              <p>.log / .gz をドロップ（ディレクトリ可）</p>
+              <p>{t('home.fileSelect.dropHint')}</p>
               <div className={styles.selectBtns}>
                 <button className={styles.btnSelect} onClick={() => inputRef.current?.click()}>
-                  ファイルを選択
+                  {t('home.fileSelect.btnFile')}
                 </button>
                 <button className={styles.btnSelect} onClick={() => dirInputRef.current?.click()}>
-                  フォルダを選択
+                  {t('home.fileSelect.btnFolder')}
                 </button>
               </div>
               <input
@@ -218,16 +214,24 @@ export default function HomePage() {
 
             {pairWarnings.length > 0 && !pairConfirmed && (
               <div className={styles.warning}>
-                <strong>⚠ 同一ベース名のファイルが検出されました:</strong>
+                <strong>{t('home.fileSelect.pairWarning.title')}</strong>
                 <ul>{pairWarnings.map(w => <li key={w}>{w}</li>)}</ul>
-                <p>同一ログの重複取り込みになる可能性があります。続行しますか？</p>
-                <button className={styles.btnWarn} onClick={() => setPairConfirmed(true)}>続行する</button>
+                <p>{t('home.fileSelect.pairWarning.body')}</p>
+                <button className={styles.btnWarn} onClick={() => setPairConfirmed(true)}>
+                  {t('home.fileSelect.pairWarning.confirm')}
+                </button>
               </div>
             )}
 
             {files.length > 0 && (
               <table className={styles.fileTable}>
-                <thead><tr><th>ファイル名</th><th>サイズ</th><th></th></tr></thead>
+                <thead>
+                  <tr>
+                    <th>{t('home.fileSelect.tableHeader.name')}</th>
+                    <th>{t('home.fileSelect.tableHeader.size')}</th>
+                    <th></th>
+                  </tr>
+                </thead>
                 <tbody>
                   {files.map((f, i) => (
                     <tr key={i}>
@@ -253,7 +257,11 @@ export default function HomePage() {
               onClick={handleUpload}
               disabled={!canUpload || uploading || uploads.length > 0}
             >
-              {uploading ? `アップロード中... ${uploadPct}%` : uploads.length > 0 ? '✓ アップロード済み' : 'サーバへアップロード'}
+              {uploading
+                ? t('home.fileSelect.btnUploading', { pct: uploadPct })
+                : uploads.length > 0
+                  ? t('home.fileSelect.btnUploaded')
+                  : t('home.fileSelect.btnUpload')}
             </button>
             {uploading && (
               <div className={styles.uploadProgressTrack}>
@@ -264,43 +272,46 @@ export default function HomePage() {
 
           {/* Config */}
           <div className="card" style={{ marginTop: 16 }}>
-            <h2 className={styles.sectionTitle}>取り込み設定</h2>
+            <h2 className={styles.sectionTitle}>{t('home.config.title')}</h2>
 
             <div className={styles.field}>
-              <label>テーブルベース名</label>
+              <label>{t('home.config.tableName.label')}</label>
               <div className={styles.tableRow}>
                 <input
                   value={tableName}
                   onChange={e => setTableName(e.target.value.replace(/[^a-zA-Z0-9_]/g, '_'))}
-                  placeholder="例: access_log"
+                  placeholder={t('home.config.tableName.placeholder')}
                 />
                 <span className={styles.suffix}>_la</span>
               </div>
-              <p className={styles.hint}>実際のテーブル名: <code>{tableName || '(未入力)'}_la</code></p>
+              <p className={styles.hint}>
+                {t('home.config.tableName.hint')}{' '}
+                <code>{tableName || t('home.config.tableName.hintEmpty')}_la</code>
+              </p>
             </div>
 
             {existingTables.length > 0 && (
               <div className={styles.field}>
-                <label>既存テーブルから選択</label>
+                <label>{t('home.config.existingTable.label')}</label>
                 <select onChange={e => {
                   const v = e.target.value
                   if (v) setTableName(v.replace(/_la$/, ''))
                 }}>
-                  <option value="">-- 選択 --</option>
-                  {existingTables.map(t => (
-                    <option key={t.name} value={t.name}>{t.name}</option>
+                  <option value="">{t('home.config.existingTable.placeholder')}</option>
+                  {existingTables.map(tbl => (
+                    <option key={tbl.name} value={tbl.name}>{tbl.name}</option>
                   ))}
                 </select>
               </div>
             )}
 
             <div className={styles.field}>
-              <label>重複行の扱い</label>
+              <label>{t('home.config.dupMode.label')}</label>
               <div className={styles.radioGroup}>
-                {([['warn', '警告して挿入'], ['flag_column', '_is_dup フラグを立てて挿入'], ['skip', 'スキップ']] as [DupMode, string][]).map(([v, label]) => (
+                {(['warn', 'flag_column', 'skip'] as DupMode[]).map(v => (
                   <label key={v} className={styles.radio}>
                     <input type="radio" name="dup" value={v} checked={dupMode === v} onChange={() => setDupMode(v)} />
-                    {label}
+                    {t(`home.config.dupMode.${v}`)}
                   </label>
                 ))}
               </div>
@@ -313,7 +324,7 @@ export default function HomePage() {
               onClick={handleSubmit}
               disabled={!canSubmit || submitting}
             >
-              {submitting ? '開始中...' : '取り込み開始'}
+              {submitting ? t('home.config.btnStarting') : t('home.config.btnStart')}
             </button>
           </div>
         </div>
@@ -321,21 +332,21 @@ export default function HomePage() {
         {/* Right: recent jobs + table management */}
         <div className={styles.sidebar}>
           <div className="card">
-            <h2 className={styles.sectionTitle}>最近のジョブ</h2>
+            <h2 className={styles.sectionTitle}>{t('home.recentJobs.title')}</h2>
             {recentJobs.length === 0
-              ? <p className={styles.empty}>まだジョブはありません</p>
+              ? <p className={styles.empty}>{t('home.recentJobs.empty')}</p>
               : recentJobs.slice(0, 10).map(j => (
                   <a key={j.id} href={`/jobs/${j.id}`} className={styles.jobItem}>
                     <div className={styles.jobName}>{j.table_name}</div>
                     <StatusBadge status={j.status} />
-                    <div className={styles.jobMeta}>{j.rows_inserted.toLocaleString()} 行</div>
+                    <div className={styles.jobMeta}>{t('home.recentJobs.rows', { n: j.rows_inserted.toLocaleString() })}</div>
                   </a>
                 ))
             }
           </div>
 
           <div className="card" style={{ marginTop: 16 }}>
-            <h2 className={styles.sectionTitle}>テーブル管理</h2>
+            <h2 className={styles.sectionTitle}>{t('home.tableManage.title')}</h2>
             <TableManager
               tables={existingTables}
               onRefresh={() => listTables().then(setExistingTables).catch(() => {})}
@@ -348,6 +359,7 @@ export default function HomePage() {
 }
 
 function TableManager({ tables, onRefresh }: { tables: TableInfo[], onRefresh: () => void }) {
+  const { t } = useI18n()
   const [confirmState, setConfirmState] = useState<{ name: string; action: 'truncate' | 'drop' } | null>(null)
   const [opError, setOpError] = useState('')
   const [working, setWorking] = useState(false)
@@ -371,7 +383,7 @@ function TableManager({ tables, onRefresh }: { tables: TableInfo[], onRefresh: (
     }
   }
 
-  if (tables.length === 0) return <p className={styles.empty}>テーブルはありません</p>
+  if (tables.length === 0) return <p className={styles.empty}>{t('home.tableManage.empty')}</p>
 
   return (
     <>
@@ -380,12 +392,18 @@ function TableManager({ tables, onRefresh }: { tables: TableInfo[], onRefresh: (
           <div className={styles.dialog} onClick={e => e.stopPropagation()}>
             <div className={styles.dialogIcon}>{confirmState.action === 'truncate' ? '🔄' : '🗑️'}</div>
             <h3 style={{ color: confirmState.action === 'truncate' ? '#f6ad55' : '#fc8181' }}>
-              {confirmState.action === 'truncate' ? 'テーブルをリセット' : 'テーブルを削除'}
-            </h3>
-            <p><code style={{ color: '#90cdf4', background: '#2d3748', padding: '2px 6px', borderRadius: 4 }}>{confirmState.name}</code><br /><br />
               {confirmState.action === 'truncate'
-                ? '全データを削除します。この操作は取り消せません。'
-                : 'テーブルごと削除します。この操作は取り消せません。'}
+                ? t('home.dialog.confirm.truncateTitle')
+                : t('home.dialog.confirm.dropTitle')}
+            </h3>
+            <p>
+              <code style={{ color: '#90cdf4', background: '#2d3748', padding: '2px 6px', borderRadius: 4 }}>
+                {confirmState.name}
+              </code>
+              <br /><br />
+              {confirmState.action === 'truncate'
+                ? t('home.dialog.confirm.truncateBody')
+                : t('home.dialog.confirm.dropBody')}
             </p>
             {opError && <p className={styles.error}>{opError}</p>}
             <div style={{ display: 'flex', gap: 10 }}>
@@ -395,7 +413,7 @@ function TableManager({ tables, onRefresh }: { tables: TableInfo[], onRefresh: (
                 onClick={execute}
                 disabled={working}
               >
-                {working ? '処理中...' : '実行する'}
+                {working ? t('home.dialog.confirm.working') : t('home.dialog.confirm.execute')}
               </button>
               <button
                 className={styles.btnPrimary}
@@ -403,27 +421,27 @@ function TableManager({ tables, onRefresh }: { tables: TableInfo[], onRefresh: (
                 onClick={() => setConfirmState(null)}
                 disabled={working}
               >
-                キャンセル
+                {t('home.dialog.confirm.cancel')}
               </button>
             </div>
           </div>
         </div>
       )}
       <div className={styles.tableList}>
-        {tables.map(t => (
-          <div key={t.name} className={styles.tableRow2}>
-            <span className={styles.tableName2}>{t.name}</span>
+        {tables.map(tbl => (
+          <div key={tbl.name} className={styles.tableRow2}>
+            <span className={styles.tableName2}>{tbl.name}</span>
             <div className={styles.tableActions}>
               <button
                 className={styles.btnTableAction}
-                title="全データ削除（テーブル構造は残す）"
-                onClick={() => { setOpError(''); setConfirmState({ name: t.name, action: 'truncate' }) }}
-              >リセット</button>
+                title={t('home.tableManage.btnResetTitle')}
+                onClick={() => { setOpError(''); setConfirmState({ name: tbl.name, action: 'truncate' }) }}
+              >{t('home.tableManage.btnReset')}</button>
               <button
                 className={`${styles.btnTableAction} ${styles.btnTableDrop}`}
-                title="テーブルごと削除"
-                onClick={() => { setOpError(''); setConfirmState({ name: t.name, action: 'drop' }) }}
-              >削除</button>
+                title={t('home.tableManage.btnDropTitle')}
+                onClick={() => { setOpError(''); setConfirmState({ name: tbl.name, action: 'drop' }) }}
+              >{t('home.tableManage.btnDrop')}</button>
             </div>
           </div>
         ))}

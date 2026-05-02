@@ -1,0 +1,64 @@
+.page { max-width: 640px; margin: 0 auto; padding: 36px 24px; }
+
+.header { margin-bottom: 28px; }
+.header h1 {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text);
+  letter-spacing: -0.02em;
+}
+
+.section { margin-bottom: 12px; }
+
+.sectionTitle {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-4);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 12px;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 16px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  gap: 16px;
+}
+
+.rowLabel {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text);
+}
+
+.radioGroup {
+  display: flex;
+  gap: 6px;
+}
+
+.radioBtn {
+  background: var(--surface);
+  color: var(--text-3);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 5px 14px;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.12s, color 0.12s, border-color 0.12s;
+}
+.radioBtn:hover { background: var(--card-hover); color: var(--text-2); }
+.radioBtnActive {
+  background: var(--accent-sub);
+  color: #a78bfa;
+  border-color: rgba(124, 58, 237, 0.4);
+}
+.radioBtnActive:hover {
+  background: var(--accent-sub);
+  color: #a78bfa;
+}

@@ -2,12 +2,14 @@ import { useEffect, useRef, useState } from 'react'
 import { useParams, Link, useNavigate } from 'react-router-dom'
 import { getJob } from '../api/client'
 import { useSSE } from '../hooks/useSSE'
+import { useI18n } from '../i18n'
 import type { Job, SseEvent } from '../types'
 import styles from './JobPage.module.css'
 
 export default function JobPage() {
   const { id } = useParams<{ id: string }>()
   const navigate = useNavigate()
+  const { t } = useI18n()
   const [job, setJob] = useState<Job | null>(null)
   const [doneModal, setDoneModal] = useState<{ status: 'done' | 'error'; rows: number; dups: number; ms: number; error?: string } | null>(null)
   const { events } = useSSE(id ?? null)
@@ -57,28 +59,33 @@ export default function JobPage() {
             {doneModal.status === 'done' ? (
               <>
                 <div className={styles.modalIcon}>✅</div>
-                <h3 className={styles.modalTitle}>取り込み完了</h3>
+                <h3 className={styles.modalTitle}>{t('job.modal.done.title')}</h3>
                 <div className={styles.modalStats}>
-                  <div><span>挿入レコード</span><strong>{doneModal.rows.toLocaleString()} 行</strong></div>
-                  <div><span>重複検出</span><strong>{doneModal.dups.toLocaleString()} 件</strong></div>
-                  {doneModal.ms > 0 && <div><span>処理時間</span><strong>{(doneModal.ms / 1000).toFixed(1)} 秒</strong></div>}
+                  <div><span>{t('job.modal.done.rows')}</span><strong>{doneModal.rows.toLocaleString()}</strong></div>
+                  <div><span>{t('job.modal.done.dups')}</span><strong>{doneModal.dups.toLocaleString()}</strong></div>
+                  {doneModal.ms > 0 && (
+                    <div>
+                      <span>{t('job.modal.done.time')}</span>
+                      <strong>{t('job.modal.done.seconds', { n: (doneModal.ms / 1000).toFixed(1) })}</strong>
+                    </div>
+                  )}
                 </div>
               </>
             ) : (
               <>
                 <div className={styles.modalIcon}>❌</div>
-                <h3 className={styles.modalTitleError}>取り込みエラー</h3>
+                <h3 className={styles.modalTitleError}>{t('job.modal.error.title')}</h3>
                 <p className={styles.modalError}>{doneModal.error}</p>
               </>
             )}
             <button className={styles.modalBtn} onClick={() => navigate('/')}>
-              ホームへ戻る
+              {t('job.modal.backBtn')}
             </button>
           </div>
         </div>
       )}
       <div className={styles.topBar}>
-        <Link to="/">← ホームへ戻る</Link>
+        <Link to="/">{t('job.backLink')}</Link>
         {job && <span className={styles.tableLabel}>{job.table_name}</span>}
       </div>
 
@@ -91,27 +98,27 @@ export default function JobPage() {
             )}
           </div>
 
-          {/* Progress modal panel */}
           <div className={`card ${styles.progressCard}`}>
-            <h2 className={styles.cardTitle}>取り込み進捗</h2>
+            <h2 className={styles.cardTitle}>{t('job.progress.title')}</h2>
 
-            {/* File progress */}
             <ProgressSection
-              label={`ファイル: ${progress.fileIndex} / ${job.total_files}`}
+              label={t('job.progress.file', { current: progress.fileIndex, total: job.total_files })}
               sub={progress.currentFile || '—'}
               value={job.total_files > 0 ? progress.fileIndex / job.total_files : 0}
             />
 
-            {/* Record progress */}
             <ProgressSection
-              label={`レコード: ${progress.linesRead.toLocaleString()} / ${progress.totalLines.toLocaleString()}`}
-              sub={`挿入: ${progress.rowsInserted.toLocaleString()}　スキップ: ${progress.rowsSkipped.toLocaleString()}　重複: ${job.duplicates_found.toLocaleString()}`}
+              label={t('job.progress.record', { read: progress.linesRead.toLocaleString(), total: progress.totalLines.toLocaleString() })}
+              sub={t('job.progress.sub', {
+                inserted: progress.rowsInserted.toLocaleString(),
+                skipped: progress.rowsSkipped.toLocaleString(),
+                dups: job.duplicates_found.toLocaleString(),
+              })}
               value={progress.totalLines > 0 ? progress.linesRead / progress.totalLines : 0}
             />
 
-            {/* Event log */}
             <div className={styles.eventLog}>
-              {events.length === 0 && <p className={styles.emptyLog}>イベント待機中...</p>}
+              {events.length === 0 && <p className={styles.emptyLog}>{t('job.eventLog.waiting')}</p>}
               {[...events].reverse().map((ev, i) => (
                 <EventRow key={i} ev={ev} />
               ))}
@@ -120,7 +127,7 @@ export default function JobPage() {
         </>
       )}
 
-      {!job && <p className={styles.loading}>読み込み中...</p>}
+      {!job && <p className={styles.loading}>{t('job.loading')}</p>}
     </div>
   )
 }
@@ -170,7 +177,8 @@ function ProgressSection({ label, sub, value }: { label: string; sub: string; va
 }
 
 function EventRow({ ev }: { ev: SseEvent }) {
-  const [icon, color, text] = formatEvent(ev)
+  const { t } = useI18n()
+  const [icon, color, text] = formatEvent(ev, t)
   return (
     <div className={styles.eventRow} style={{ borderLeftColor: color }}>
       <span className={styles.eventIcon}>{icon}</span>
@@ -179,22 +187,26 @@ function EventRow({ ev }: { ev: SseEvent }) {
   )
 }
 
-function formatEvent(ev: SseEvent): [string, string, string] {
+function formatEvent(ev: SseEvent, t: (key: string, vars?: Record<string, string | number>) => string): [string, string, string] {
   switch (ev.type) {
     case 'file_start':
-      return ['📂', '#90cdf4', `ファイル開始: ${ev.filename} (${ev.file_index}/${ev.total_files}, 約${ev.total_lines.toLocaleString()}行)`]
+      return ['📂', '#90cdf4', t('job.event.file_start', {
+        filename: ev.filename, index: ev.file_index, total: ev.total_files, lines: ev.total_lines.toLocaleString(),
+      })]
     case 'progress':
-      return ['📊', '#68d391', `進捗: ${ev.lines_read.toLocaleString()}行読込 / 挿入${ev.rows_inserted.toLocaleString()} / スキップ${ev.rows_skipped.toLocaleString()}`]
+      return ['📊', '#68d391', t('job.event.progress', {
+        read: ev.lines_read.toLocaleString(), inserted: ev.rows_inserted.toLocaleString(), skipped: ev.rows_skipped.toLocaleString(),
+      })]
     case 'schema_change':
-      return ['➕', '#b794f4', `新規カラム追加: ${ev.column} (${ev.sql_type})`]
+      return ['➕', '#b794f4', t('job.event.schema_change', { column: ev.column, type: ev.sql_type })]
     case 'type_error_column':
-      return ['⚠', '#f6ad55', `型エラーカラム追加: ${ev.error_column} (元: ${ev.original_column})`]
+      return ['⚠', '#f6ad55', t('job.event.type_error_column', { errorCol: ev.error_column, origCol: ev.original_column })]
     case 'duplicate':
-      return ['🔁', '#fc8181', `重複検出: ${ev.line}行目 → ${ev.action}`]
+      return ['🔁', '#fc8181', t('job.event.duplicate', { line: ev.line, action: ev.action })]
     case 'done':
-      return ['✅', '#68d391', `完了: ${ev.total_rows.toLocaleString()}行挿入 / 重複${ev.duplicates.toLocaleString()}件 / ${ev.duration_ms}ms`]
+      return ['✅', '#68d391', t('job.event.done', { rows: ev.total_rows.toLocaleString(), dups: ev.duplicates.toLocaleString(), ms: ev.duration_ms })]
     case 'error':
-      return ['❌', '#fc8181', `エラー: ${ev.message}`]
+      return ['❌', '#fc8181', t('job.event.error', { message: ev.message })]
     default:
       return ['•', '#718096', JSON.stringify(ev)]
   }

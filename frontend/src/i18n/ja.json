@@ -1,0 +1,124 @@
+{
+  "app": {
+    "title": "Log Analyzer",
+    "subtitle": "NDJSON ログファイルを MySQL へ動的スキーマで取り込む"
+  },
+  "nav": {
+    "home": "ホーム",
+    "settings": "設定"
+  },
+  "home": {
+    "fileSelect": {
+      "title": "ファイル選択",
+      "dropHint": ".log / .gz をドロップ（ディレクトリ可）",
+      "btnFile": "ファイルを選択",
+      "btnFolder": "フォルダを選択",
+      "tableHeader": {
+        "name": "ファイル名",
+        "size": "サイズ"
+      },
+      "pairWarning": {
+        "title": "⚠ 同一ベース名のファイルが検出されました:",
+        "body": "同一ログの重複取り込みになる可能性があります。続行しますか？",
+        "confirm": "続行する"
+      },
+      "btnUpload": "サーバへアップロード",
+      "btnUploading": "アップロード中... {pct}%",
+      "btnUploaded": "✓ アップロード済み"
+    },
+    "config": {
+      "title": "取り込み設定",
+      "tableName": {
+        "label": "テーブルベース名",
+        "placeholder": "例: access_log",
+        "hint": "実際のテーブル名:",
+        "hintEmpty": "（未入力）"
+      },
+      "existingTable": {
+        "label": "既存テーブルから選択",
+        "placeholder": "-- 選択 --"
+      },
+      "dupMode": {
+        "label": "重複行の扱い",
+        "warn": "警告して挿入",
+        "flag_column": "_is_dup フラグを立てて挿入",
+        "skip": "スキップ"
+      },
+      "btnStart": "取り込み開始",
+      "btnStarting": "開始中..."
+    },
+    "recentJobs": {
+      "title": "最近のジョブ",
+      "empty": "まだジョブはありません",
+      "rows": "{n} 行"
+    },
+    "tableManage": {
+      "title": "テーブル管理",
+      "empty": "テーブルはありません",
+      "btnReset": "リセット",
+      "btnDrop": "削除",
+      "btnResetTitle": "全データ削除（テーブル構造は残す）",
+      "btnDropTitle": "テーブルごと削除"
+    },
+    "dialog": {
+      "uploadDone": {
+        "title": "アップロード完了",
+        "body": "{n} ファイルをサーバに保存しました。",
+        "body2": "テーブル名を入力して取り込みを開始してください。",
+        "ok": "OK"
+      },
+      "confirm": {
+        "truncateTitle": "テーブルをリセット",
+        "dropTitle": "テーブルを削除",
+        "truncateBody": "全データを削除します。この操作は取り消せません。",
+        "dropBody": "テーブルごと削除します。この操作は取り消せません。",
+        "execute": "実行する",
+        "working": "処理中...",
+        "cancel": "キャンセル"
+      }
+    }
+  },
+  "job": {
+    "backLink": "← ホームへ戻る",
+    "progress": {
+      "title": "取り込み進捗",
+      "file": "ファイル: {current} / {total}",
+      "record": "レコード: {read} / {total}",
+      "sub": "挿入: {inserted}　スキップ: {skipped}　重複: {dups}"
+    },
+    "eventLog": {
+      "waiting": "イベント待機中..."
+    },
+    "loading": "読み込み中...",
+    "modal": {
+      "done": {
+        "title": "取り込み完了",
+        "rows": "挿入レコード",
+        "dups": "重複検出",
+        "time": "処理時間",
+        "seconds": "{n} 秒"
+      },
+      "error": {
+        "title": "取り込みエラー"
+      },
+      "backBtn": "ホームへ戻る"
+    },
+    "event": {
+      "file_start": "ファイル開始: {filename} ({index}/{total}, 約{lines}行)",
+      "progress": "進捗: {read}行読込 / 挿入{inserted} / スキップ{skipped}",
+      "schema_change": "新規カラム追加: {column} ({type})",
+      "type_error_column": "型エラーカラム追加: {errorCol} (元: {origCol})",
+      "duplicate": "重複検出: {line}行目 → {action}",
+      "done": "完了: {rows}行挿入 / 重複{dups}件 / {ms}ms",
+      "error": "エラー: {message}"
+    }
+  },
+  "settings": {
+    "title": "設定",
+    "language": {
+      "label": "言語",
+      "en": "English",
+      "ja": "日本語"
+    }
+  }
+}

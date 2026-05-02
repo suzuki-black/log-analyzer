@@ -1,6 +1,11 @@
 import type { Job, UploadResponse, TableInfo, DupMode } from '../types'
+import { getLang } from '../i18n'
 
 const BASE = '/api'
+
+function langHeader(): Record<string, string> {
+  return { 'Accept-Language': getLang() }
+}
 
 export function uploadFiles(
   files: File[],
@@ -12,6 +17,7 @@ export function uploadFiles(
 
     const xhr = new XMLHttpRequest()
     xhr.open('POST', `${BASE}/upload`)
+    xhr.setRequestHeader('Accept-Language', getLang())
 
     if (onProgress) {
       xhr.upload.onprogress = (e) => {
@@ -27,7 +33,7 @@ export function uploadFiles(
         reject(new Error(xhr.responseText || `HTTP ${xhr.status}`))
       }
     }
-    xhr.onerror = () => reject(new Error('ネットワークエラーが発生しました'))
+    xhr.onerror = () => reject(new Error('Network error'))
     xhr.send(fd)
   })
 }
@@ -35,7 +41,7 @@ export function uploadFiles(
 export async function createJob(table_name: string, file_ids: string[], dup_mode: DupMode): Promise<Job> {
   const res = await fetch(`${BASE}/jobs`, {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
+    headers: { 'Content-Type': 'application/json', ...langHeader() },
     body: JSON.stringify({ table_name, file_ids, dup_mode }),
   })
   if (!res.ok) throw new Error(await res.text())
@@ -43,29 +49,35 @@ export async function createJob(table_name: string, file_ids: string[], dup_mode
 }
 
 export async function listJobs(): Promise<Job[]> {
-  const res = await fetch(`${BASE}/jobs`)
+  const res = await fetch(`${BASE}/jobs`, { headers: langHeader() })
   if (!res.ok) throw new Error(await res.text())
   return res.json()
 }
 
 export async function getJob(id: string): Promise<Job> {
-  const res = await fetch(`${BASE}/jobs/${id}`)
+  const res = await fetch(`${BASE}/jobs/${id}`, { headers: langHeader() })
   if (!res.ok) throw new Error(await res.text())
   return res.json()
 }
 
 export async function listTables(): Promise<TableInfo[]> {
-  const res = await fetch(`${BASE}/tables`)
+  const res = await fetch(`${BASE}/tables`, { headers: langHeader() })
   if (!res.ok) throw new Error(await res.text())
   return res.json()
 }
 
 export async function truncateTable(name: string): Promise<void> {
-  const res = await fetch(`${BASE}/tables/${encodeURIComponent(name)}/truncate`, { method: 'POST' })
+  const res = await fetch(`${BASE}/tables/${encodeURIComponent(name)}/truncate`, {
+    method: 'POST',
+    headers: langHeader(),
+  })
   if (!res.ok) throw new Error(await res.text())
 }
 
 export async function dropTable(name: string): Promise<void> {
-  const res = await fetch(`${BASE}/tables/${encodeURIComponent(name)}`, { method: 'DELETE' })
+  const res = await fetch(`${BASE}/tables/${encodeURIComponent(name)}`, {
+    method: 'DELETE',
+    headers: langHeader(),
+  })
   if (!res.ok) throw new Error(await res.text())
 }

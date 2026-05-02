@@ -1,0 +1,124 @@
+{
+  "app": {
+    "title": "Log Analyzer",
+    "subtitle": "Import NDJSON log files into MySQL with dynamic schema"
+  },
+  "nav": {
+    "home": "Home",
+    "settings": "Settings"
+  },
+  "home": {
+    "fileSelect": {
+      "title": "File Selection",
+      "dropHint": "Drop .log / .gz files (directory supported)",
+      "btnFile": "Select Files",
+      "btnFolder": "Select Folder",
+      "tableHeader": {
+        "name": "Filename",
+        "size": "Size"
+      },
+      "pairWarning": {
+        "title": "⚠ Duplicate base name detected:",
+        "body": "These files may result in duplicate ingestion. Do you want to continue?",
+        "confirm": "Continue"
+      },
+      "btnUpload": "Upload to Server",
+      "btnUploading": "Uploading... {pct}%",
+      "btnUploaded": "✓ Uploaded"
+    },
+    "config": {
+      "title": "Import Settings",
+      "tableName": {
+        "label": "Table Base Name",
+        "placeholder": "e.g. access_log",
+        "hint": "Actual table name:",
+        "hintEmpty": "(not set)"
+      },
+      "existingTable": {
+        "label": "Select from existing tables",
+        "placeholder": "-- Select --"
+      },
+      "dupMode": {
+        "label": "Duplicate row handling",
+        "warn": "Warn and insert",
+        "flag_column": "Set _is_dup flag and insert",
+        "skip": "Skip"
+      },
+      "btnStart": "Start Import",
+      "btnStarting": "Starting..."
+    },
+    "recentJobs": {
+      "title": "Recent Jobs",
+      "empty": "No jobs yet",
+      "rows": "{n} rows"
+    },
+    "tableManage": {
+      "title": "Table Management",
+      "empty": "No tables",
+      "btnReset": "Reset",
+      "btnDrop": "Drop",
+      "btnResetTitle": "Delete all data (keep table structure)",
+      "btnDropTitle": "Drop table entirely"
+    },
+    "dialog": {
+      "uploadDone": {
+        "title": "Upload Complete",
+        "body": "{n} file(s) saved to server.",
+        "body2": "Enter a table name to start importing.",
+        "ok": "OK"
+      },
+      "confirm": {
+        "truncateTitle": "Reset Table",
+        "dropTitle": "Drop Table",
+        "truncateBody": "All data will be deleted. This action cannot be undone.",
+        "dropBody": "The table will be dropped entirely. This action cannot be undone.",
+        "execute": "Execute",
+        "working": "Processing...",
+        "cancel": "Cancel"
+      }
+    }
+  },
+  "job": {
+    "backLink": "← Back to Home",
+    "progress": {
+      "title": "Import Progress",
+      "file": "File: {current} / {total}",
+      "record": "Records: {read} / {total}",
+      "sub": "Inserted: {inserted}   Skipped: {skipped}   Duplicates: {dups}"
+    },
+    "eventLog": {
+      "waiting": "Waiting for events..."
+    },
+    "loading": "Loading...",
+    "modal": {
+      "done": {
+        "title": "Import Complete",
+        "rows": "Rows Inserted",
+        "dups": "Duplicates",
+        "time": "Duration",
+        "seconds": "{n} sec"
+      },
+      "error": {
+        "title": "Import Error"
+      },
+      "backBtn": "Back to Home"
+    },
+    "event": {
+      "file_start": "File started: {filename} ({index}/{total}, ~{lines} lines)",
+      "progress": "Progress: {read} lines read / inserted {inserted} / skipped {skipped}",
+      "schema_change": "New column added: {column} ({type})",
+      "type_error_column": "Type error column added: {errorCol} (original: {origCol})",
+      "duplicate": "Duplicate detected: line {line} → {action}",
+      "done": "Complete: {rows} rows inserted / {dups} duplicates / {ms}ms",
+      "error": "Error: {message}"
+    }
+  },
+  "settings": {
+    "title": "Settings",
+    "language": {
+      "label": "Language",
+      "en": "English",
+      "ja": "日本語"
+    }
+  }
+}
