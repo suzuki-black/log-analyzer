@@ -13,7 +13,12 @@ export function uploadFiles(
 ): Promise<UploadResponse[]> {
   return new Promise((resolve, reject) => {
     const fd = new FormData()
-    for (const f of files) fd.append('file', f)
+    for (const f of files) {
+      const rel = (f as any).webkitRelativePath || (f as any).__relPath || f.name
+      // Pass relative path as the multipart filename so the server can disambiguate
+      // same-named files from different sub-directories.
+      fd.append('file', f, rel)
+    }
 
     const xhr = new XMLHttpRequest()
     xhr.open('POST', `${BASE}/upload`)

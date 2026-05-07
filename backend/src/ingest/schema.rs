@@ -186,6 +186,56 @@ impl SchemaTracker {
         Ok((col, None))
     }
 
+    /// Widen a text-family column to the next larger type (TEXT → MEDIUMTEXT → LONGTEXT).
+    /// Used to recover from MySQL error 1406 ("Data too long for column") without losing
+    /// the rows already inserted — text-family types are upward-compatible, so existing
+    /// values are preserved untouched. Returns the new SQL type name.
+    pub async fn widen_text_column(&self, pool: &MySqlPool, table: &str, col: &str) -> Result<String> {
+        let row: Option<(String,)> = sqlx::query_as(
+            "SELECT data_type FROM information_schema.columns WHERE table_schema = DATABASE() AND table_name = ? AND column_name = ?"
+        )
+        .bind(table)
+        .bind(col)
+        .fetch_optional(pool)
+        .await?;
+
+        let cur = row.map(|r| r.0.to_lowercase()).unwrap_or_default();
+        // Widening ladder. Each step preserves all existing values:
+        //   CHAR(N) / VARCHAR(N) → TEXT (64 KB)
+        //   TINYTEXT / TEXT      → MEDIUMTEXT (16 MB)
+        //   MEDIUMTEXT           → LONGTEXT (4 GB)
+        // Realistically log lines almost always fit in TEXT — the common path is
+        // a too-narrow VARCHAR(N) being promoted to TEXT.
+        let new_type = match cur.as_str() {
+            "char" | "varchar" | "tinytext" => "TEXT",
+            "text" => "MEDIUMTEXT",
+            "mediumtext" => "LONGTEXT",
+            "longtext" => {
+                return Err(anyhow::anyhow!(
+                    "column `{}` is already LONGTEXT but the value is still too long",
+                    col
+                ));
+            }
+            // Non-text column (or unknown) — only widen if we can prove it's safe.
+            // Bail out so the caller surfaces the original error instead of silently
+            // changing semantics (e.g. BIGINT → LONGTEXT would discard numeric typing).
+            _ => {
+                return Err(anyhow::anyhow!(
+                    "cannot widen non-text column `{}` (current type: {})",
+                    col,
+                    cur
+                ));
+            }
+        };
+
+        sqlx::query(&format!(
+            "ALTER TABLE `{table}` MODIFY COLUMN `{col}` {new_type} DEFAULT NULL"
+        ))
+        .execute(pool)
+        .await?;
+        Ok(new_type.to_string())
+    }
+
     async fn add_column(&self, pool: &MySqlPool, table: &str, col: &str, sql_type: &str) -> Result<()> {
         // MySQL 8 does NOT support IF NOT EXISTS for ALTER TABLE ADD COLUMN (MariaDB only)
         let exists: Option<(i64,)> = sqlx::query_as(

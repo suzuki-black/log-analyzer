@@ -29,18 +29,24 @@ function detectDuplicatePairs(files: File[]): string[] {
   return warnings
 }
 
-// Recursively collect all File objects from a dropped DataTransfer (handles directories)
+// Recursively collect all File objects from a dropped DataTransfer (handles directories).
+// Stashes the directory-relative path on each File so callers can disambiguate same-named files
+// from different sub-folders (drag-drop does not set webkitRelativePath natively).
 async function collectDroppedFiles(dt: DataTransfer): Promise<File[]> {
-  const entries: FileSystemEntry[] = []
+  const roots: FileSystemEntry[] = []
   for (let i = 0; i < dt.items.length; i++) {
     const entry = dt.items[i].webkitGetAsEntry?.()
-    if (entry) entries.push(entry)
+    if (entry) roots.push(entry)
   }
 
-  async function readEntry(entry: FileSystemEntry): Promise<File[]> {
+  async function readEntry(entry: FileSystemEntry, prefix: string): Promise<File[]> {
     if (entry.isFile) {
       return new Promise(resolve =>
-        (entry as FileSystemFileEntry).file(f => resolve([f]), () => resolve([]))
+        (entry as FileSystemFileEntry).file(f => {
+          const rel = prefix ? `${prefix}/${entry.name}` : entry.name
+          try { Object.defineProperty(f, '__relPath', { value: rel, configurable: true }) } catch {}
+          resolve([f])
+        }, () => resolve([]))
       )
     }
     if (entry.isDirectory) {
@@ -52,17 +58,19 @@ async function collectDroppedFiles(dt: DataTransfer): Promise<File[]> {
         if (batch.length === 0) break
         all.push(...batch)
       }
-      return (await Promise.all(all.map(readEntry))).flat()
+      const childPrefix = prefix ? `${prefix}/${entry.name}` : entry.name
+      return (await Promise.all(all.map(e => readEntry(e, childPrefix)))).flat()
     }
     return []
   }
 
-  return (await Promise.all(entries.map(readEntry))).flat()
+  return (await Promise.all(roots.map(e => readEntry(e, '')))).flat()
 }
 
-// Display name: prefer webkitRelativePath (set when using directory input or drag-dir)
+// Display name: prefer webkitRelativePath (folder picker), then drag-drop relative path,
+// then fall back to the bare filename.
 function filePath(f: File): string {
-  return (f as any).webkitRelativePath || f.name
+  return (f as any).webkitRelativePath || (f as any).__relPath || f.name
 }
 
 export default function HomePage() {

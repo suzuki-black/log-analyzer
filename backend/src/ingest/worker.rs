@@ -205,7 +205,25 @@ async fn process(state: &Arc<AppState>, job: &mut Job) -> Result<()> {
                 _ => None,
             };
 
-            insert_row(&state.pool, &job.table_name, &job.id, job.lines_read, is_dup_val, &raw, &content_hash, &col_map, &schema).await?;
+            // Insert with auto-widening: if MySQL rejects the row because a text column
+            // is too short for the value (error 1406), widen that column in-place
+            // (TEXT → MEDIUMTEXT → LONGTEXT) and retry. Existing rows are preserved.
+            loop {
+                match insert_row(&state.pool, &job.table_name, &job.id, job.lines_read, is_dup_val, &raw, &content_hash, &col_map, &schema).await {
+                    Ok(()) => break,
+                    Err(e) => match extract_too_long_column(&e) {
+                        Some(col) => {
+                            let new_type = schema.widen_text_column(&state.pool, &job.table_name, &col).await?;
+                            let _ = sender.send(SseEvent::SchemaChange {
+                                column: col,
+                                sql_type: new_type,
+                            });
+                            // retry
+                        }
+                        None => return Err(e),
+                    },
+                }
+            }
             job.rows_inserted += 1;
 
             // send progress every 100 rows or on last line
@@ -307,4 +325,35 @@ async fn insert_row(
 
     q.execute(pool).await?;
     Ok(())
+}
+
+/// Detect MySQL error 1406 ("Data too long for column 'X' at row N") and extract the
+/// column name. Returns None for any other error so the caller can propagate it.
+fn extract_too_long_column(err: &anyhow::Error) -> Option<String> {
+    // Walk the error chain — sqlx wraps the database error inside its own variants.
+    for cause in err.chain() {
+        if let Some(db_err) = cause.downcast_ref::<sqlx::Error>() {
+            if let sqlx::Error::Database(dbe) = db_err {
+                if dbe.code().as_deref() != Some("22001") && dbe.message().to_lowercase().find("data too long").is_none() {
+                    continue;
+                }
+                let msg = dbe.message();
+                if let Some(start) = msg.find('\'') {
+                    let rest = &msg[start + 1..];
+                    if let Some(end) = rest.find('\'') {
+                        return Some(rest[..end].to_string());
+                    }
+                }
+            }
+        }
+    }
+    // Fallback: stringified message parsing.
+    let s = err.to_string();
+    if !s.to_lowercase().contains("data too long") {
+        return None;
+    }
+    let start = s.find('\'')?;
+    let rest = &s[start + 1..];
+    let end = rest.find('\'')?;
+    Some(rest[..end].to_string())
 }
