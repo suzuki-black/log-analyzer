@@ -203,6 +203,8 @@ function formatEvent(ev: SseEvent, t: (key: string, vars?: Record<string, string
       return ['⚠', '#f6ad55', t('job.event.type_error_column', { errorCol: ev.error_column, origCol: ev.original_column })]
     case 'duplicate':
       return ['🔁', '#fc8181', t('job.event.duplicate', { line: ev.line, action: ev.action })]
+    case 'duplicate_batch':
+      return ['🔁', '#fc8181', t('job.event.duplicate_batch', { count: ev.count.toLocaleString(), action: ev.action })]
     case 'done':
       return ['✅', '#68d391', t('job.event.done', { rows: ev.total_rows.toLocaleString(), dups: ev.duplicates.toLocaleString(), ms: ev.duration_ms })]
     case 'error':

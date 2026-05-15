@@ -53,7 +53,14 @@ impl DedupTracker {
 }
 
 fn hex_encode(bytes: &[u8; 32]) -> String {
-    bytes.iter().map(|b| format!("{:02x}", b)).collect()
+    const HEX: &[u8; 16] = b"0123456789abcdef";
+    let mut out = vec![0u8; 64];
+    for (i, b) in bytes.iter().enumerate() {
+        out[i * 2]     = HEX[(b >> 4) as usize];
+        out[i * 2 + 1] = HEX[(b & 0xf) as usize];
+    }
+    // Safety: 全バイトが ASCII hex 文字であることが保証されている
+    unsafe { String::from_utf8_unchecked(out) }
 }
 
 fn hex_to_hash(hex: &str) -> Result<[u8; 32], ()> {

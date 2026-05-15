@@ -1,17 +1,32 @@
 use std::sync::Arc;
 use std::time::Instant;
+use std::collections::{HashMap, HashSet};
 use tokio::sync::broadcast;
 use serde_json::Value;
 use anyhow::Result;
+use sqlx::QueryBuilder;
 
 use crate::AppState;
 use crate::models::{Job, JobStatus, DupMode, SseEvent};
 use crate::ingest::{reader, schema::{SchemaTracker, parse_datetime, ColType}, dedup::DedupTracker};
 
+/// 1回のINSERT文に含める最大行数。
+/// MySQL のパラメータ上限(65535)はカラム数に応じて flush_batch 内で自動調整する。
+const BATCH_SIZE: usize = 500;
+
+/// バルクINSERT用の1行分データ
+struct PendingRow {
+    line_no: usize,
+    is_dup: Option<i64>,
+    content_hash: String,
+    raw: String,
+    /// ユーザーカラム名 → Option<String> 値（型変換済み）
+    col_vals: HashMap<String, Option<String>>,
+}
+
 pub async fn run(state: Arc<AppState>, mut job: Job) {
     let start = Instant::now();
 
-    // update status
     {
         let mut jobs = state.jobs.write().await;
         if let Some(j) = jobs.get_mut(&job.id) {
@@ -27,7 +42,6 @@ pub async fn run(state: Arc<AppState>, mut job: Job) {
         Err(e) => (JobStatus::Error, Some(e.to_string())),
     };
 
-    // send terminal SSE event
     let sender = {
         let senders = state.senders.read().await;
         senders.get(&job.id).cloned()
@@ -45,7 +59,6 @@ pub async fn run(state: Arc<AppState>, mut job: Job) {
         let _ = tx.send(ev);
     }
 
-    // update DB
     let _ = sqlx::query(
         "UPDATE _la_jobs SET status=?, error=?, rows_inserted=?, rows_skipped=?, duplicates_found=?, finished_at=NOW() WHERE id=?"
     )
@@ -58,7 +71,6 @@ pub async fn run(state: Arc<AppState>, mut job: Job) {
     .execute(&state.pool)
     .await;
 
-    // update in-memory
     {
         let mut jobs = state.jobs.write().await;
         if let Some(j) = jobs.get_mut(&job.id) {
@@ -81,29 +93,35 @@ async fn process(state: &Arc<AppState>, job: &mut Job) -> Result<()> {
     schema.ensure_table(&state.pool, &job.table_name).await?;
     schema.load_existing(&state.pool, &job.table_name).await?;
 
-    // Track which cols we've already sent SSE events for (across all files)
-    let mut notified_cols: std::collections::HashSet<String> = schema.known.keys().cloned().collect();
-    let mut notified_te_cols: std::collections::HashSet<String> = std::collections::HashSet::new();
+    let mut notified_cols: HashSet<String> = schema.known.keys().cloned().collect();
+    let mut notified_te_cols: HashSet<String> = HashSet::new();
 
     let mut dedup = DedupTracker::new();
-    // Load hashes already stored in the target table for cross-job dedup
     dedup.load_existing(&state.pool, &job.table_name).await?;
 
-    // pre-count total lines across all files
-    let mut file_infos: Vec<(String, String, usize)> = Vec::new(); // (file_id, path, lines)
+    // ファイルを1回だけ読んでメモリに保存（以前は count_lines + lines で2回読んでいた）
+    let mut file_infos: Vec<(String, Vec<String>)> = Vec::new(); // (stored_path, lines)
     for file_id in &job.file_ids {
-        let row: (String, String) = sqlx::query_as("SELECT original_name, stored_path FROM _la_files WHERE id = ?")
-            .bind(file_id)
-            .fetch_one(&state.pool)
-            .await?;
-        let path_for_count = row.1.clone();
-        let count = tokio::task::spawn_blocking(move || reader::count_lines(&path_for_count).unwrap_or(0)).await?;
-        file_infos.push((file_id.clone(), row.1, count));
-        job.total_lines += count;
+        let row: (String, String) = sqlx::query_as(
+            "SELECT original_name, stored_path FROM _la_files WHERE id = ?",
+        )
+        .bind(file_id)
+        .fetch_one(&state.pool)
+        .await?;
+        let stored_path = row.1.clone();
+        let lines: Vec<String> = tokio::task::spawn_blocking(move || {
+            reader::lines(&stored_path)
+                .map(|iter| iter.filter_map(|r| r.ok()).collect::<Vec<_>>())
+                .unwrap_or_default()
+        })
+        .await?;
+        job.total_lines += lines.len();
+        file_infos.push((row.1, lines));
     }
 
-    for (file_index, (_, stored_path, file_lines)) in file_infos.iter().enumerate() {
-        let filename = stored_path.rsplit('/').next().unwrap_or(stored_path).to_string();
+    for (file_index, (stored_path, raw_lines)) in file_infos.iter().enumerate() {
+        let filename = stored_path.rsplit('/').next().unwrap_or(stored_path.as_str()).to_string();
+        let file_lines = raw_lines.len();
         job.current_file_index = file_index + 1;
         job.current_filename = filename.clone();
 
@@ -111,10 +129,9 @@ async fn process(state: &Arc<AppState>, job: &mut Job) -> Result<()> {
             filename: filename.clone(),
             file_index: file_index + 1,
             total_files: job.total_files,
-            total_lines: *file_lines,
+            total_lines: file_lines,
         });
 
-        // Update in-memory job
         {
             let mut jobs = state.jobs.write().await;
             if let Some(j) = jobs.get_mut(&job.id) {
@@ -124,13 +141,16 @@ async fn process(state: &Arc<AppState>, job: &mut Job) -> Result<()> {
             }
         }
 
-        // Read all lines in a blocking task to avoid holding non-Send iterator across awaits
-        let path_clone = stored_path.clone();
-        let raw_lines: Vec<String> = tokio::task::spawn_blocking(move || {
-            reader::lines(&path_clone)
-                .map(|iter| iter.filter_map(|r| r.ok()).collect::<Vec<_>>())
-                .unwrap_or_default()
-        }).await?;
+        // バルクINSERT用バッファ
+        let mut batch: Vec<PendingRow> = Vec::with_capacity(BATCH_SIZE);
+        // バッチ内で使われているカラムの挿入順リスト
+        let mut ordered_cols: Vec<String> = Vec::new();
+        let mut col_set: HashSet<String> = HashSet::new();
+
+        // dup/skip SSEは100行ごとにまとめて送る（毎行送信はSSEオーバーヘッドが大きい）
+        let mut pending_dup_warn = 0usize;
+        let mut pending_dup_skip = 0usize;
+        let mut pending_dup_flag = 0usize;
 
         let mut local_line = 0usize;
 
@@ -138,49 +158,35 @@ async fn process(state: &Arc<AppState>, job: &mut Job) -> Result<()> {
             local_line += 1;
             job.lines_read += 1;
 
-            // duplicate check
-            let (is_dup, content_hash) = dedup.check(&raw);
+            // 重複チェック
+            let (is_dup, content_hash) = dedup.check(raw);
             if is_dup {
                 job.duplicates_found += 1;
                 match job.dup_mode {
                     DupMode::Skip => {
                         job.rows_skipped += 1;
-                        let _ = sender.send(SseEvent::Duplicate {
-                            line: local_line,
-                            action: "skip".into(),
-                        });
+                        pending_dup_skip += 1;
                         continue;
                     }
-                    DupMode::Warn => {
-                        let _ = sender.send(SseEvent::Duplicate {
-                            line: local_line,
-                            action: "warn".into(),
-                        });
-                    }
-                    DupMode::FlagColumn => {
-                        let _ = sender.send(SseEvent::Duplicate {
-                            line: local_line,
-                            action: "flagged".into(),
-                        });
-                    }
+                    DupMode::Warn => { pending_dup_warn += 1; }
+                    DupMode::FlagColumn => { pending_dup_flag += 1; }
                 }
             }
 
-            // parse JSON
-            let obj: serde_json::Map<String, Value> = match serde_json::from_str(&raw) {
+            // JSONパース
+            let obj: serde_json::Map<String, Value> = match serde_json::from_str(raw) {
                 Ok(Value::Object(m)) => m,
-                _ => {
-                    job.rows_skipped += 1;
-                    continue;
-                }
+                _ => { job.rows_skipped += 1; continue; }
             };
 
-            // ensure columns exist
-            let mut col_map: Vec<(String, Option<String>, Value)> = Vec::new();
+            // カラム確保 & 値正規化
+            let mut col_vals: HashMap<String, Option<String>> = HashMap::with_capacity(obj.len() * 2);
+            let mut new_cols_this_row: Vec<String> = Vec::new();
+
             for (key, val) in &obj {
                 let (col, te_col) = schema.ensure_col(&state.pool, &job.table_name, key, val).await?;
 
-                // SSE: notify newly added columns
+                // SSE: 新カラム通知
                 if notified_cols.insert(col.clone()) {
                     let sql_type = schema.known.get(&col).map(|t| t.sql().to_string()).unwrap_or_default();
                     if !sql_type.is_empty() {
@@ -196,145 +202,232 @@ async fn process(state: &Arc<AppState>, job: &mut Job) -> Result<()> {
                     }
                 }
 
-                col_map.push((col, te_col, val.clone()));
+                // このバッチで未登録のカラムを記録
+                if !col_set.contains(&col) {
+                    new_cols_this_row.push(col.clone());
+                }
+                if let Some(ref te) = te_col {
+                    if !col_set.contains(te) {
+                        new_cols_this_row.push(te.clone());
+                    }
+                }
+
+                // 値をOption<String>に正規化（MySQLが各カラム型へ暗黙変換する）
+                let col_type = schema.known.get(&col);
+                if let Some(ref te) = te_col {
+                    col_vals.insert(col.clone(), None);
+                    col_vals.insert(te.clone(), match val {
+                        Value::String(s) => Some(s.clone()),
+                        _ => None,
+                    });
+                } else {
+                    col_vals.insert(col.clone(), normalize_value(col_type, val));
+                }
             }
 
-            // build INSERT
+            // 新カラムが出てきた場合、既存バッチを先にフラッシュしてカラムセットを安定させる
+            if !new_cols_this_row.is_empty() && !batch.is_empty() {
+                flush_batch(&state.pool, &job.table_name, &job.id, &schema, &batch, &ordered_cols).await?;
+                job.rows_inserted += batch.len();
+                batch.clear();
+            }
+
+            // ordered_cols に新カラムを追加
+            for nc in new_cols_this_row {
+                if col_set.insert(nc.clone()) {
+                    ordered_cols.push(nc);
+                }
+            }
+
             let is_dup_val: Option<i64> = match job.dup_mode {
                 DupMode::FlagColumn if is_dup => Some(1),
                 _ => None,
             };
 
-            // Insert with auto-widening: if MySQL rejects the row because a text column
-            // is too short for the value (error 1406), widen that column in-place
-            // (TEXT → MEDIUMTEXT → LONGTEXT) and retry. Existing rows are preserved.
-            loop {
-                match insert_row(&state.pool, &job.table_name, &job.id, job.lines_read, is_dup_val, &raw, &content_hash, &col_map, &schema).await {
-                    Ok(()) => break,
-                    Err(e) => match extract_too_long_column(&e) {
-                        Some(col) => {
-                            let new_type = schema.widen_text_column(&state.pool, &job.table_name, &col).await?;
-                            let _ = sender.send(SseEvent::SchemaChange {
-                                column: col,
-                                sql_type: new_type,
-                            });
-                            // retry
-                        }
-                        None => return Err(e),
-                    },
-                }
-            }
-            job.rows_inserted += 1;
+            batch.push(PendingRow {
+                line_no: job.lines_read,
+                is_dup: is_dup_val,
+                content_hash,
+                raw: raw.clone(),
+                col_vals,
+            });
 
-            // send progress every 100 rows or on last line
-            if job.rows_inserted % 100 == 0 || local_line == *file_lines {
+            // バッチサイズ到達 → フラッシュ & Progress SSE
+            if batch.len() >= BATCH_SIZE {
+                flush_batch(&state.pool, &job.table_name, &job.id, &schema, &batch, &ordered_cols).await?;
+                job.rows_inserted += batch.len();
+                batch.clear();
+
+                flush_dup_events(&sender, &mut pending_dup_skip, &mut pending_dup_warn, &mut pending_dup_flag);
+
                 let _ = sender.send(SseEvent::Progress {
                     lines_read: job.lines_read,
                     rows_inserted: job.rows_inserted,
                     rows_skipped: job.rows_skipped,
                     total_lines: job.total_lines,
                 });
-                // sync in-memory
-                let mut jobs = state.jobs.write().await;
-                if let Some(j) = jobs.get_mut(&job.id) {
-                    j.lines_read = job.lines_read;
-                    j.rows_inserted = job.rows_inserted;
-                    j.rows_skipped = job.rows_skipped;
-                    j.duplicates_found = job.duplicates_found;
+                {
+                    let mut jobs = state.jobs.write().await;
+                    if let Some(j) = jobs.get_mut(&job.id) {
+                        j.lines_read = job.lines_read;
+                        j.rows_inserted = job.rows_inserted;
+                        j.rows_skipped = job.rows_skipped;
+                        j.duplicates_found = job.duplicates_found;
+                    }
                 }
             }
+        } // for raw in raw_lines
+
+        // ファイル終端：残りをフラッシュ
+        if !batch.is_empty() {
+            flush_batch(&state.pool, &job.table_name, &job.id, &schema, &batch, &ordered_cols).await?;
+            job.rows_inserted += batch.len();
+            batch.clear();
         }
-    }
+
+        flush_dup_events(&sender, &mut pending_dup_skip, &mut pending_dup_warn, &mut pending_dup_flag);
+
+        // ファイル終端のProgressイベント
+        let _ = sender.send(SseEvent::Progress {
+            lines_read: job.lines_read,
+            rows_inserted: job.rows_inserted,
+            rows_skipped: job.rows_skipped,
+            total_lines: job.total_lines,
+        });
+        {
+            let mut jobs = state.jobs.write().await;
+            if let Some(j) = jobs.get_mut(&job.id) {
+                j.lines_read = job.lines_read;
+                j.rows_inserted = job.rows_inserted;
+                j.rows_skipped = job.rows_skipped;
+                j.duplicates_found = job.duplicates_found;
+            }
+        }
+    } // for file_index
 
     Ok(())
 }
 
-async fn insert_row(
+/// 溜めたdup/skipイベントをまとめてSSEに送信
+fn flush_dup_events(
+    sender: &broadcast::Sender<SseEvent>,
+    skip: &mut usize,
+    warn: &mut usize,
+    flag: &mut usize,
+) {
+    if *skip > 0 {
+        let _ = sender.send(SseEvent::DuplicateBatch { count: *skip, action: "skip".into() });
+        *skip = 0;
+    }
+    if *warn > 0 {
+        let _ = sender.send(SseEvent::DuplicateBatch { count: *warn, action: "warn".into() });
+        *warn = 0;
+    }
+    if *flag > 0 {
+        let _ = sender.send(SseEvent::DuplicateBatch { count: *flag, action: "flagged".into() });
+        *flag = 0;
+    }
+}
+
+/// JSON値をMySQLカラム型に合わせて Option<String> に正規化。
+/// MySQLは文字列からBIGINT/DOUBLE/DATETIME/TINYINTへ暗黙変換する。
+fn normalize_value(col_type: Option<&ColType>, val: &Value) -> Option<String> {
+    match (col_type, val) {
+        (Some(ColType::TinyInt), Value::Bool(b)) => Some(if *b { "1" } else { "0" }.to_string()),
+        (Some(ColType::BigInt), Value::Number(n)) => n.as_i64().map(|n| n.to_string()),
+        (Some(ColType::Double), Value::Number(n)) => n.as_f64().map(|f| f.to_string()),
+        (Some(ColType::DateTime), Value::String(s)) => parse_datetime(s),
+        (_, Value::String(s)) => Some(s.clone()),
+        (_, Value::Null) => None,
+        (_, v) => Some(v.to_string()),
+    }
+}
+
+/// バルクINSERT（自動拡幅リトライ付き）
+async fn flush_batch(
     pool: &sqlx::MySqlPool,
     table: &str,
     job_id: &str,
-    line_no: usize,
-    is_dup: Option<i64>,
-    raw: &str,
-    content_hash: &str,
-    col_map: &[(String, Option<String>, Value)],
     schema: &SchemaTracker,
+    batch: &[PendingRow],
+    ordered_cols: &[String],
 ) -> Result<()> {
-    let mut cols = vec!["_job_id".to_string(), "_line_no".to_string(), "_is_dup".to_string(), "_content_hash".to_string(), "_raw".to_string()];
-    let mut placeholders = vec!["?", "?", "?", "?", "?"];
-
-    for (col, te_col, _) in col_map {
-        cols.push(format!("`{}`", col));
-        placeholders.push("?");
-        if let Some(te) = te_col {
-            cols.push(format!("`{}`", te));
-            placeholders.push("?");
-        }
+    if batch.is_empty() {
+        return Ok(());
     }
 
-    let sql = format!(
-        "INSERT INTO `{}` ({}) VALUES ({})",
-        table,
-        cols.join(", "),
-        placeholders.join(", ")
-    );
+    // MySQLのバインドパラメータ上限(65535)を超えないようチャンク分割
+    let params_per_row = 5 + ordered_cols.len();
+    let max_per_stmt = if params_per_row > 0 {
+        (65535 / params_per_row).max(1)
+    } else {
+        batch.len()
+    };
 
-    let mut q = sqlx::query(&sql)
-        .bind(job_id)
-        .bind(line_no as i64)
-        .bind(is_dup)
-        .bind(content_hash)
-        .bind(raw);
-
-    for (col, te_col, val) in col_map {
-        let col_type = schema.known.get(col.as_str());
-        match (col_type, te_col, val) {
-            // type error: null in typed col, raw string in te col
-            (_, Some(_), Value::String(s)) => {
-                q = q.bind(Option::<String>::None);
-                q = q.bind(Some(s.clone()));
-            }
-            (_, Some(_), _) => {
-                q = q.bind(Option::<String>::None);
-                q = q.bind(Option::<String>::None);
-            }
-            // normal
-            (Some(ColType::TinyInt), None, Value::Bool(b)) => {
-                q = q.bind(Some(*b as i64));
-            }
-            (Some(ColType::BigInt), None, Value::Number(n)) => {
-                q = q.bind(n.as_i64());
-            }
-            (Some(ColType::Double), None, Value::Number(n)) => {
-                q = q.bind(n.as_f64());
-            }
-            (Some(ColType::DateTime), None, Value::String(s)) => {
-                q = q.bind(parse_datetime(s));
-            }
-            (_, None, Value::String(s)) => {
-                q = q.bind(Some(s.clone()));
-            }
-            (_, None, Value::Null) => {
-                q = q.bind(Option::<String>::None);
-            }
-            (_, None, v) => {
-                q = q.bind(Some(v.to_string()));
+    for chunk in batch.chunks(max_per_stmt) {
+        loop {
+            match do_bulk_insert(pool, table, job_id, chunk, ordered_cols).await {
+                Ok(()) => break,
+                Err(e) => match extract_too_long_column(&e) {
+                    Some(col) => {
+                        schema.widen_text_column(pool, table, &col).await?;
+                        // retry same chunk
+                    }
+                    None => return Err(e),
+                },
             }
         }
     }
-
-    q.execute(pool).await?;
     Ok(())
 }
 
-/// Detect MySQL error 1406 ("Data too long for column 'X' at row N") and extract the
-/// column name. Returns None for any other error so the caller can propagate it.
+async fn do_bulk_insert(
+    pool: &sqlx::MySqlPool,
+    table: &str,
+    job_id: &str,
+    batch: &[PendingRow],
+    ordered_cols: &[String],
+) -> Result<()> {
+    let col_list = {
+        let mut parts = vec![
+            "_job_id".to_string(),
+            "_line_no".to_string(),
+            "_is_dup".to_string(),
+            "_content_hash".to_string(),
+            "_raw".to_string(),
+        ];
+        parts.extend(ordered_cols.iter().map(|c| format!("`{}`", c)));
+        parts.join(", ")
+    };
+
+    let mut qb = QueryBuilder::<sqlx::MySql>::new(
+        format!("INSERT INTO `{}` ({}) ", table, col_list),
+    );
+
+    qb.push_values(batch.iter(), |mut b, row| {
+        b.push_bind(job_id);
+        b.push_bind(row.line_no as i64);
+        b.push_bind(row.is_dup);
+        b.push_bind(row.content_hash.as_str());
+        b.push_bind(row.raw.as_str());
+        for col in ordered_cols {
+            // col_valsにない場合はNULL（この行にそのキーが存在しなかった）
+            b.push_bind(row.col_vals.get(col).cloned().flatten());
+        }
+    });
+
+    qb.build().execute(pool).await?;
+    Ok(())
+}
+
+/// MySQL error 1406 ("Data too long for column 'X'") からカラム名を抽出する。
 fn extract_too_long_column(err: &anyhow::Error) -> Option<String> {
-    // Walk the error chain — sqlx wraps the database error inside its own variants.
     for cause in err.chain() {
         if let Some(db_err) = cause.downcast_ref::<sqlx::Error>() {
             if let sqlx::Error::Database(dbe) = db_err {
-                if dbe.code().as_deref() != Some("22001") && dbe.message().to_lowercase().find("data too long").is_none() {
+                if dbe.code().as_deref() != Some("22001")
+                    && !dbe.message().to_lowercase().contains("data too long")
+                {
                     continue;
                 }
                 let msg = dbe.message();
@@ -347,7 +440,6 @@ fn extract_too_long_column(err: &anyhow::Error) -> Option<String> {
             }
         }
     }
-    // Fallback: stringified message parsing.
     let s = err.to_string();
     if !s.to_lowercase().contains("data too long") {
         return None;

@@ -109,6 +109,7 @@
       "schema_change": "New column added: {column} ({type})",
       "type_error_column": "Type error column added: {errorCol} (original: {origCol})",
       "duplicate": "Duplicate detected: line {line} → {action}",
+      "duplicate_batch": "{count} duplicate rows → {action}",
       "done": "Complete: {rows} rows inserted / {dups} duplicates / {ms}ms",
       "error": "Error: {message}"
     }

@@ -37,5 +37,6 @@ export type SseEvent =
   | { type: 'schema_change'; column: string; sql_type: string }
   | { type: 'type_error_column'; original_column: string; error_column: string }
   | { type: 'duplicate'; line: number; action: string }
+  | { type: 'duplicate_batch'; count: number; action: string }
   | { type: 'done'; total_rows: number; duplicates: number; duration_ms: number }
   | { type: 'error'; message: string }

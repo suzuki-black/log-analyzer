@@ -109,6 +109,7 @@
       "schema_change": "新規カラム追加: {column} ({type})",
       "type_error_column": "型エラーカラム追加: {errorCol} (元: {origCol})",
       "duplicate": "重複検出: {line}行目 → {action}",
+      "duplicate_batch": "重複 {count}行 → {action}",
       "done": "完了: {rows}行挿入 / 重複{dups}件 / {ms}ms",
       "error": "エラー: {message}"
     }

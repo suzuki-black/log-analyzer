@@ -92,6 +92,11 @@ pub enum SseEvent {
         line: usize,
         action: String,
     },
+    /// バルク処理時に複数のdup行をまとめて通知する
+    DuplicateBatch {
+        count: usize,
+        action: String,
+    },
     Done {
         total_rows: usize,
         duplicates: usize,
