@@ -39,14 +39,14 @@ async fn main() {
         .allow_headers(Any);
 
     let app = Router::new()
-        .route("/api/upload", post(routes::upload::upload_file)
-            .layer(DefaultBodyLimit::max(500 * 1024 * 1024)))
+        .route("/api/upload", post(routes::upload::upload_file))
         .route("/api/jobs", post(routes::jobs::create_job).get(routes::jobs::list_jobs))
         .route("/api/jobs/:id", get(routes::jobs::get_job))
         .route("/api/jobs/:id/progress", get(routes::sse::sse_handler))
         .route("/api/tables", get(routes::jobs::list_tables))
         .route("/api/tables/:name/truncate", post(routes::jobs::truncate_table))
         .route("/api/tables/:name", delete(routes::jobs::drop_table))
+        .layer(DefaultBodyLimit::max(2 * 1024 * 1024 * 1024))
         .layer(cors)
         .with_state(state);
 
