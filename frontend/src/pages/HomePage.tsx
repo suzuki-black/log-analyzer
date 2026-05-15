@@ -30,8 +30,11 @@ function detectDuplicatePairs(files: File[]): string[] {
 }
 
 // Recursively collect all File objects from a dropped DataTransfer (handles directories).
-// Stashes the directory-relative path on each File so callers can disambiguate same-named files
-// from different sub-folders (drag-drop does not set webkitRelativePath natively).
+// Returns new File objects whose `.name` is the directory-relative path
+// (e.g. "webapp/scheduler.log") so same-named files from different sub-folders
+// remain distinct through dedup, pair-warning, and FormData upload.
+// Note: Object.defineProperty on File can silently fail in some browsers, so we
+// use new File([blob], relPath) to reliably bake the path into the filename.
 async function collectDroppedFiles(dt: DataTransfer): Promise<File[]> {
   const roots: FileSystemEntry[] = []
   for (let i = 0; i < dt.items.length; i++) {
@@ -44,8 +47,12 @@ async function collectDroppedFiles(dt: DataTransfer): Promise<File[]> {
       return new Promise(resolve =>
         (entry as FileSystemFileEntry).file(f => {
           const rel = prefix ? `${prefix}/${entry.name}` : entry.name
-          try { Object.defineProperty(f, '__relPath', { value: rel, configurable: true }) } catch {}
-          resolve([f])
+          // Bake the relative path into f.name so downstream code (dedup,
+          // pair-warning, FormData) works without any extra property lookups.
+          const named = rel !== f.name
+            ? new File([f], rel, { type: f.type, lastModified: f.lastModified })
+            : f
+          resolve([named])
         }, () => resolve([]))
       )
     }
@@ -67,10 +74,10 @@ async function collectDroppedFiles(dt: DataTransfer): Promise<File[]> {
   return (await Promise.all(roots.map(e => readEntry(e, '')))).flat()
 }
 
-// Display name: prefer webkitRelativePath (folder picker), then drag-drop relative path,
-// then fall back to the bare filename.
+// Display name: prefer webkitRelativePath (folder picker input),
+// otherwise f.name already holds the relative path (drag-drop via collectDroppedFiles).
 function filePath(f: File): string {
-  return (f as any).webkitRelativePath || (f as any).__relPath || f.name
+  return (f as any).webkitRelativePath || f.name
 }
 
 export default function HomePage() {

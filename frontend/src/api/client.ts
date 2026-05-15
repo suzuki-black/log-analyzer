@@ -14,9 +14,10 @@ export function uploadFiles(
   return new Promise((resolve, reject) => {
     const fd = new FormData()
     for (const f of files) {
-      const rel = (f as any).webkitRelativePath || (f as any).__relPath || f.name
-      // Pass relative path as the multipart filename so the server can disambiguate
-      // same-named files from different sub-directories.
+      // webkitRelativePath is set by <input webkitdirectory>.
+      // For drag-dropped files, collectDroppedFiles() bakes the relative path
+      // directly into f.name, so both cases are covered by this single expression.
+      const rel = (f as any).webkitRelativePath || f.name
       fd.append('file', f, rel)
     }
 
