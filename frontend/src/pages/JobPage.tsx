@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 import { useParams, Link, useNavigate } from 'react-router-dom'
 import { getJob } from '../api/client'
 import { useSSE } from '../hooks/useSSE'
+import type { ProgressSnapshot } from '../hooks/useSSE'
 import { useI18n } from '../i18n'
 import type { Job, SseEvent } from '../types'
 import styles from './JobPage.module.css'
@@ -12,7 +13,7 @@ export default function JobPage() {
   const { t } = useI18n()
   const [job, setJob] = useState<Job | null>(null)
   const [doneModal, setDoneModal] = useState<{ status: 'done' | 'error'; rows: number; dups: number; ms: number; error?: string } | null>(null)
-  const { events } = useSSE(id ?? null)
+  const { logEvents, latestProgress, totalReceived, status: sseStatus } = useSSE(id ?? null)
   const notifiedRef = useRef(false)
 
   // Poll job status; show modal on first transition to done/error
@@ -38,18 +39,20 @@ export default function JobPage() {
     return () => clearInterval(iv)
   }, [id])
 
-  // Also capture duration from SSE 'done' event
+  // SSE 'done' イベントで duration を取得（ポーリングより先に届く場合）
   useEffect(() => {
-    for (const ev of events) {
+    for (const ev of logEvents) {
       if (ev.type === 'done' && !notifiedRef.current) {
         notifiedRef.current = true
         setDoneModal({ status: 'done', rows: ev.total_rows, dups: ev.duplicates, ms: ev.duration_ms })
       }
     }
-  }, [events])
+  }, [logEvents])
 
-  // Derive progress from SSE events
-  const progress = deriveProgress(events, job)
+  const progress = deriveProgress(logEvents, latestProgress, job)
+
+  // ログに表示しないイベント数（dup/progress等）
+  const hiddenCount = totalReceived - logEvents.length
 
   return (
     <div className={styles.page}>
@@ -108,18 +111,30 @@ export default function JobPage() {
             />
 
             <ProgressSection
-              label={t('job.progress.record', { read: progress.linesRead.toLocaleString(), total: progress.totalLines.toLocaleString() })}
+              label={
+                progress.totalLines > 0
+                  ? t('job.progress.record', { read: progress.linesRead.toLocaleString(), total: progress.totalLines.toLocaleString() })
+                  : t('job.progress.recordUnknown', { read: progress.linesRead.toLocaleString() })
+              }
               sub={t('job.progress.sub', {
                 inserted: progress.rowsInserted.toLocaleString(),
                 skipped: progress.rowsSkipped.toLocaleString(),
                 dups: job.duplicates_found.toLocaleString(),
               })}
-              value={progress.totalLines > 0 ? progress.linesRead / progress.totalLines : 0}
+              value={progress.totalLines > 0 ? Math.min(progress.linesRead / progress.totalLines, 1) : -1}
             />
 
+            {/* イベントログ: dup/progressを除いた重要イベントのみ最大200件 */}
             <div className={styles.eventLog}>
-              {events.length === 0 && <p className={styles.emptyLog}>{t('job.eventLog.waiting')}</p>}
-              {[...events].reverse().map((ev, i) => (
+              {logEvents.length === 0 && sseStatus !== 'closed' && (
+                <p className={styles.emptyLog}>{t('job.eventLog.waiting')}</p>
+              )}
+              {hiddenCount > 0 && (
+                <div className={styles.eventHidden}>
+                  {t('job.eventLog.hidden', { n: hiddenCount.toLocaleString() })}
+                </div>
+              )}
+              {[...logEvents].reverse().map((ev, i) => (
                 <EventRow key={i} ev={ev} />
               ))}
             </div>
@@ -132,44 +147,48 @@ export default function JobPage() {
   )
 }
 
-function deriveProgress(events: SseEvent[], job: Job | null) {
+function deriveProgress(
+  logEvents: SseEvent[],
+  latestProgress: ProgressSnapshot | null,
+  job: Job | null,
+) {
   let fileIndex = job?.current_file_index ?? 0
   let currentFile = job?.current_filename ?? ''
-  let linesRead = job?.lines_read ?? 0
-  let rowsInserted = job?.rows_inserted ?? 0
-  let rowsSkipped = job?.rows_skipped ?? 0
-  let totalLines = job?.total_lines ?? 0
+  // Progress は latestProgress から取る（最新1件のみ）
+  let linesRead   = latestProgress?.lines_read   ?? job?.lines_read   ?? 0
+  let rowsInserted = latestProgress?.rows_inserted ?? job?.rows_inserted ?? 0
+  let rowsSkipped  = latestProgress?.rows_skipped  ?? job?.rows_skipped  ?? 0
+  let totalLines   = latestProgress?.total_lines   ?? job?.total_lines   ?? 0
 
-  for (const ev of events) {
+  for (const ev of logEvents) {
     if (ev.type === 'file_start') {
       fileIndex = ev.file_index
       currentFile = ev.filename
-      if (ev.total_lines > 0) totalLines = ev.total_lines
-    }
-    if (ev.type === 'progress') {
-      linesRead = Math.max(linesRead, ev.lines_read)
-      rowsInserted = Math.max(rowsInserted, ev.rows_inserted)
-      rowsSkipped = Math.max(rowsSkipped, ev.rows_skipped)
-      totalLines = Math.max(totalLines, ev.total_lines)
+      if (ev.total_lines > 0) totalLines = Math.max(totalLines, ev.total_lines)
     }
     if (ev.type === 'done') {
       rowsInserted = ev.total_rows
-      linesRead = totalLines
+      if (totalLines > 0) linesRead = totalLines
     }
   }
+
   return { fileIndex, currentFile, linesRead, rowsInserted, rowsSkipped, totalLines }
 }
 
+/** value < 0 = 不明（スピナー表示） */
 function ProgressSection({ label, sub, value }: { label: string; sub: string; value: number }) {
-  const pct = Math.min(100, Math.round(value * 100))
+  const pct = value < 0 ? null : Math.min(100, Math.round(value * 100))
   return (
     <div className={styles.progressSection}>
       <div className={styles.progressLabel}>
         <span>{label}</span>
-        <span>{pct}%</span>
+        {pct !== null ? <span>{pct}%</span> : <span className={styles.spinner}>⟳</span>}
       </div>
       <div className={styles.progressTrack}>
-        <div className={styles.progressFill} style={{ width: `${pct}%` }} />
+        {pct !== null
+          ? <div className={styles.progressFill} style={{ width: `${pct}%` }} />
+          : <div className={styles.progressIndeterminate} />
+        }
       </div>
       <div className={styles.progressSub}>{sub}</div>
     </div>
@@ -193,18 +212,10 @@ function formatEvent(ev: SseEvent, t: (key: string, vars?: Record<string, string
       return ['📂', '#90cdf4', t('job.event.file_start', {
         filename: ev.filename, index: ev.file_index, total: ev.total_files, lines: ev.total_lines.toLocaleString(),
       })]
-    case 'progress':
-      return ['📊', '#68d391', t('job.event.progress', {
-        read: ev.lines_read.toLocaleString(), inserted: ev.rows_inserted.toLocaleString(), skipped: ev.rows_skipped.toLocaleString(),
-      })]
     case 'schema_change':
       return ['➕', '#b794f4', t('job.event.schema_change', { column: ev.column, type: ev.sql_type })]
     case 'type_error_column':
       return ['⚠', '#f6ad55', t('job.event.type_error_column', { errorCol: ev.error_column, origCol: ev.original_column })]
-    case 'duplicate':
-      return ['🔁', '#fc8181', t('job.event.duplicate', { line: ev.line, action: ev.action })]
-    case 'duplicate_batch':
-      return ['🔁', '#fc8181', t('job.event.duplicate_batch', { count: ev.count.toLocaleString(), action: ev.action })]
     case 'done':
       return ['✅', '#68d391', t('job.event.done', { rows: ev.total_rows.toLocaleString(), dups: ev.duplicates.toLocaleString(), ms: ev.duration_ms })]
     case 'error':

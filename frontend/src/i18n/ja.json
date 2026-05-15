@@ -84,10 +84,12 @@
       "title": "取り込み進捗",
       "file": "ファイル: {current} / {total}",
       "record": "レコード: {read} / {total}",
+      "recordUnknown": "レコード: {read} 件処理済み",
       "sub": "挿入: {inserted}　スキップ: {skipped}　重複: {dups}"
     },
     "eventLog": {
-      "waiting": "イベント待機中..."
+      "waiting": "イベント待機中...",
+      "hidden": "progress / 重複イベント {n} 件を省略"
     },
     "loading": "読み込み中...",
     "modal": {

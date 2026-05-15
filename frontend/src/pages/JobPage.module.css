@@ -57,6 +57,28 @@
   transition: width 0.35s ease;
   box-shadow: 0 0 8px var(--accent-ring);
 }
+/* 合計行数不明時の不確定プログレスバー */
+.progressIndeterminate {
+  height: 100%;
+  width: 40%;
+  background: linear-gradient(90deg, transparent, var(--accent), transparent);
+  border-radius: 3px;
+  animation: indeterminate 1.4s ease-in-out infinite;
+}
+@keyframes indeterminate {
+  0%   { transform: translateX(-100%); }
+  100% { transform: translateX(350%); }
+}
+/* 合計不明時のスピナー */
+.spinner {
+  display: inline-block;
+  font-size: 13px;
+  color: var(--accent);
+  animation: spin 1s linear infinite;
+}
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
 .progressSub { font-size: 11px; color: var(--text-4); margin-top: 6px; font-family: monospace; }
 
 /* ── Event log ── */
@@ -76,6 +98,16 @@
 .eventLog::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
 
 .emptyLog { color: var(--text-4); font-size: 12px; padding: 8px 0; }
+/* 省略件数の通知バー */
+.eventHidden {
+  font-size: 11px;
+  color: var(--text-4);
+  background: var(--surface);
+  border: 1px dashed var(--border);
+  border-radius: 4px;
+  padding: 4px 10px;
+  text-align: center;
+}
 
 .eventRow {
   display: flex;

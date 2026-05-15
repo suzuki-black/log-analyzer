@@ -1,7 +1,7 @@
 use std::sync::Arc;
 use std::time::Instant;
 use std::collections::{HashMap, HashSet};
-use tokio::sync::broadcast;
+use tokio::sync::{broadcast, mpsc};
 use serde_json::Value;
 use anyhow::Result;
 use sqlx::QueryBuilder;
@@ -13,6 +13,13 @@ use crate::ingest::{reader, schema::{SchemaTracker, parse_datetime, ColType}, de
 /// 1回のINSERT文に含める最大行数。
 /// MySQL のパラメータ上限(65535)はカラム数に応じて flush_batch 内で自動調整する。
 const BATCH_SIZE: usize = 500;
+
+/// ファイルを読むブロッキングスレッドと処理スレッド間のラインバッファサイズ。
+/// これだけの行がメモリに乗る最大量（avg 500B × 10000 ≈ 5MB）。
+const LINE_CHANNEL_BUFFER: usize = 10_000;
+
+/// SSE Progress イベントを送る行数間隔（多すぎると SSE が詰まる）。
+const PROGRESS_ROW_INTERVAL: usize = 5_000;
 
 /// バルクINSERT用の1行分データ
 struct PendingRow {
@@ -99,8 +106,9 @@ async fn process(state: &Arc<AppState>, job: &mut Job) -> Result<()> {
     let mut dedup = DedupTracker::new();
     dedup.load_existing(&state.pool, &job.table_name).await?;
 
-    // ファイルを1回だけ読んでメモリに保存（以前は count_lines + lines で2回読んでいた）
-    let mut file_infos: Vec<(String, Vec<String>)> = Vec::new(); // (stored_path, lines)
+    // ── フェーズ1: 全ファイルの行数を事前カウント（O(1)メモリ）───────────────────
+    // ファイル内容はここでは読み込まない。count_lines は streaming で行数だけ数える。
+    let mut file_meta: Vec<(String, usize)> = Vec::new(); // (stored_path, line_count)
     for file_id in &job.file_ids {
         let row: (String, String) = sqlx::query_as(
             "SELECT original_name, stored_path FROM _la_files WHERE id = ?",
@@ -108,20 +116,24 @@ async fn process(state: &Arc<AppState>, job: &mut Job) -> Result<()> {
         .bind(file_id)
         .fetch_one(&state.pool)
         .await?;
-        let stored_path = row.1.clone();
-        let lines: Vec<String> = tokio::task::spawn_blocking(move || {
-            reader::lines(&stored_path)
-                .map(|iter| iter.filter_map(|r| r.ok()).collect::<Vec<_>>())
-                .unwrap_or_default()
+        let path_for_count = row.1.clone();
+        let count = tokio::task::spawn_blocking(move || {
+            reader::count_lines(&path_for_count).unwrap_or(0)
         })
         .await?;
-        job.total_lines += lines.len();
-        file_infos.push((row.1, lines));
+        job.total_lines += count;
+        file_meta.push((row.1, count));
     }
 
-    for (file_index, (stored_path, raw_lines)) in file_infos.iter().enumerate() {
-        let filename = stored_path.rsplit('/').next().unwrap_or(stored_path.as_str()).to_string();
-        let file_lines = raw_lines.len();
+    // ── フェーズ2: ファイルを1本ずつストリーミング処理 ──────────────────────────
+    // Vec<String> に全行を展開せず、mpsc チャネル経由でブロッキングスレッドから受け取る。
+    // メモリ上の行数は最大 LINE_CHANNEL_BUFFER 行 ≈ 5MB 程度に抑えられる。
+    for (file_index, (stored_path, file_lines)) in file_meta.iter().enumerate() {
+        let filename = stored_path
+            .rsplit('/')
+            .next()
+            .unwrap_or(stored_path.as_str())
+            .to_string();
         job.current_file_index = file_index + 1;
         job.current_filename = filename.clone();
 
@@ -129,7 +141,7 @@ async fn process(state: &Arc<AppState>, job: &mut Job) -> Result<()> {
             filename: filename.clone(),
             file_index: file_index + 1,
             total_files: job.total_files,
-            total_lines: file_lines,
+            total_lines: *file_lines,
         });
 
         {
@@ -141,25 +153,37 @@ async fn process(state: &Arc<AppState>, job: &mut Job) -> Result<()> {
             }
         }
 
+        // ブロッキングスレッドでファイルを読み、行を bounded channel へ流す
+        let path_clone = stored_path.clone();
+        let (line_tx, mut line_rx) = mpsc::channel::<String>(LINE_CHANNEL_BUFFER);
+        tokio::task::spawn_blocking(move || {
+            if let Ok(iter) = reader::lines(&path_clone) {
+                for line in iter.filter_map(|r| r.ok()) {
+                    if line_tx.blocking_send(line).is_err() {
+                        break; // 受信側がエラー終了 → 読み込み中止
+                    }
+                }
+            }
+        });
+
         // バルクINSERT用バッファ
         let mut batch: Vec<PendingRow> = Vec::with_capacity(BATCH_SIZE);
-        // バッチ内で使われているカラムの挿入順リスト
         let mut ordered_cols: Vec<String> = Vec::new();
         let mut col_set: HashSet<String> = HashSet::new();
 
-        // dup/skip SSEは100行ごとにまとめて送る（毎行送信はSSEオーバーヘッドが大きい）
-        let mut pending_dup_warn = 0usize;
         let mut pending_dup_skip = 0usize;
+        let mut pending_dup_warn = 0usize;
         let mut pending_dup_flag = 0usize;
 
         let mut local_line = 0usize;
+        let mut rows_since_last_progress = 0usize;
 
-        for raw in raw_lines {
+        while let Some(raw) = line_rx.recv().await {
             local_line += 1;
             job.lines_read += 1;
 
             // 重複チェック
-            let (is_dup, content_hash) = dedup.check(raw);
+            let (is_dup, content_hash) = dedup.check(&raw);
             if is_dup {
                 job.duplicates_found += 1;
                 match job.dup_mode {
@@ -174,7 +198,7 @@ async fn process(state: &Arc<AppState>, job: &mut Job) -> Result<()> {
             }
 
             // JSONパース
-            let obj: serde_json::Map<String, Value> = match serde_json::from_str(raw) {
+            let obj: serde_json::Map<String, Value> = match serde_json::from_str(&raw) {
                 Ok(Value::Object(m)) => m,
                 _ => { job.rows_skipped += 1; continue; }
             };
@@ -186,7 +210,6 @@ async fn process(state: &Arc<AppState>, job: &mut Job) -> Result<()> {
             for (key, val) in &obj {
                 let (col, te_col) = schema.ensure_col(&state.pool, &job.table_name, key, val).await?;
 
-                // SSE: 新カラム通知
                 if notified_cols.insert(col.clone()) {
                     let sql_type = schema.known.get(&col).map(|t| t.sql().to_string()).unwrap_or_default();
                     if !sql_type.is_empty() {
@@ -202,17 +225,11 @@ async fn process(state: &Arc<AppState>, job: &mut Job) -> Result<()> {
                     }
                 }
 
-                // このバッチで未登録のカラムを記録
-                if !col_set.contains(&col) {
-                    new_cols_this_row.push(col.clone());
-                }
+                if !col_set.contains(&col) { new_cols_this_row.push(col.clone()); }
                 if let Some(ref te) = te_col {
-                    if !col_set.contains(te) {
-                        new_cols_this_row.push(te.clone());
-                    }
+                    if !col_set.contains(te) { new_cols_this_row.push(te.clone()); }
                 }
 
-                // 値をOption<String>に正規化（MySQLが各カラム型へ暗黙変換する）
                 let col_type = schema.known.get(&col);
                 if let Some(ref te) = te_col {
                     col_vals.insert(col.clone(), None);
@@ -225,18 +242,15 @@ async fn process(state: &Arc<AppState>, job: &mut Job) -> Result<()> {
                 }
             }
 
-            // 新カラムが出てきた場合、既存バッチを先にフラッシュしてカラムセットを安定させる
+            // 新カラムが出たら既存バッチをフラッシュ
             if !new_cols_this_row.is_empty() && !batch.is_empty() {
                 flush_batch(&state.pool, &job.table_name, &job.id, &schema, &batch, &ordered_cols).await?;
                 job.rows_inserted += batch.len();
+                rows_since_last_progress += batch.len();
                 batch.clear();
             }
-
-            // ordered_cols に新カラムを追加
             for nc in new_cols_this_row {
-                if col_set.insert(nc.clone()) {
-                    ordered_cols.push(nc);
-                }
+                if col_set.insert(nc.clone()) { ordered_cols.push(nc); }
             }
 
             let is_dup_val: Option<i64> = match job.dup_mode {
@@ -244,39 +258,23 @@ async fn process(state: &Arc<AppState>, job: &mut Job) -> Result<()> {
                 _ => None,
             };
 
-            batch.push(PendingRow {
-                line_no: job.lines_read,
-                is_dup: is_dup_val,
-                content_hash,
-                raw: raw.clone(),
-                col_vals,
-            });
+            batch.push(PendingRow { line_no: job.lines_read, is_dup: is_dup_val, content_hash, raw, col_vals });
 
-            // バッチサイズ到達 → フラッシュ & Progress SSE
             if batch.len() >= BATCH_SIZE {
                 flush_batch(&state.pool, &job.table_name, &job.id, &schema, &batch, &ordered_cols).await?;
                 job.rows_inserted += batch.len();
+                rows_since_last_progress += batch.len();
                 batch.clear();
 
                 flush_dup_events(&sender, &mut pending_dup_skip, &mut pending_dup_warn, &mut pending_dup_flag);
 
-                let _ = sender.send(SseEvent::Progress {
-                    lines_read: job.lines_read,
-                    rows_inserted: job.rows_inserted,
-                    rows_skipped: job.rows_skipped,
-                    total_lines: job.total_lines,
-                });
-                {
-                    let mut jobs = state.jobs.write().await;
-                    if let Some(j) = jobs.get_mut(&job.id) {
-                        j.lines_read = job.lines_read;
-                        j.rows_inserted = job.rows_inserted;
-                        j.rows_skipped = job.rows_skipped;
-                        j.duplicates_found = job.duplicates_found;
-                    }
+                // Progress は PROGRESS_ROW_INTERVAL 行ごとに間引いて送信
+                if rows_since_last_progress >= PROGRESS_ROW_INTERVAL {
+                    rows_since_last_progress = 0;
+                    send_progress(state, &sender, job).await;
                 }
             }
-        } // for raw in raw_lines
+        } // while line_rx
 
         // ファイル終端：残りをフラッシュ
         if !batch.is_empty() {
@@ -287,25 +285,33 @@ async fn process(state: &Arc<AppState>, job: &mut Job) -> Result<()> {
 
         flush_dup_events(&sender, &mut pending_dup_skip, &mut pending_dup_warn, &mut pending_dup_flag);
 
-        // ファイル終端のProgressイベント
-        let _ = sender.send(SseEvent::Progress {
-            lines_read: job.lines_read,
-            rows_inserted: job.rows_inserted,
-            rows_skipped: job.rows_skipped,
-            total_lines: job.total_lines,
-        });
-        {
-            let mut jobs = state.jobs.write().await;
-            if let Some(j) = jobs.get_mut(&job.id) {
-                j.lines_read = job.lines_read;
-                j.rows_inserted = job.rows_inserted;
-                j.rows_skipped = job.rows_skipped;
-                j.duplicates_found = job.duplicates_found;
-            }
-        }
-    } // for file_index
+        // ファイル終端では必ず Progress を送信
+        send_progress(state, &sender, job).await;
+
+        eprintln!(
+            "[worker] file {}/{} done: {} rows inserted, {} skipped",
+            file_index + 1, job.total_files, job.rows_inserted, job.rows_skipped
+        );
+    }
 
     Ok(())
+}
+
+/// Progress SSE を送信し、インメモリの Job も更新する
+async fn send_progress(state: &Arc<AppState>, sender: &broadcast::Sender<SseEvent>, job: &Job) {
+    let _ = sender.send(SseEvent::Progress {
+        lines_read: job.lines_read,
+        rows_inserted: job.rows_inserted,
+        rows_skipped: job.rows_skipped,
+        total_lines: job.total_lines,
+    });
+    let mut jobs = state.jobs.write().await;
+    if let Some(j) = jobs.get_mut(&job.id) {
+        j.lines_read = job.lines_read;
+        j.rows_inserted = job.rows_inserted;
+        j.rows_skipped = job.rows_skipped;
+        j.duplicates_found = job.duplicates_found;
+    }
 }
 
 /// 溜めたdup/skipイベントをまとめてSSEに送信
@@ -329,8 +335,7 @@ fn flush_dup_events(
     }
 }
 
-/// JSON値をMySQLカラム型に合わせて Option<String> に正規化。
-/// MySQLは文字列からBIGINT/DOUBLE/DATETIME/TINYINTへ暗黙変換する。
+/// JSON値をMySQLカラム型に合わせて Option<String> に正規化
 fn normalize_value(col_type: Option<&ColType>, val: &Value) -> Option<String> {
     match (col_type, val) {
         (Some(ColType::TinyInt), Value::Bool(b)) => Some(if *b { "1" } else { "0" }.to_string()),
@@ -352,11 +357,8 @@ async fn flush_batch(
     batch: &[PendingRow],
     ordered_cols: &[String],
 ) -> Result<()> {
-    if batch.is_empty() {
-        return Ok(());
-    }
+    if batch.is_empty() { return Ok(()); }
 
-    // MySQLのバインドパラメータ上限(65535)を超えないようチャンク分割
     let params_per_row = 5 + ordered_cols.len();
     let max_per_stmt = if params_per_row > 0 {
         (65535 / params_per_row).max(1)
@@ -369,10 +371,7 @@ async fn flush_batch(
             match do_bulk_insert(pool, table, job_id, chunk, ordered_cols).await {
                 Ok(()) => break,
                 Err(e) => match extract_too_long_column(&e) {
-                    Some(col) => {
-                        schema.widen_text_column(pool, table, &col).await?;
-                        // retry same chunk
-                    }
+                    Some(col) => { schema.widen_text_column(pool, table, &col).await?; }
                     None => return Err(e),
                 },
             }
@@ -390,11 +389,8 @@ async fn do_bulk_insert(
 ) -> Result<()> {
     let col_list = {
         let mut parts = vec![
-            "_job_id".to_string(),
-            "_line_no".to_string(),
-            "_is_dup".to_string(),
-            "_content_hash".to_string(),
-            "_raw".to_string(),
+            "_job_id".to_string(), "_line_no".to_string(), "_is_dup".to_string(),
+            "_content_hash".to_string(), "_raw".to_string(),
         ];
         parts.extend(ordered_cols.iter().map(|c| format!("`{}`", c)));
         parts.join(", ")
@@ -411,7 +407,6 @@ async fn do_bulk_insert(
         b.push_bind(row.content_hash.as_str());
         b.push_bind(row.raw.as_str());
         for col in ordered_cols {
-            // col_valsにない場合はNULL（この行にそのキーが存在しなかった）
             b.push_bind(row.col_vals.get(col).cloned().flatten());
         }
     });
@@ -420,7 +415,6 @@ async fn do_bulk_insert(
     Ok(())
 }
 
-/// MySQL error 1406 ("Data too long for column 'X'") からカラム名を抽出する。
 fn extract_too_long_column(err: &anyhow::Error) -> Option<String> {
     for cause in err.chain() {
         if let Some(db_err) = cause.downcast_ref::<sqlx::Error>() {
@@ -441,9 +435,7 @@ fn extract_too_long_column(err: &anyhow::Error) -> Option<String> {
         }
     }
     let s = err.to_string();
-    if !s.to_lowercase().contains("data too long") {
-        return None;
-    }
+    if !s.to_lowercase().contains("data too long") { return None; }
     let start = s.find('\'')?;
     let rest = &s[start + 1..];
     let end = rest.find('\'')?;

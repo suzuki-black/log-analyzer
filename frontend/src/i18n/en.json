@@ -84,10 +84,12 @@
       "title": "Import Progress",
       "file": "File: {current} / {total}",
       "record": "Records: {read} / {total}",
+      "recordUnknown": "Records: {read} processed",
       "sub": "Inserted: {inserted}   Skipped: {skipped}   Duplicates: {dups}"
     },
     "eventLog": {
-      "waiting": "Waiting for events..."
+      "waiting": "Waiting for events...",
+      "hidden": "{n} progress/duplicate events omitted"
     },
     "loading": "Loading...",
     "modal": {
