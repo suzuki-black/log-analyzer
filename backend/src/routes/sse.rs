@@ -6,7 +6,7 @@ use futures::stream::Stream;
 use std::{convert::Infallible, sync::Arc};
 use tokio_stream::wrappers::BroadcastStream;
 use tokio_stream::StreamExt;
-use crate::{AppState, error::AppError, models::SseEvent};
+use crate::{AppState, error::AppError};
 
 pub async fn sse_handler(
     State(state): State<Arc<AppState>>,

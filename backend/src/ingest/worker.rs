@@ -106,6 +106,20 @@ async fn process(state: &Arc<AppState>, job: &mut Job) -> Result<()> {
     let mut dedup = DedupTracker::new();
     dedup.load_existing(&state.pool, &job.table_name).await?;
 
+    // 大量INSERTを担う専用コネクションを取得。
+    // 同一コネクションで SET SESSION sql_log_bin = 0 を発行することで
+    // このセッション限定でバイナリログへの書き込みを抑制する。
+    // （binlog が有効な外部MySQLでディスクを枯渇させない対策）
+    // SYSTEM_VARIABLES_ADMIN 権限が無いと失敗するため、エラーは non-fatal。
+    let mut conn = state.pool.acquire().await?;
+    match sqlx::query("SET SESSION sql_log_bin = 0")
+        .execute(&mut *conn)
+        .await
+    {
+        Ok(_) => eprintln!("[worker] sql_log_bin=0 set for this session"),
+        Err(e) => eprintln!("[worker] note: sql_log_bin=0 skipped (privilege absent or binlog disabled): {e}"),
+    }
+
     // ── フェーズ1: 全ファイルの行数を事前カウント（O(1)メモリ）───────────────────
     // ファイル内容はここでは読み込まない。count_lines は streaming で行数だけ数える。
     let mut file_meta: Vec<(String, usize)> = Vec::new(); // (stored_path, line_count)
@@ -175,11 +189,9 @@ async fn process(state: &Arc<AppState>, job: &mut Job) -> Result<()> {
         let mut pending_dup_warn = 0usize;
         let mut pending_dup_flag = 0usize;
 
-        let mut local_line = 0usize;
         let mut rows_since_last_progress = 0usize;
 
         while let Some(raw) = line_rx.recv().await {
-            local_line += 1;
             job.lines_read += 1;
 
             // 重複チェック
@@ -244,7 +256,7 @@ async fn process(state: &Arc<AppState>, job: &mut Job) -> Result<()> {
 
             // 新カラムが出たら既存バッチをフラッシュ
             if !new_cols_this_row.is_empty() && !batch.is_empty() {
-                flush_batch(&state.pool, &job.table_name, &job.id, &schema, &batch, &ordered_cols).await?;
+                flush_batch(&mut *conn, &state.pool, &job.table_name, &job.id, &schema, &batch, &ordered_cols).await?;
                 job.rows_inserted += batch.len();
                 rows_since_last_progress += batch.len();
                 batch.clear();
@@ -261,7 +273,7 @@ async fn process(state: &Arc<AppState>, job: &mut Job) -> Result<()> {
             batch.push(PendingRow { line_no: job.lines_read, is_dup: is_dup_val, content_hash, raw, col_vals });
 
             if batch.len() >= BATCH_SIZE {
-                flush_batch(&state.pool, &job.table_name, &job.id, &schema, &batch, &ordered_cols).await?;
+                flush_batch(&mut *conn, &state.pool, &job.table_name, &job.id, &schema, &batch, &ordered_cols).await?;
                 job.rows_inserted += batch.len();
                 rows_since_last_progress += batch.len();
                 batch.clear();
@@ -278,7 +290,7 @@ async fn process(state: &Arc<AppState>, job: &mut Job) -> Result<()> {
 
         // ファイル終端：残りをフラッシュ
         if !batch.is_empty() {
-            flush_batch(&state.pool, &job.table_name, &job.id, &schema, &batch, &ordered_cols).await?;
+            flush_batch(&mut *conn, &state.pool, &job.table_name, &job.id, &schema, &batch, &ordered_cols).await?;
             job.rows_inserted += batch.len();
             batch.clear();
         }
@@ -349,7 +361,10 @@ fn normalize_value(col_type: Option<&ColType>, val: &Value) -> Option<String> {
 }
 
 /// バルクINSERT（自動拡幅リトライ付き）
+/// conn: sql_log_bin=0 を発行済みの専用コネクション（INSERT に使用）
+/// pool: DDL (ALTER TABLE) 用のプール（INSERT とは別コネクションで可）
 async fn flush_batch(
+    conn: &mut sqlx::MySqlConnection,
     pool: &sqlx::MySqlPool,
     table: &str,
     job_id: &str,
@@ -368,7 +383,7 @@ async fn flush_batch(
 
     for chunk in batch.chunks(max_per_stmt) {
         loop {
-            match do_bulk_insert(pool, table, job_id, chunk, ordered_cols).await {
+            match do_bulk_insert(conn, table, job_id, chunk, ordered_cols).await {
                 Ok(()) => break,
                 Err(e) => match extract_too_long_column(&e) {
                     Some(col) => { schema.widen_text_column(pool, table, &col).await?; }
@@ -381,7 +396,7 @@ async fn flush_batch(
 }
 
 async fn do_bulk_insert(
-    pool: &sqlx::MySqlPool,
+    conn: &mut sqlx::MySqlConnection,
     table: &str,
     job_id: &str,
     batch: &[PendingRow],
@@ -411,7 +426,7 @@ async fn do_bulk_insert(
         }
     });
 
-    qb.build().execute(pool).await?;
+    qb.build().execute(&mut *conn).await?;
     Ok(())
 }
 

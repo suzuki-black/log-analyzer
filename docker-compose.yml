@@ -1,6 +1,11 @@
 services:
   mysql:
     image: mysql:8.4
+    # --skip-log-bin: バイナリログを無効化。
+    # 大量INSERT時にbinlogがディスクを食い尽くして
+    # "binlog_error_action=ABORT_SERVER" でMySQLが落ちるのを防ぐ。
+    # レプリケーション不要なdev/prod環境では常に無効でよい。
+    command: --skip-log-bin
     environment:
       MYSQL_ROOT_PASSWORD: rootpass
       MYSQL_DATABASE: logdb
